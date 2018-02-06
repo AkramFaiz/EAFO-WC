@@ -1,0 +1,23 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<section>
+        <app-list-view></app-list-view>
+        <ul>
+            <li *ngFor="let hList of hyd_List">
+                    <div>
+                            <p><label><img src="{{hList.Icon}}"/></label></p>
+                            <ul>
+                                <li>{{hList.Title}}</li>
+                                <li>{{hList.Desc}}</li>
+                                <li>{{hList.Version}}</li>
+                                <li>{{hList.DevelopedBy}}</li>
+                                <li>{{hList.SupportedBy}}</li>
+                                <li>{{hList.VersionsHistory}}</li>
+                                <li>{{hList.CodeRepository}}</li>               
+                            </ul>
+                            <p><span class="glyphicon glyphicon-pencil"></span></p>
+                            <p><span class="glyphicon glyphicon-remove"></span></p>
+                    </div>
+             </li>            
+        </ul>
+</section>

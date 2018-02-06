@@ -1,0 +1,23 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<section>
+        <app-list-view></app-list-view>
+        <ul>
+            <li *ngFor="let iList of iOS_List">
+                    <div>
+                            <p><label><img src="{{iList.Icon}}"/></label></p>
+                            <ul>
+                                <li>{{iList.Title}}</li>
+                                <li>{{iList.Desc}}</li>
+                                <li>{{iList.Version}}</li>
+                                <li>{{iList.DevelopedBy}}</li>
+                                <li>{{iList.SupportedBy}}</li>
+                                <li>{{iList.VersionsHistory}}</li>
+                                <li>{{iList.CodeRepository}}</li>               
+                            </ul>
+                            <p><span class="glyphicon glyphicon-pencil"></span></p>
+                            <p><span class="glyphicon glyphicon-remove"></span></p>
+                    </div>
+             </li>            
+        </ul>
+</section>

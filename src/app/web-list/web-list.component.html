@@ -1,0 +1,34 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<section>
+        <app-list-view></app-list-view>
+        <ul>
+            <li *ngFor="let wList of web_List">
+                    <div>
+                            <p><label><img src="{{wList.Icon}}"/></label></p>
+                            <ul>
+                                <li>{{wList.Title}}</li>
+                                <li>{{wList.Desc}}</li>
+                                <li>{{wList.Version}}</li>
+                                <li>{{wList.DevelopedBy}}</li>
+                                <li>{{wList.SupportedBy}}</li>
+                                <li>{{wList.VersionsHistory}}</li>
+                                <li>{{wList.CodeRepository}}</li>               
+                            </ul>
+                            <p><span class="glyphicon glyphicon-pencil"></span></p>
+                            <p><span class="glyphicon glyphicon-remove"></span></p>
+                    </div>
+             </li>            
+        </ul>
+
+        <article class="addNewData">
+            <ul>
+                <li>Asad</li>
+                <li>asdasd</li>
+                <li>sd</li>
+                <li>sdsdd</li>
+                <li>asd</li>
+                <li>ddd</li>
+            </ul>
+        </article>
+</section>

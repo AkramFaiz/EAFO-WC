@@ -1,0 +1,94 @@
+div{
+    width: 96%;
+    text-align: center;
+    margin: 2% auto 0;
+    padding: 0;
+    background: #1b212f;
+    box-shadow: 0px 0px 1px #fdc844;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+div p{
+    width: 5%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+div p:first-child{
+    width: 15%;
+}
+div p label{
+    width: 100%;
+    margin: 0;
+    color: rgba(254, 213, 122, 0.83);
+}
+div p span{
+    color: rgba(254, 213, 122, 0.83);
+    margin: 0 5px 0 0;
+}
+div ul li{
+    background: none;
+    padding: 0;
+    flex-basis: 45%;
+    text-align: left;
+    border: none;
+}
+div ul li:first-child,div ul li:nth-child(3){
+    order: 0;
+}
+div ul li:nth-child(2){
+    flex-basis: 96%;
+    order: 1;
+}
+div ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){
+    order: 3;
+}
+div p.addRecordIcon{
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    background: #1b212f;
+    border: 1px solid rgba(254, 213, 122, 0.83);
+    width: 20px;
+    height: 20px;
+    border-radius: 22px;
+}
+div p.addRecordIcon > span{
+    font-size: 9px;
+    position: absolute;
+    width: 19px;
+    height: 10px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+@media only screen and (min-width: 768px) {
+    div p{
+        width: 1%;
+    }
+    div p:first-child{
+        width: 10%;
+    }
+    div ul li{
+        width: auto;
+        font-size: unset;
+        border: none;
+        background: none;
+    }  
+    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){
+        flex-basis: 10%;
+        order: 0;
+    }
+    div p.addRecordIcon{
+        width: 25px;
+        height: 25px;
+    }
+    div p.addRecordIcon > span{
+        font-size: 12px;
+        height: 12px;
+    }
+}

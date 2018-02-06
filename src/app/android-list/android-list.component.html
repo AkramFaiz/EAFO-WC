@@ -1,0 +1,23 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<section>
+        <app-list-view></app-list-view>
+        <ul>
+            <li *ngFor="let aList of and_List">
+                    <div>
+                            <p><label><img src="{{aList.Icon}}"/></label></p>
+                            <ul>
+                                <li>{{aList.Title}}</li>
+                                <li>{{aList.Desc}}</li>
+                                <li>{{aList.Version}}</li>
+                                <li>{{aList.DevelopedBy}}</li>
+                                <li>{{aList.SupportedBy}}</li>
+                                <li>{{aList.VersionsHistory}}</li>
+                                <li>{{aList.CodeRepository}}</li>               
+                            </ul>
+                            <p><span class="glyphicon glyphicon-pencil"></span></p>
+                            <p><span class="glyphicon glyphicon-remove"></span></p>
+                    </div>
+             </li>            
+        </ul>
+</section>

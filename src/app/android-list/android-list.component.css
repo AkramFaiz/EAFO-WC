@@ -1,0 +1,75 @@
+section ul li{
+    padding: 0;
+}
+div{
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+div p{
+    width: 5%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+div p:first-child{
+    width: 15%;
+}
+div p label{
+    width: 100%;
+    margin: 0;
+    color: rgba(254, 213, 122, 0.83);
+}
+div p span{
+    color: rgba(254, 213, 122, 0.83);
+    margin: 0 5px 0 0;
+}
+div ul{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+div ul li{
+    background: none;
+    padding: 0;
+    flex-basis: 45%;
+    text-align: left;
+    border: none;
+}
+div ul li:first-child,div ul li:nth-child(3){
+    order: 0;
+}
+div ul li:nth-child(2){
+    flex-basis: 96%;
+    order: 1;
+}
+div ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){
+    order: 3;
+}
+label img{
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+}
+
+@media only screen and (min-width: 768px) {
+    div p{
+        width: 1%;
+    }
+    div p:first-child{
+        width: 10%;
+    }
+    div ul li{
+        width: auto;
+        font-size: unset;
+        border: none;
+    }  
+    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){
+        flex-basis: 10%;
+        order: 0;
+    }
+}

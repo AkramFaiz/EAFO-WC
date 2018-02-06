@@ -1,0 +1,42 @@
+
+<form class="form-horizontal" #loginForm="ngForm" role="form">
+        <div class="form-group">
+            <div class="col-sm-12">
+                    <label for="username" class="loginUI">Username :</label>
+                <!-- <input type="text" required class="form-control" [(ngModel)]="username" name="username" #username="ngModel" id="username" (change)="onClickUser(username)">                     -->
+                    <input autocomplete="off" type="text" required class="form-control" id="username" [(ngModel)]="username" name="uname" required (keyup)="keyUserClkd()" />
+                <span [style.visibility]="clearUser ? 'visible' : 'hidden'" class="clearUser" ng-show="flagIL" (click)="clearInput('user')"></span>
+                    </div>
+        </div >
+        <div class="form-group">
+            <div class="col-sm-12">
+                    <label for="pwd" class="loginPI">Password :</label>
+                <input autocomplete="off" type="password" class="form-control" id="pwd" [(ngModel)]="password" name="pwd" required (keyup)="keyPwdClkd()"/>
+                    <span [style.visibility]="clearPwd ? 'visible' : 'hidden'" class="clearPswd" ng-show="flagIP" (click)="clearInput('pswd')"></span>
+                    </div>
+        </div>
+        <div class="form-group" *ngIf="visible">
+            <div class="col-sm-12">
+                <label class="invalidEntry">Invalid Username or Password</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type="button" (click)="SignUpClk()">Sign Up</button>
+                <button type="submit" [disabled]="!loginForm.form.valid" (click)="loginClk($event)">Login</button>
+            </div>
+        </div>       
+</form>
+
+<!-- <form  (ngSubmit)="onSubmit()">
+        
+                <label>Username:</label>
+                <input type="text" class="form-control"   [(ngModel)]="user.username" name="username" #username="ngModel" required />
+        
+                <label>Contraseña:</label>
+                <input type="password" class="form-control"  [(ngModel)]="user.password" name="password" #password="ngModel" required />
+        
+        
+            <input type="submit" value="Entrar" class="btn btn-primary"/>
+        
+        </form> -->

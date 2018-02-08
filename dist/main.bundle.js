@@ -308,7 +308,8 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -338,13 +339,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// import {
-//   MatButtonModule,
-//   MatMenuModule,
-//   MatToolbarModule,
-//   MatIconModule,
-//   MatCardModule
-// } from '@angular/material';
+
 
 var appRoutes = [
     {
@@ -436,7 +431,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_23__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */]
+            __WEBPACK_IMPORTED_MODULE_24__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_23__angular_http__["b" /* HttpModule */]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
@@ -1098,6 +1094,8 @@ ListViewComponent = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1108,10 +1106,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var LoginService = (function () {
-    function LoginService() {
+    function LoginService(_http) {
+        this._http = _http;
         this.isUserLoggedIn = false;
     }
+    LoginService.prototype.getUser = function () {
+        var _this = this;
+        return this._http.get("/user").map(function (result) { return _this.result = result.json(); });
+    };
     LoginService.prototype.setUserLoggedIn = function (uname) {
         this.username = uname;
         console.log(this.username);
@@ -1124,9 +1129,10 @@ var LoginService = (function () {
 }());
 LoginService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], LoginService);
 
+var _a;
 //# sourceMappingURL=login.service.js.map
 
 /***/ }),
@@ -1152,7 +1158,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<form class=\"form-horizontal\" #loginForm=\"ngForm\" role=\"form\">\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"username\" class=\"loginUI\">Username :</label>\n                <!-- <input type=\"text\" required class=\"form-control\" [(ngModel)]=\"username\" name=\"username\" #username=\"ngModel\" id=\"username\" (change)=\"onClickUser(username)\">                     -->\n                    <input autocomplete=\"off\" type=\"text\" required class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"uname\" required (keyup)=\"keyUserClkd()\" />\n                <span [style.visibility]=\"clearUser ? 'visible' : 'hidden'\" class=\"clearUser\" ng-show=\"flagIL\" (click)=\"clearInput('user')\"></span>\n                    </div>\n        </div >\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"pwd\" class=\"loginPI\">Password :</label>\n                <input autocomplete=\"off\" type=\"password\" class=\"form-control\" id=\"pwd\" [(ngModel)]=\"password\" name=\"pwd\" required (keyup)=\"keyPwdClkd()\"/>\n                    <span [style.visibility]=\"clearPwd ? 'visible' : 'hidden'\" class=\"clearPswd\" ng-show=\"flagIP\" (click)=\"clearInput('pswd')\"></span>\n                    </div>\n        </div>\n        <div class=\"form-group\" *ngIf=\"visible\">\n            <div class=\"col-sm-12\">\n                <label class=\"invalidEntry\">Invalid Username or Password</label>\n            </div>\n        </div>\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                <button type=\"button\" (click)=\"SignUpClk()\">Sign Up</button>\n                <button type=\"submit\" [disabled]=\"!loginForm.form.valid\" (click)=\"loginClk($event)\">Login</button>\n            </div>\n        </div>       \n</form>\n\n<!-- <form  (ngSubmit)=\"onSubmit()\">\n        \n                <label>Username:</label>\n                <input type=\"text\" class=\"form-control\"   [(ngModel)]=\"user.username\" name=\"username\" #username=\"ngModel\" required />\n        \n                <label>Contraseña:</label>\n                <input type=\"password\" class=\"form-control\"  [(ngModel)]=\"user.password\" name=\"password\" #password=\"ngModel\" required />\n        \n        \n            <input type=\"submit\" value=\"Entrar\" class=\"btn btn-primary\"/>\n        \n        </form> -->"
+module.exports = "\n<form class=\"form-horizontal\" #loginForm=\"ngForm\" role=\"form\">\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"username\" class=\"loginUI\">Username :</label>\n                <!-- <input type=\"text\" required class=\"form-control\" [(ngModel)]=\"username\" name=\"username\" #username=\"ngModel\" id=\"username\" (change)=\"onClickUser(username)\">                     -->\n                    <input autocomplete=\"off\" type=\"text\" required class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"uname\" required (keyup)=\"keyUserClkd()\" />\n                <span [style.visibility]=\"clearUser ? 'visible' : 'hidden'\" class=\"clearUser\" ng-show=\"flagIL\" (click)=\"clearInput('user')\"></span>\n                    </div>\n        </div >\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"pwd\" class=\"loginPI\">Password :</label>\n                <input autocomplete=\"off\" type=\"password\" class=\"form-control\" id=\"pwd\" [(ngModel)]=\"password\" name=\"pwd\" required (keyup)=\"keyPwdClkd()\"/>\n                    <span [style.visibility]=\"clearPwd ? 'visible' : 'hidden'\" class=\"clearPswd\" ng-show=\"flagIP\" (click)=\"clearInput('pswd')\"></span>\n                    </div>\n        </div>\n        <div class=\"form-group\" *ngIf=\"visible\">\n            <div class=\"col-sm-12\">\n                <label class=\"invalidEntry\">Invalid Username or Password</label>\n            </div>\n        </div>       \n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                <button type=\"button\" (click)=\"SignUpClk()\">Sign Up</button>\n                <button type=\"submit\" [disabled]=\"!loginForm.form.valid\" (click)=\"loginClk($event)\">Login</button>\n            </div>\n        </div>       \n</form>\n\n<!-- <form  (ngSubmit)=\"onSubmit()\">\n        \n                <label>Username:</label>\n                <input type=\"text\" class=\"form-control\"   [(ngModel)]=\"user.username\" name=\"username\" #username=\"ngModel\" required />\n        \n                <label>Contraseña:</label>\n                <input type=\"password\" class=\"form-control\"  [(ngModel)]=\"user.password\" name=\"password\" #password=\"ngModel\" required />\n        \n        \n            <input type=\"submit\" value=\"Entrar\" class=\"btn btn-primary\"/>\n        \n        </form> -->"
 
 /***/ }),
 
@@ -1195,6 +1201,7 @@ var LoginComponent = (function () {
         // $('.loginUI').addClass('move-up');
     };
     LoginComponent.prototype.keyUserClkd = function () {
+        this.visible = false;
         if (this.username == "") {
             this.clearUser = false;
         }
@@ -1203,6 +1210,7 @@ var LoginComponent = (function () {
         }
     };
     LoginComponent.prototype.keyPwdClkd = function () {
+        this.visible = false;
         if (this.password == "") {
             this.clearPwd = false;
         }
@@ -1211,11 +1219,21 @@ var LoginComponent = (function () {
         }
     };
     LoginComponent.prototype.loginClk = function (ev) {
+        var _this = this;
         ev.preventDefault();
         console.log(this.username + "," + this.password);
-        if (this.password == 'admin' && this.password == 'admin') {
-            this._loginService.setUserLoggedIn(this.username);
-            this._router.navigate(['home']);
+        this._loginService.getUser().subscribe(function (res) { return _this.user = res; });
+        console.log(this.user);
+        if (this.user != undefined) {
+            for (var t = 0; t < this.user.length; t++) {
+                if (this.username == this.user[t].user && this.password == this.user[t].password) {
+                    this._loginService.setUserLoggedIn(this.username);
+                    this._router.navigate(['home']);
+                }
+                else {
+                    this.visible = true;
+                }
+            }
         }
         else {
             this.visible = true;

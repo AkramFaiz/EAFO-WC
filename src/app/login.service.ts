@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
+import {Http,Headers,RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginService {
   private isUserLoggedIn;
   private username;
-  constructor() { 
+  constructor(private _http: Http) { 
     this.isUserLoggedIn = false;
+  }
+  result: any;
+  getUser(){
+   return this._http.get("/user").map(result => this.result = result.json());
   }
   setUserLoggedIn(uname){
     this.username = uname;

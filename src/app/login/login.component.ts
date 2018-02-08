@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   username = "";
   password = "";
   name="";
+  user : Array<any>;
   constructor(private _router:Router, private _loginService: LoginService,private _actRoute:ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
    // $('.loginUI').addClass('move-up');
   }
   keyUserClkd(){
+    this.visible = false;
     if(this.username == ""){
       this.clearUser = false;
     }else{
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
     }
   }
   keyPwdClkd(){
+    this.visible = false;
     if(this.password == ""){
       this.clearPwd = false;
     }else{
@@ -38,14 +41,25 @@ export class LoginComponent implements OnInit {
    loginClk(ev){
      ev.preventDefault();
     console.log(this.username+","+this.password);
-    if(this.password == 'admin' && this.password == 'admin'){
-      this._loginService.setUserLoggedIn(this.username);
-      this._router.navigate(['home']);
+    this._loginService.getUser().subscribe(res => this.user = res);
+    console.log(this.user);
+    if(this.user != undefined){
+      for( var t=0;t<this.user.length;t++){
+        if(this.username == this.user[t].user && this.password == this.user[t].password){
+          this._loginService.setUserLoggedIn(this.username);
+          this._router.navigate(['home']);
+        }
+        else{
+          this.visible = true;
+        }
+        }
+      }
+      else{
+        // need to check the logic
+        this.visible = true;
+      }
     }
-    else{
-      this.visible= true;
-    }
-   }
+    
     SignUpClk(){
       this._router.navigate(['sign']);
     }

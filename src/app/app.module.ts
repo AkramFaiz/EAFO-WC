@@ -21,6 +21,15 @@ import { WebListComponent } from './web-list/web-list.component';
 import { AndroidListComponent } from './android-list/android-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ListViewComponent } from './list-view/list-view.component';
+// import {
+//   MatButtonModule,
+//   MatMenuModule,
+//   MatToolbarModule,
+//   MatIconModule,
+//   MatCardModule
+// } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const appRoutes:Routes = [
   {
@@ -106,7 +115,8 @@ const appRoutes:Routes = [
     BrowserModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [LoginService,AuthGuard],
   bootstrap: [AppComponent]

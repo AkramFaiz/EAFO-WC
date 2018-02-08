@@ -9,6 +9,7 @@ export class LoginService {
   }
   setUserLoggedIn(uname){
     this.username = uname;
+    console.log(this.username);
     this.isUserLoggedIn = true;
   }
   getUserLoggedIn(){

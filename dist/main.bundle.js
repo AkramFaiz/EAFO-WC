@@ -299,23 +299,25 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__ = __webpack_require__("../../../../../src/app/hybrid/hybrid.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__ = __webpack_require__("../../../../../src/app/welcome/welcome.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -356,48 +358,48 @@ var appRoutes = [
     },
     {
         path: 'home',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_8__home_home_component__["a" /* HomeComponent */]
     },
     {
         path: 'list',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_22__list_view_list_view_component__["a" /* ListViewComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_23__list_view_list_view_component__["a" /* ListViewComponent */]
     },
     {
         path: 'iOS',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_9__ios_ios_component__["a" /* IosComponent */]
     },
     {
         path: ' android',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */]
     },
     {
         path: 'hydrid',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */]
     },
     {
         path: 'iosList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_17__ios_list_ios_list_component__["a" /* IosListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_18__ios_list_ios_list_component__["a" /* IosListComponent */]
     },
     {
         path: 'andList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_20__android_list_android_list_component__["a" /* AndroidListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_21__android_list_android_list_component__["a" /* AndroidListComponent */]
     },
     {
         path: 'hybList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_18__hyb_list_hyb_list_component__["a" /* HybListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_19__hyb_list_hyb_list_component__["a" /* HybListComponent */]
     },
     {
         path: 'webList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_19__web_list_web_list_component__["a" /* WebListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_20__web_list_web_list_component__["a" /* WebListComponent */]
     }
 ];
 var AppModule = (function () {
@@ -416,14 +418,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */],
             __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */],
             __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__["a" /* WelcomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__desktop_desktop_component__["a" /* DesktopComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__ios_list_ios_list_component__["a" /* IosListComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__hyb_list_hyb_list_component__["a" /* HybListComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__web_list_web_list_component__["a" /* WebListComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__android_list_android_list_component__["a" /* AndroidListComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__list_view_list_view_component__["a" /* ListViewComponent */]
+            __WEBPACK_IMPORTED_MODULE_16__header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__desktop_desktop_component__["a" /* DesktopComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__ios_list_ios_list_component__["a" /* IosListComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__hyb_list_hyb_list_component__["a" /* HybListComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__web_list_web_list_component__["a" /* WebListComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__android_list_android_list_component__["a" /* AndroidListComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__list_view_list_view_component__["a" /* ListViewComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
@@ -431,10 +433,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_24__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_23__angular_http__["b" /* HttpModule */]
+            __WEBPACK_IMPORTED_MODULE_25__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_24__angular_http__["b" /* HttpModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_14__auth_guard__["a" /* AuthGuard */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__["a" /* IOsdataService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -826,6 +828,46 @@ HybridComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/i-osdata.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IOsdataService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var IOsdataService = (function () {
+    function IOsdataService(_http) {
+        this._http = _http;
+    }
+    IOsdataService.prototype.getList_iOS = function () {
+        var _this = this;
+        return this._http.get("/iOS").map(function (result) { return _this.result = result.json(); });
+    };
+    return IOsdataService;
+}());
+IOsdataService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], IOsdataService);
+
+var _a;
+//# sourceMappingURL=i-osdata.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/ios-list/ios-list.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -857,6 +899,7 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IosListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -867,90 +910,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var IosListComponent = (function () {
-    function IosListComponent() {
-        this.iOS_List = [{
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            }
-        ];
+    function IosListComponent(_iosData) {
+        this._iosData = _iosData;
     }
+    IosListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._iosData.getList_iOS().subscribe(function (res) { return _this.iOS_List = res; });
+    };
     return IosListComponent;
 }());
 IosListComponent = __decorate([
@@ -959,9 +927,10 @@ IosListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/ios-list/ios-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/ios-list/ios-list.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__i_osdata_service__["a" /* IOsdataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__i_osdata_service__["a" /* IOsdataService */]) === "function" && _a || Object])
 ], IosListComponent);
 
+var _a;
 //# sourceMappingURL=ios-list.component.js.map
 
 /***/ }),
@@ -1222,7 +1191,9 @@ var LoginComponent = (function () {
         var _this = this;
         ev.preventDefault();
         console.log(this.username + "," + this.password);
-        this._loginService.getUser().subscribe(function (res) { return _this.user = res; });
+        setTimeout(function () {
+            _this._loginService.getUser().subscribe(function (res) { return _this.user = res; });
+        }, 3000);
         console.log(this.user);
         if (this.user != undefined) {
             for (var t = 0; t < this.user.length; t++) {
@@ -1236,6 +1207,7 @@ var LoginComponent = (function () {
             }
         }
         else {
+            // need to check the logic
             this.visible = true;
         }
     };

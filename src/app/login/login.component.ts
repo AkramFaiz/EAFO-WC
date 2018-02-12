@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   user : Array<any>;
   constructor(private _router:Router, private _loginService: LoginService,private _actRoute:ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit():void{
     console.log(this._actRoute+","+this._router);
    // $('.loginUI').addClass('move-up');
   }
@@ -41,7 +41,10 @@ export class LoginComponent implements OnInit {
    loginClk(ev){
      ev.preventDefault();
     console.log(this.username+","+this.password);
-    this._loginService.getUser().subscribe(res => this.user = res);
+
+    setTimeout(()=>{  
+      this._loginService.getUser().subscribe(res => this.user = res);
+    },3000);
     console.log(this.user);
     if(this.user != undefined){
       for( var t=0;t<this.user.length;t++){

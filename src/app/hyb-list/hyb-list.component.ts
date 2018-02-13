@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
+import { HybdataService} from '../hybdata.service';
 
 @Component({
   selector: 'app-hyb-list',
@@ -7,9 +7,18 @@ import { LoginService } from '../login.service';
   styleUrls: ['./hyb-list.component.css']
 })
 export class HybListComponent{
+  list: Array<any>;
+  constructor(private _hybData :HybdataService) { }
+  hyb_List: Array<any>;
 
-  constructor(private _login :LoginService) { }
+  ngOnInit():void{
+    this._hybData.getList_hyb().subscribe(res => {
+      this.hyb_List = res;
+    });
+  }
 
+
+/*
   hyd_List=[{
     'Icon':'assets/iOS2.png',
     'Title':'Info Security',
@@ -30,6 +39,6 @@ export class HybListComponent{
     'VersionsHistory':'1.0.0, 1.0.1, 1.0.2, 2.0.0',
     'CodeRepository':'Open ALM'
   }
-];
+];*/
 
 }

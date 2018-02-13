@@ -11,4 +11,7 @@ export class IOsdataService {
     return this._http.get("/iOS").map(result => this.result = result.json());
    }
 
+  removeItem_iOS(id){
+       return this._http.delete('/iOS/'+ id).map(result => this.result = result.json());
+  }
 }

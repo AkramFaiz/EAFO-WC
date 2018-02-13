@@ -11,8 +11,13 @@ import { IosComponent } from './ios/ios.component';
 import { AndroidComponent } from './android/android.component';
 import { HybridComponent } from './hybrid/hybrid.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+
 import { LoginService } from './login.service';
 import { IOsdataService } from './i-osdata.service';
+import { AndDataService } from './and-data.service';
+import { HybdataService} from './hybdata.service';
+import { WebDataService } from './web-data.service';
+
 import { AuthGuard } from './auth.guard';
 import { HeaderComponent } from './header/header.component';
 import { DesktopComponent } from './desktop/desktop.component';
@@ -114,7 +119,7 @@ const appRoutes:Routes = [
     BrowserAnimationsModule,
     HttpModule
   ],
-  providers: [LoginService,AuthGuard,IOsdataService],
+  providers: [LoginService,AuthGuard,IOsdataService,AndDataService,HybdataService,WebDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
+import { WebDataService } from '../web-data.service';
 
 @Component({
   selector: 'app-web-list',
@@ -8,11 +8,16 @@ import { LoginService } from '../login.service';
 })
 export class WebListComponent implements OnInit {
 
-  constructor(private _login :LoginService) { }
+  list: Array<any>;
+  constructor(private _webData :WebDataService) { }
+  web_List: Array<any>;
 
-  ngOnInit() {
+  ngOnInit():void{
+    this._webData.getList_web().subscribe(res => {
+      this.web_List = res;
+    });
   }
-
+/*
   web_List=[
   {
     'Icon':'assets/iOS2.png',
@@ -44,7 +49,7 @@ export class WebListComponent implements OnInit {
     'VersionsHistory':'1.0.0, 1.0.1, 1.0.2',
     'CodeRepository':'Open ALM'
   }
-];
+];*/
 
 }
 

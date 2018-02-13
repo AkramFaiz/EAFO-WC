@@ -7,11 +7,29 @@ import { IOsdataService } from '../i-osdata.service';
   styleUrls: ['./ios-list.component.css']
 })
 export class IosListComponent implements OnInit{
+  list : Array<any>;
   constructor(private _iosData: IOsdataService) { }
   iOS_List : Array<any>;
-ngOnInit():void{
-  this._iosData.getList_iOS().subscribe(res => this.iOS_List = res);
-}
+  ngOnInit():void{
+    this._iosData.getList_iOS().subscribe(res => {
+      this.iOS_List = res;
+    });
+  }
+  // delItem(id: any){
+  //   var list= this.iOS_List;
+  //   console.log(list+',sdsd,'+id);
+  //   this._iosData.removeItem_iOS(id).subscribe(res => {
+  //     if(res.n == 1){
+  //       for(var i=0; i< list.length; i++){
+  //         if(list[i]._id == id){list.splice(i,1)}
+  //       }
+  //     }
+  //   });
+  // }
+
+  
+
+
   /*iOS_List=[{
     'Icon':'assets/iOS1.png',
     'Title':'Gordon',

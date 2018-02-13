@@ -4,17 +4,17 @@ var _path = require('path');
 var _http = require('http');
 var app = express();
 var cors = require('cors');
-var MongoClient = require('mongodb').MongoClient;
-var ObjectID = require('mongodb').ObjectID;
-var dbConn = "mongodb://localhost:27017/";
+//var MongoClient = require('mongodb').MongoClient;
+//var ObjectID = require('mongodb').ObjectID;
+//var dbConn = "mongodb://localhost:27017/";
 
-//var api = require('./server/api');
+var api = require('./server/api');
 app.use(_bp.json());
 app.use(_bp.urlencoded({extended: false}));
 
 app.use(express.static(_path.join(__dirname,'dist')));
 
-//app.use('/',api);
+app.use('/',api);
 
 /*
 app.use(function(req, res, next) { //allow cross origin requests
@@ -32,18 +32,22 @@ app.get('*'),(req,res) => {
     res.sendFile(_path.join(__dirname,'dist/index.html'));
 }
 
-// var port = process.env.PORT || '3000';
-// app.set('port',port);
+var port = process.env.PORT || '3000';
+app.set('port',port);
 
-// var server = _http.createServer(app);
-// server.listen(port, () => console.log("Server is running" ));
+var server = _http.createServer(app);
+server.listen(port, () => console.log("Server is running" ));
 
-app.get('/user', (req, res) => checkCredentials(res));
-app.get('/iOS', (req, res) => getiOSData(res));
-app.get('/iOS/:id', (req, res) => getiOSDataById(res));
 
-app.listen(3000, () => console.log('Server Running !!!'));
 
+
+
+// app.get('/user', (req, res) => checkCredentials(res));
+// app.get('/iOS', (req, res) => getiOSData(res));
+// app.get('/iOS/:id', (req, res) => getiOSDataById(res));
+
+//app.listen(3000, () => console.log('Server Running !!!'));
+/*
 function checkCredentials(res){
     console.log("GET__",res);
     MongoClient.connect(dbConn, function(err, db) {
@@ -83,7 +87,14 @@ function getiOSData(res){
         });
       });
 }
+*/
+// function getiOSDataById(res){
+//     MongoClient.connect(dbConn, function(err, db) {
+//         if (err) throw err;
+//         var dbo = db.db("EAFO");
+//         //var query = { "username": usrname,"password":pwd };
+//         dbo.collection("iOS").({_id:mo
 
-function getiOSDataById(){
-    
-}
+//         })       
+//       });
+// }

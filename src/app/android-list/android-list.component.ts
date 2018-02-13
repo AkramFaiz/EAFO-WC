@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
+import { AndDataService } from '../and-data.service';
 
 @Component({
   selector: 'app-android-list',
@@ -7,13 +7,26 @@ import { LoginService } from '../login.service';
   styleUrls: ['./android-list.component.css']
 })
 export class AndroidListComponent implements OnInit {
-
-  constructor(private _login :LoginService) { }
-
+  list: Array<any>;
+  constructor(private _andData :AndDataService) { }
+  and_List : Array<any>;
   ngOnInit() {
-  }
+    this._andData.getList_and().subscribe(res => {
+      this.and_List = res;
+  });
+}
+  // delItem(id: any){
+  //   var list= this.iOS_List;
+  //   console.log(list+',sdsd,'+id);
+  //   this._iosData.removeItem_iOS(id).subscribe(res => {
+  //     if(res.n == 1){
+  //       for(var i=0; i< list.length; i++){
+  //         if(list[i]._id == id){list.splice(i,1)}
+  //       }
+  //     }
+  //   });
 
-  and_List=[
+  /*and_List=[
   {
     'Icon':'assets/iOS2.png',
     'Title':'Info Security',
@@ -95,6 +108,5 @@ export class AndroidListComponent implements OnInit {
     'CodeRepository':'Open ALM'
   }
 ];
-
+*/
 }
-

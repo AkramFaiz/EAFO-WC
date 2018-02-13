@@ -17,6 +17,50 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
+/***/ "../../../../../src/app/and-data.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AndDataService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AndDataService = (function () {
+    function AndDataService(_http) {
+        this._http = _http;
+    }
+    AndDataService.prototype.getList_and = function () {
+        var _this = this;
+        return this._http.get("/and").map(function (result) { return _this.result = result.json(); });
+    };
+    AndDataService.prototype.removeItem_and = function (id) {
+        var _this = this;
+        return this._http.delete('/and/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    return AndDataService;
+}());
+AndDataService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], AndDataService);
+
+var _a;
+//# sourceMappingURL=and-data.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/android-list/android-list.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48,7 +92,7 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AndroidListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__and_data_service__ = __webpack_require__("../../../../../src/app/and-data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,92 +105,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AndroidListComponent = (function () {
-    function AndroidListComponent(_login) {
-        this._login = _login;
-        this.and_List = [
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '1.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            }
-        ];
+    function AndroidListComponent(_andData) {
+        this._andData = _andData;
     }
     AndroidListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._andData.getList_and().subscribe(function (res) {
+            _this.and_List = res;
+        });
     };
     return AndroidListComponent;
 }());
@@ -156,7 +122,7 @@ AndroidListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/android-list/android-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/android-list/android-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__and_data_service__["a" /* AndDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__and_data_service__["a" /* AndDataService */]) === "function" && _a || Object])
 ], AndroidListComponent);
 
 var _a;
@@ -300,23 +266,29 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__ = __webpack_require__("../../../../../src/app/welcome/welcome.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__and_data_service__ = __webpack_require__("../../../../../src/app/and-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__hybdata_service__ = __webpack_require__("../../../../../src/app/hybdata.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__web_data_service__ = __webpack_require__("../../../../../src/app/web-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -358,48 +330,48 @@ var appRoutes = [
     },
     {
         path: 'home',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_8__home_home_component__["a" /* HomeComponent */]
     },
     {
         path: 'list',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_23__list_view_list_view_component__["a" /* ListViewComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__["a" /* ListViewComponent */]
     },
     {
         path: 'iOS',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_9__ios_ios_component__["a" /* IosComponent */]
     },
     {
         path: ' android',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */]
     },
     {
         path: 'hydrid',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */]
     },
     {
         path: 'iosList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_18__ios_list_ios_list_component__["a" /* IosListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_21__ios_list_ios_list_component__["a" /* IosListComponent */]
     },
     {
         path: 'andList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_21__android_list_android_list_component__["a" /* AndroidListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_24__android_list_android_list_component__["a" /* AndroidListComponent */]
     },
     {
         path: 'hybList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_19__hyb_list_hyb_list_component__["a" /* HybListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_22__hyb_list_hyb_list_component__["a" /* HybListComponent */]
     },
     {
         path: 'webList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_20__web_list_web_list_component__["a" /* WebListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_23__web_list_web_list_component__["a" /* WebListComponent */]
     }
 ];
 var AppModule = (function () {
@@ -418,14 +390,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */],
             __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */],
             __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__["a" /* WelcomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__desktop_desktop_component__["a" /* DesktopComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__ios_list_ios_list_component__["a" /* IosListComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__hyb_list_hyb_list_component__["a" /* HybListComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__web_list_web_list_component__["a" /* WebListComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__android_list_android_list_component__["a" /* AndroidListComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__list_view_list_view_component__["a" /* ListViewComponent */]
+            __WEBPACK_IMPORTED_MODULE_19__header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__desktop_desktop_component__["a" /* DesktopComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__ios_list_ios_list_component__["a" /* IosListComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__hyb_list_hyb_list_component__["a" /* HybListComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__web_list_web_list_component__["a" /* WebListComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__android_list_android_list_component__["a" /* AndroidListComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__["a" /* ListViewComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
@@ -433,10 +405,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_25__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_24__angular_http__["b" /* HttpModule */]
+            __WEBPACK_IMPORTED_MODULE_28__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_27__angular_http__["b" /* HttpModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_15__auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__["a" /* IOsdataService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__["a" /* IOsdataService */], __WEBPACK_IMPORTED_MODULE_15__and_data_service__["a" /* AndDataService */], __WEBPACK_IMPORTED_MODULE_16__hybdata_service__["a" /* HybdataService */], __WEBPACK_IMPORTED_MODULE_17__web_data_service__["a" /* WebDataService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -704,7 +676,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/hyb-list/hyb-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyd_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>"
 
 /***/ }),
 
@@ -714,7 +686,7 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HybListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hybdata_service__ = __webpack_require__("../../../../../src/app/hybdata.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -727,30 +699,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HybListComponent = (function () {
-    function HybListComponent(_login) {
-        this._login = _login;
-        this.hyd_List = [{
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS1.png',
-                'Title': 'Gordon',
-                'Desc': 'iOS Mobile Application',
-                'Version': '2.0.0',
-                'DevelopedBy': 'Anjan V',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2, 2.0.0',
-                'CodeRepository': 'Open ALM'
-            }
-        ];
+    function HybListComponent(_hybData) {
+        this._hybData = _hybData;
     }
+    HybListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._hybData.getList_hyb().subscribe(function (res) {
+            _this.hyb_List = res;
+        });
+    };
     return HybListComponent;
 }());
 HybListComponent = __decorate([
@@ -759,11 +716,55 @@ HybListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hybdata_service__["a" /* HybdataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hybdata_service__["a" /* HybdataService */]) === "function" && _a || Object])
 ], HybListComponent);
 
 var _a;
 //# sourceMappingURL=hyb-list.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/hybdata.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HybdataService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var HybdataService = (function () {
+    function HybdataService(_http) {
+        this._http = _http;
+    }
+    HybdataService.prototype.getList_hyb = function () {
+        var _this = this;
+        return this._http.get("/hyb").map(function (result) { return _this.result = result.json(); });
+    };
+    HybdataService.prototype.removeItem_hyb = function (id) {
+        var _this = this;
+        return this._http.delete('/hyb/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    return HybdataService;
+}());
+HybdataService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], HybdataService);
+
+var _a;
+//# sourceMappingURL=hybdata.service.js.map
 
 /***/ }),
 
@@ -856,6 +857,10 @@ var IOsdataService = (function () {
         var _this = this;
         return this._http.get("/iOS").map(function (result) { return _this.result = result.json(); });
     };
+    IOsdataService.prototype.removeItem_iOS = function (id) {
+        var _this = this;
+        return this._http.delete('/iOS/' + id).map(function (result) { return _this.result = result.json(); });
+    };
     return IOsdataService;
 }());
 IOsdataService = __decorate([
@@ -889,7 +894,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/ios-list/ios-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\">\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\">\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(iList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>"
 
 /***/ }),
 
@@ -917,7 +922,22 @@ var IosListComponent = (function () {
     }
     IosListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._iosData.getList_iOS().subscribe(function (res) { return _this.iOS_List = res; });
+        this._iosData.getList_iOS().subscribe(function (res) {
+            _this.iOS_List = res;
+        });
+    };
+    IosListComponent.prototype.delItem = function (id) {
+        var list = this.iOS_List;
+        console.log(list + ',sdsd,' + id);
+        this._iosData.removeItem_iOS(id).subscribe(function (res) {
+            if (res.n == 1) {
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i]._id == id) {
+                        list.splice(i, 1);
+                    }
+                }
+            }
+        });
     };
     return IosListComponent;
 }());
@@ -1166,8 +1186,10 @@ var LoginComponent = (function () {
         this.name = "";
     }
     LoginComponent.prototype.ngOnInit = function () {
+        var _this = this;
         console.log(this._actRoute + "," + this._router);
         // $('.loginUI').addClass('move-up');
+        this._loginService.getUser().subscribe(function (res) { return _this.user = res; });
     };
     LoginComponent.prototype.keyUserClkd = function () {
         this.visible = false;
@@ -1188,12 +1210,8 @@ var LoginComponent = (function () {
         }
     };
     LoginComponent.prototype.loginClk = function (ev) {
-        var _this = this;
         ev.preventDefault();
         console.log(this.username + "," + this.password);
-        setTimeout(function () {
-            _this._loginService.getUser().subscribe(function (res) { return _this.user = res; });
-        }, 3000);
         console.log(this.user);
         if (this.user != undefined) {
             for (var t = 0; t < this.user.length; t++) {
@@ -1362,6 +1380,50 @@ SignupComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/web-data.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WebDataService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var WebDataService = (function () {
+    function WebDataService(_http) {
+        this._http = _http;
+    }
+    WebDataService.prototype.getList_web = function () {
+        var _this = this;
+        return this._http.get("/web").map(function (result) { return _this.result = result.json(); });
+    };
+    WebDataService.prototype.removeItem_web = function (id) {
+        var _this = this;
+        return this._http.delete('/web/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    return WebDataService;
+}());
+WebDataService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], WebDataService);
+
+var _a;
+//# sourceMappingURL=web-data.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/web-list/web-list.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1393,7 +1455,7 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WebListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__web_data_service__ = __webpack_require__("../../../../../src/app/web-data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1406,42 +1468,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var WebListComponent = (function () {
-    function WebListComponent(_login) {
-        this._login = _login;
-        this.web_List = [
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            },
-            {
-                'Icon': 'assets/iOS2.png',
-                'Title': 'Info Security',
-                'Desc': 'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-                'Version': '1.0.2',
-                'DevelopedBy': 'Pavan B',
-                'SupportedBy': 'Pavan B',
-                'VersionsHistory': '1.0.0, 1.0.1, 1.0.2',
-                'CodeRepository': 'Open ALM'
-            }
-        ];
+    function WebListComponent(_webData) {
+        this._webData = _webData;
     }
     WebListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._webData.getList_web().subscribe(function (res) {
+            _this.web_List = res;
+        });
     };
     return WebListComponent;
 }());
@@ -1451,7 +1485,7 @@ WebListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/web-list/web-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/web-list/web-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__web_data_service__["a" /* WebDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__web_data_service__["a" /* WebDataService */]) === "function" && _a || Object])
 ], WebListComponent);
 
 var _a;

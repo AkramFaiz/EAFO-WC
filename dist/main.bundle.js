@@ -49,6 +49,10 @@ var AndDataService = (function () {
         var _this = this;
         return this._http.delete('/and/' + id).map(function (result) { return _this.result = result.json(); });
     };
+    AndDataService.prototype.addItem_and = function (item) {
+        var _this = this;
+        return this._http.post("/and", item).map(function (result) { return _this.result = result.json(); });
+    };
     return AndDataService;
 }());
 AndDataService = __decorate([
@@ -555,7 +559,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create-item-and/create-item-and.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" /></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
 
 /***/ }),
 
@@ -566,6 +570,7 @@ module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemAndComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__and_data_service__ = __webpack_require__("../../../../../src/app/and-data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -577,14 +582,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var CreateItemAndComponent = (function () {
-    function CreateItemAndComponent(and_ele) {
+    //newWebItem = {};
+    function CreateItemAndComponent(and_ele, and_api) {
         this.and_ele = and_ele;
+        this.and_api = and_api;
+        this.imgUpload = "assets/iOS2.png";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+        this.newItem = {};
     }
     CreateItemAndComponent.prototype.ngOnInit = function () {
     };
     CreateItemAndComponent.prototype.closePU = function () {
         this.and_ele.iVisi = false;
+        this.imgUpload = "";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+    };
+    CreateItemAndComponent.prototype.submitItem = function () {
+        var _this = this;
+        //console.log(this.imgUpload+this.title+this.version+this.desc+this.devBy+this.supBy+this.verHis+this.codeRepo);
+        this.newItem =
+            {
+                'Icon': this.imgUpload,
+                'Title': this.title,
+                'Desc': this.desc,
+                'Version': this.version,
+                'DevelopedBy': this.devBy,
+                'SupportedBy': this.supBy,
+                'VersionsHistory': this.verHis,
+                'CodeRepository': this.codeRepo
+            };
+        console.log(this.newItem);
+        this.and_api.addItem_and(this.newItem).subscribe(function (res) {
+            if (typeof (res) != 'object') {
+                _this.and_ele.iVisi = true;
+            }
+            else {
+                _this.and_ele.iVisi = false;
+            }
+        });
     };
     return CreateItemAndComponent;
 }());
@@ -594,10 +643,10 @@ CreateItemAndComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__["a" /* AndroidListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__["a" /* AndroidListComponent */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__["a" /* AndroidListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__["a" /* AndroidListComponent */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__and_data_service__["a" /* AndDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__and_data_service__["a" /* AndDataService */]) === "function" && _b || Object])
 ], CreateItemAndComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=create-item-and.component.js.map
 
 /***/ }),
@@ -623,7 +672,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create-item-hyb/create-item-hyb.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" /></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
 
 /***/ }),
 
@@ -634,6 +683,7 @@ module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemHybComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hybdata_service__ = __webpack_require__("../../../../../src/app/hybdata.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -645,14 +695,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var CreateItemHybComponent = (function () {
-    function CreateItemHybComponent(hyb_ele) {
+    //newWebItem = {};
+    function CreateItemHybComponent(hyb_ele, hyb_api) {
         this.hyb_ele = hyb_ele;
+        this.hyb_api = hyb_api;
+        this.imgUpload = "assets/iOS2.png";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+        this.newItem = {};
     }
     CreateItemHybComponent.prototype.ngOnInit = function () {
     };
     CreateItemHybComponent.prototype.closePU = function () {
         this.hyb_ele.iVisi = false;
+        this.imgUpload = "";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+    };
+    CreateItemHybComponent.prototype.submitItem = function () {
+        var _this = this;
+        //console.log(this.imgUpload+this.title+this.version+this.desc+this.devBy+this.supBy+this.verHis+this.codeRepo);
+        this.newItem =
+            {
+                'Icon': this.imgUpload,
+                'Title': this.title,
+                'Desc': this.desc,
+                'Version': this.version,
+                'DevelopedBy': this.devBy,
+                'SupportedBy': this.supBy,
+                'VersionsHistory': this.verHis,
+                'CodeRepository': this.codeRepo
+            };
+        console.log(this.newItem);
+        this.hyb_api.addItem_hyb(this.newItem).subscribe(function (res) {
+            if (typeof (res) != 'object') {
+                _this.hyb_ele.iVisi = true;
+            }
+            else {
+                _this.hyb_ele.iVisi = false;
+            }
+        });
     };
     return CreateItemHybComponent;
 }());
@@ -662,10 +756,10 @@ CreateItemHybComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__["a" /* HybListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__["a" /* HybListComponent */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__["a" /* HybListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__["a" /* HybListComponent */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__hybdata_service__["a" /* HybdataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hybdata_service__["a" /* HybdataService */]) === "function" && _b || Object])
 ], CreateItemHybComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=create-item-hyb.component.js.map
 
 /***/ }),
@@ -691,7 +785,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create-item-ios/create-item-ios.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" /></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
 
 /***/ }),
 
@@ -702,6 +796,7 @@ module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemIosComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -713,14 +808,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var CreateItemIosComponent = (function () {
-    function CreateItemIosComponent(iOS_ele) {
+    //newWebItem = {};
+    function CreateItemIosComponent(iOS_ele, ios_api) {
         this.iOS_ele = iOS_ele;
+        this.ios_api = ios_api;
+        this.imgUpload = "assets/iOS2.png";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+        this.newItem = {};
     }
     CreateItemIosComponent.prototype.ngOnInit = function () {
     };
     CreateItemIosComponent.prototype.closePU = function () {
         this.iOS_ele.iVisi = false;
+        this.imgUpload = "";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+    };
+    CreateItemIosComponent.prototype.submitItem = function () {
+        var _this = this;
+        this.newItem =
+            {
+                'Icon': this.imgUpload,
+                'Title': this.title,
+                'Desc': this.desc,
+                'Version': this.version,
+                'DevelopedBy': this.devBy,
+                'SupportedBy': this.supBy,
+                'VersionsHistory': this.verHis,
+                'CodeRepository': this.codeRepo
+            };
+        console.log(this.newItem);
+        this.ios_api.addItem_ios(this.newItem).subscribe(function (res) {
+            if (typeof (res) != 'object') {
+                _this.iOS_ele.iVisi = true;
+            }
+            else {
+                _this.iOS_ele.iVisi = false;
+            }
+        });
     };
     return CreateItemIosComponent;
 }());
@@ -730,10 +868,10 @@ CreateItemIosComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__["a" /* IosListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__["a" /* IosListComponent */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__["a" /* IosListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__["a" /* IosListComponent */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__i_osdata_service__["a" /* IOsdataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__i_osdata_service__["a" /* IOsdataService */]) === "function" && _b || Object])
 ], CreateItemIosComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=create-item-ios.component.js.map
 
 /***/ }),
@@ -759,7 +897,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create-item-web/create-item-web.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" /></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
 
 /***/ }),
 
@@ -770,6 +908,7 @@ module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemWebComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__web_data_service__ = __webpack_require__("../../../../../src/app/web-data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -781,14 +920,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var CreateItemWebComponent = (function () {
-    function CreateItemWebComponent(web_ele) {
+    //newWebItem = {};
+    function CreateItemWebComponent(web_ele, web_api) {
         this.web_ele = web_ele;
+        this.web_api = web_api;
+        this.imgUpload = "assets/iOS2.png";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+        this.newItem = {};
     }
     CreateItemWebComponent.prototype.ngOnInit = function () {
     };
     CreateItemWebComponent.prototype.closePU = function () {
         this.web_ele.iVisi = false;
+        this.imgUpload = "";
+        this.title = "";
+        this.version = "";
+        this.desc = "";
+        this.devBy = "";
+        this.supBy = "";
+        this.verHis = "";
+        this.codeRepo = "";
+    };
+    CreateItemWebComponent.prototype.submitItem = function () {
+        var _this = this;
+        //console.log(this.imgUpload+this.title+this.version+this.desc+this.devBy+this.supBy+this.verHis+this.codeRepo);
+        this.newItem =
+            {
+                'Icon': this.imgUpload,
+                'Title': this.title,
+                'Desc': this.desc,
+                'Version': this.version,
+                'DevelopedBy': this.devBy,
+                'SupportedBy': this.supBy,
+                'VersionsHistory': this.verHis,
+                'CodeRepository': this.codeRepo
+            };
+        console.log(this.newItem);
+        this.web_api.addItem_web(this.newItem).subscribe(function (res) {
+            if (typeof (res) != 'object') {
+                _this.web_ele.iVisi = true;
+            }
+            else {
+                _this.web_ele.iVisi = false;
+            }
+        });
     };
     return CreateItemWebComponent;
 }());
@@ -798,10 +981,10 @@ CreateItemWebComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__["a" /* WebListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__["a" /* WebListComponent */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__["a" /* WebListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__["a" /* WebListComponent */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__web_data_service__["a" /* WebDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__web_data_service__["a" /* WebDataService */]) === "function" && _b || Object])
 ], CreateItemWebComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=create-item-web.component.js.map
 
 /***/ }),
@@ -1108,6 +1291,10 @@ var HybdataService = (function () {
         var _this = this;
         return this._http.get("/hyb").map(function (result) { return _this.result = result.json(); });
     };
+    HybdataService.prototype.addItem_hyb = function (item) {
+        var _this = this;
+        return this._http.post("/hyb", item).map(function (result) { return _this.result = result.json(); });
+    };
     HybdataService.prototype.removeItem_hyb = function (id) {
         var _this = this;
         return this._http.delete('/hyb/' + id).map(function (result) { return _this.result = result.json(); });
@@ -1212,6 +1399,10 @@ var IOsdataService = (function () {
     IOsdataService.prototype.getList_iOS = function () {
         var _this = this;
         return this._http.get("/iOS").map(function (result) { return _this.result = result.json(); });
+    };
+    IOsdataService.prototype.addItem_ios = function (item) {
+        var _this = this;
+        return this._http.post("/iOS", item).map(function (result) { return _this.result = result.json(); });
     };
     IOsdataService.prototype.removeItem_iOS = function (id) {
         var _this = this;
@@ -1461,6 +1652,8 @@ var LoginService = (function () {
     LoginService.prototype.getUserLoggedIn = function () {
         return this.isUserLoggedIn;
     };
+    LoginService.prototype.signUp = function () {
+    };
     return LoginService;
 }());
 LoginService = __decorate([
@@ -1679,7 +1872,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".row.custom-row{\n    width: 90%;\n    height: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    right: 0;\n    left: 0;\n    text-align: center;\n}\n.jumbotron,legend{\n    color: #FFFFFF;\n}\n.jumbotron{\n    background-color: none;\n}\nlabel{\n    width: 40%;\n    text-align: right;\n    padding-right: 10px;\n}\n.form-group.checkbox label{\n    width: 100%;\n    text-align: center;\n}", ""]);
 
 // exports
 
@@ -1692,7 +1885,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/signup/signup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  signup works!\n</p>\n"
+module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-container jumbotron\">         \n      <form class=\"form-horizontal\" #signupForm = \"ngForm\">\n          <fieldset>\n            <legend>SignUp</legend>\n              <div class=\"form-group\">\n                <label for=\"inputuser\">Username :</label>\n                <input type=\"text\"\n                  id=\"inputuser\"\n                  placeholder=\"Username\">\n              </div>\n              <div class=\"form-group\">\n                  <label for=\"inputEmail\">Email :</label>\n                  <input type=\"text\"\n                [ngModel] = \"user.email\" name=\"email\"\n                #email = \"ngModel\" id=\"inputEmail\"\n                placeholder=\"Email\"\n                pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"\n                required>\n                </div>\n              <div class=\"form-group\">\n                <label for=\"inputPassword\">Password :</label>\n                <input type=\"password\"\n                  id=\"inputPassword\"\n                  placeholder=\"Password\">\n              </div>\n       \n              <div class=\"form-group\">\n                <label for=\"confirmPassword\" >Confirm Password :</label>\n                <input type=\"password\"\n                  id=\"confirmPassword\"\n                  placeholder=\"Password\">\n              </div>                                         \n               <div class=\"form-group checkbox\">\n                <label>\n                  <input type=\"checkbox\"> Confirm that you've are authorized ericsson employee.\n                </label>\n              </div>\n              <div class=\"form-group\">\n                  <button type=\"reset\" class=\"btn btn-default\">Cancel</button>\n                  <button type=\"submit\" class=\"btn btn-primary\"  [disabled]=\"!signupForm.form.valid\">Submit</button>\n              </div>\n          </fieldset>\n      </form>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -1759,6 +1952,10 @@ var WebDataService = (function () {
     WebDataService.prototype.getList_web = function () {
         var _this = this;
         return this._http.get("/web").map(function (result) { return _this.result = result.json(); });
+    };
+    WebDataService.prototype.addItem_web = function (item) {
+        var _this = this;
+        return this._http.post("/web", item).map(function (result) { return _this.result = result.json(); });
     };
     WebDataService.prototype.removeItem_web = function (id) {
         var _this = this;

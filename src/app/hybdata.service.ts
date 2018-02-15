@@ -10,7 +10,9 @@ export class HybdataService {
   getList_hyb(){
       return this._http.get("/hyb").map(result => this.result = result.json());
   }
-
+  addItem_hyb(item){
+    return this._http.post("/hyb",item).map(result => this.result = result.json());
+ }
   removeItem_hyb(id){
       return this._http.delete('/hyb/'+ id).map(result => this.result = result.json());
   }

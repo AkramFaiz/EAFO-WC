@@ -21,4 +21,7 @@ export class LoginService {
   getUserLoggedIn(){
     return this.isUserLoggedIn;
   }
+  signUp(){
+    
+  }
 }

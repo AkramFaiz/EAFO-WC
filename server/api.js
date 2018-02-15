@@ -30,7 +30,7 @@ router.get('/user',(req, res, next) => {
 });
 router.post('/iOS',(req, res, next) => {
     var newObj = req.body;
-    db.iOS.insertOne(newObj, function(err, res) {
+    db.iOS.insert(newObj, function(err, doc) {
         if (err) throw err;
         console.log("1 document inserted");
         res.json(doc);
@@ -52,6 +52,22 @@ router.get('/web',(req, res, next) => {
         res.json(docs);
     });
 })
+router.post('/web',(req, res, next) => {
+    var newObj = req.body;
+    console.log(newObj);
+    db.web.insert(newObj, function(err, doc) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        res.json(doc);
+      });
+});
+router.get('/iOS/:id',(req, res, next) => {
+    var curId = req.params.id;
+    console.log('iD====',curId);
+    db.iOS.remove({_id: mongojs.ObjectId(curId)}, function(err, doc) {
+        res.json(doc);
+    });
+});
 /* web end */
 
 /* and */
@@ -61,6 +77,15 @@ router.get('/and',(req, res, next) => {
         res.json(docs);
     });
 })
+router.post('/and',(req, res, next) => {
+    var newObj = req.body;
+    console.log(newObj);
+    db.and.insert(newObj, function(err, doc) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        res.json(doc);
+      });
+});
 /* and end */
 
 /* hyb */
@@ -70,6 +95,15 @@ router.get('/hyb',(req, res, next) => {
         res.json(docs);
     });
 })
+router.post('/hyb',(req, res, next) => {
+    var newObj = req.body;
+    console.log(newObj);
+    db.hyb.insert(newObj, function(err, doc) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        res.json(doc);
+      });
+});
 /* hyb end */
 module.exports = router;
 

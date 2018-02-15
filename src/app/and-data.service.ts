@@ -14,4 +14,7 @@ export class AndDataService {
   removeItem_and(id){
        return this._http.delete('/and/'+ id).map(result => this.result = result.json());
   }
+  addItem_and(item){
+     return this._http.post("/and",item).map(result => this.result = result.json());
+  }
 }

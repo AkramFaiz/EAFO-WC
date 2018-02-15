@@ -1,6 +1,7 @@
 <app-header></app-header>
 <app-nav-bar></app-nav-bar>
 <section>
+        <p class="addRecordIcon" (click)="addItem()"><span class="glyphicon glyphicon-plus"></span></p>       
         <app-list-view></app-list-view>
         <ul>
             <li *ngFor="let aList of and_List">
@@ -21,3 +22,5 @@
              </li>            
         </ul>
 </section>
+<app-create-item-and *ngIf="iVisi"></app-create-item-and>
+<app-blurbg *ngIf="iVisi"></app-blurbg>

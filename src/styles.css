@@ -325,6 +325,141 @@ article.addNewData{
     margin: auto;
     background: grey;
 }
+
+p.addRecordIcon{
+    position: absolute;
+    top: 0;
+    right: 5px;
+    background: #1b212f;
+    border: 1px solid rgba(254, 213, 122, 0.83);
+    width: 20px;
+    height: 20px;
+    border-radius: 22px;
+    margin: 0;
+    z-index: 4;
+}
+p.addRecordIcon > span{
+    font-size: 9px;
+    position: absolute;
+    width: 19px;
+    height: 10px;
+    margin: auto;
+    color:rgba(254, 213, 122, 0.83);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+
+/* Pop Up */
+app-blurbg{
+    width:100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.8);
+    z-index: 6;
+    top:0
+}
+app-create-item-ios,app-create-item-and,app-create-item-hyb,app-create-item-web{
+    width: 85%;
+    height: 85%;
+    position: absolute;
+    background: #1b212f;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 11;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(254, 213, 122, 0.95);
+}
+app-create-item-ios div,app-create-item-and div,app-create-item-hyb div,app-create-item-web div{
+    width: 90%;
+    height: 85%;
+    margin: 10% auto 0 auto;
+    top: 0;
+    /* bottom: 0; */
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+app-create-item-ios div ul,app-create-item-and div ul,app-create-item-hyb div ul,app-create-item-web div ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+app-create-item-ios div ul li,app-create-item-and div ul li,app-create-item-hyb div ul li,app-create-item-web div ul li{
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+app-create-item-ios div ul li:last-child,app-create-item-and div ul li:last-child,app-create-item-hyb div ul li:last-child,app-create-item-web div ul li:last-child{
+    margin: 10% 0 0 0;
+}
+app-create-item-ios div ul li label,app-create-item-hyb div ul li label,app-create-item-and div ul li label,app-create-item-web div ul li label{
+    width: 45%;
+    align-items: center;
+    text-align: right;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 0 20px;
+}
+app-create-item-ios div ul li input,app-create-item-ios div ul li textarea,app-create-item-hyb div ul li input,app-create-item-hyb div ul li textarea,app-create-item-and div ul li input,app-create-item-and div ul li textarea,app-create-item-web div ul li input,app-create-item-web div ul li textarea{
+    display: inline-flex;
+    width: 55%;
+    align-items: center;
+    height: 30px;
+    margin: 0 0 0 10px;
+    text-align: left;
+    border-radius: 4px;
+    padding: 0 10px;
+    border: none;
+}
+input[type="file"]{
+    color: #FFFFFF;
+    display: inline-block;
+}
+app-create-item-ios div ul button, app-create-item-and div ul button, app-create-item-hyb div ul button, app-create-item-web div ul button{
+    width: 46%;
+    margin: auto 2%;
+    display: inline-block;
+    height: 35px;
+    border-radius: 4px;
+    border: none;
+    background: #2e4275;
+    color: #FFFFFF;
+}
+app-create-item-ios div ul li textarea,app-create-item-and div ul li textarea,app-create-item-hyb div ul li textarea,app-create-item-web div ul li textarea{
+    height: 75px;
+    resize: none;
+    padding: 5px 10px;
+}
+h4{
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    border-bottom: 1px dashed rgba(254, 213, 122, 0.95);
+    padding: 0 0 10px 0;
+}
+p.clsIcon{
+    margin: 0;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -30px;
+}
+p.clsIcon span{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+/* PU end */
 @media only screen and (min-width: 768px) {
     app-web-list section ul,app-ios-list section ul,app-android-list section ul,app-hyb-list section ul{
         height: 85%;
@@ -368,5 +503,42 @@ article.addNewData{
         width: 70%;
         margin: 20px 0;
         font-size: small;
+    }
+    p.addRecordIcon{
+        width: 25px;
+        height: 25px;
+        top: 10px;
+        right: 15px;
+    }
+    p.addRecordIcon > span{
+        font-size: 12px;
+        height: 12px;
+    }
+    app-create-item-ios div, app-create-item-and div, app-create-item-hyb div, app-create-item-web div{
+        bottom: 0;
+        margin: auto;
+    }
+    app-create-item-ios div ul li,app-create-item-and div ul li,app-create-item-hyb div ul li,app-create-item-web div ul li{
+        width: 50%;
+        justify-content: center;
+    }
+    app-create-item-ios div ul li label,app-create-item-hyb div ul li label,app-create-item-and div ul li label,app-create-item-web div ul li label{
+        width: 30%;
+        font-size: 14px;
+    }
+    app-create-item-ios div ul li input,app-create-item-ios div ul li textarea,app-create-item-hyb div ul li input,app-create-item-hyb div ul li textarea,app-create-item-and div ul li input,app-create-item-and div ul li textarea,app-create-item-web div ul li input,app-create-item-web div ul li textarea{
+        width: 70%;
+    }
+    app-create-item-ios div ul li:last-child,app-create-item-and div ul li:last-child,app-create-item-hyb div ul li:last-child,app-create-item-web div ul li:last-child{
+        width: 100%;
+    }
+    app-create-item-ios div ul li textarea, app-create-item-and div ul li textarea, app-create-item-hyb div ul li textarea, app-create-item-web div ul li textarea{
+        height: 100px;
+    }
+    app-create-item-ios div ul button, app-create-item-and div ul button, app-create-item-hyb div ul button, app-create-item-web div ul button{
+        width: 200px;
+    }
+    p.clsIcon{
+        right: -5px;
     }
 }

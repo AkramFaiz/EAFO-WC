@@ -1,6 +1,7 @@
 <app-header></app-header>
 <app-nav-bar></app-nav-bar>
 <section>
+        <p class="addRecordIcon" (click)="addItem()"><span class="glyphicon glyphicon-plus"></span></p>
         <app-list-view></app-list-view>
         <ul>
             <li *ngFor="let iList of iOS_List">
@@ -19,5 +20,7 @@
                             <p><span class="glyphicon glyphicon-remove" (click)="delItem(iList._id)"></span></p>
                     </div>
              </li>            
-        </ul>
+        </ul>  
 </section>
+<app-create-item-ios *ngIf="iVisi"></app-create-item-ios>
+<app-blurbg *ngIf="iVisi"></app-blurbg>

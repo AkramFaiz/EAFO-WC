@@ -29,6 +29,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import {HttpModule} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateItemIosComponent } from './create-item-ios/create-item-ios.component';
+import { CreateItemWebComponent } from './create-item-web/create-item-web.component';
+import { CreateItemHybComponent } from './create-item-hyb/create-item-hyb.component';
+import { CreateItemAndComponent } from './create-item-and/create-item-and.component';
+import { BlurbgComponent } from './blurbg/blurbg.component';
 
 
 const appRoutes:Routes = [
@@ -108,7 +113,12 @@ const appRoutes:Routes = [
     WebListComponent,
     AndroidListComponent,
     NavBarComponent,
-    ListViewComponent
+    ListViewComponent,
+    CreateItemIosComponent,
+    CreateItemWebComponent,
+    CreateItemHybComponent,
+    CreateItemAndComponent,
+    BlurbgComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

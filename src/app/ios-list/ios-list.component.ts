@@ -8,12 +8,16 @@ import { IOsdataService } from '../i-osdata.service';
 })
 export class IosListComponent implements OnInit{
   list : Array<any>;
+  iVisi = false;
   constructor(private _iosData: IOsdataService) { }
   iOS_List : Array<any>;
   ngOnInit():void{
     this._iosData.getList_iOS().subscribe(res => {
       this.iOS_List = res;
     });
+  }
+  addItem(){
+    this.iVisi = true;
   }
   // delItem(id: any){
   //   var list= this.iOS_List;
@@ -27,7 +31,7 @@ export class IosListComponent implements OnInit{
   //   });
   // }
 
-  
+
 
 
   /*iOS_List=[{

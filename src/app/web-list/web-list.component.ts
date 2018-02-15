@@ -11,11 +11,14 @@ export class WebListComponent implements OnInit {
   list: Array<any>;
   constructor(private _webData :WebDataService) { }
   web_List: Array<any>;
-
+  iVisi = false;
   ngOnInit():void{
     this._webData.getList_web().subscribe(res => {
       this.web_List = res;
     });
+  }
+  addItem(){
+    this.iVisi = true;
   }
 /*
   web_List=[

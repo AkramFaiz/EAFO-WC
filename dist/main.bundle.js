@@ -82,7 +82,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/android-list/android-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\">\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\">\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-and *ngIf=\"iVisi\"></app-create-item-and>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -107,12 +107,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AndroidListComponent = (function () {
     function AndroidListComponent(_andData) {
         this._andData = _andData;
+        this.iVisi = false;
     }
     AndroidListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._andData.getList_and().subscribe(function (res) {
             _this.and_List = res;
         });
+    };
+    AndroidListComponent.prototype.addItem = function () {
+        this.iVisi = true;
     };
     return AndroidListComponent;
 }());
@@ -280,12 +284,22 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__create_item_ios_create_item_ios_component__ = __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__create_item_web_create_item_web_component__ = __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__create_item_hyb_create_item_hyb_component__ = __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__create_item_and_create_item_and_component__ = __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__blurbg_blurbg_component__ = __webpack_require__("../../../../../src/app/blurbg/blurbg.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
 
 
 
@@ -397,7 +411,12 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_23__web_list_web_list_component__["a" /* WebListComponent */],
             __WEBPACK_IMPORTED_MODULE_24__android_list_android_list_component__["a" /* AndroidListComponent */],
             __WEBPACK_IMPORTED_MODULE_25__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__["a" /* ListViewComponent */]
+            __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__["a" /* ListViewComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__create_item_ios_create_item_ios_component__["a" /* CreateItemIosComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__create_item_web_create_item_web_component__["a" /* CreateItemWebComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__create_item_hyb_create_item_hyb_component__["a" /* CreateItemHybComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__create_item_and_create_item_and_component__["a" /* CreateItemAndComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__blurbg_blurbg_component__["a" /* BlurbgComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
@@ -451,6 +470,339 @@ AuthGuard = __decorate([
 
 var _a;
 //# sourceMappingURL=auth.guard.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/blurbg/blurbg.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/blurbg/blurbg.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/blurbg/blurbg.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BlurbgComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var BlurbgComponent = (function () {
+    function BlurbgComponent() {
+    }
+    BlurbgComponent.prototype.ngOnInit = function () {
+    };
+    return BlurbgComponent;
+}());
+BlurbgComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-blurbg',
+        template: __webpack_require__("../../../../../src/app/blurbg/blurbg.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/blurbg/blurbg.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], BlurbgComponent);
+
+//# sourceMappingURL=blurbg.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-and/create-item-and.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-and/create-item-and.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-and/create-item-and.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemAndComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CreateItemAndComponent = (function () {
+    function CreateItemAndComponent(and_ele) {
+        this.and_ele = and_ele;
+    }
+    CreateItemAndComponent.prototype.ngOnInit = function () {
+    };
+    CreateItemAndComponent.prototype.closePU = function () {
+        this.and_ele.iVisi = false;
+    };
+    return CreateItemAndComponent;
+}());
+CreateItemAndComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-create-item-and',
+        template: __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__["a" /* AndroidListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__android_list_android_list_component__["a" /* AndroidListComponent */]) === "function" && _a || Object])
+], CreateItemAndComponent);
+
+var _a;
+//# sourceMappingURL=create-item-and.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-hyb/create-item-hyb.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-hyb/create-item-hyb.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-hyb/create-item-hyb.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemHybComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CreateItemHybComponent = (function () {
+    function CreateItemHybComponent(hyb_ele) {
+        this.hyb_ele = hyb_ele;
+    }
+    CreateItemHybComponent.prototype.ngOnInit = function () {
+    };
+    CreateItemHybComponent.prototype.closePU = function () {
+        this.hyb_ele.iVisi = false;
+    };
+    return CreateItemHybComponent;
+}());
+CreateItemHybComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-create-item-hyb',
+        template: __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__["a" /* HybListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hyb_list_hyb_list_component__["a" /* HybListComponent */]) === "function" && _a || Object])
+], CreateItemHybComponent);
+
+var _a;
+//# sourceMappingURL=create-item-hyb.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-ios/create-item-ios.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-ios/create-item-ios.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-ios/create-item-ios.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemIosComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CreateItemIosComponent = (function () {
+    function CreateItemIosComponent(iOS_ele) {
+        this.iOS_ele = iOS_ele;
+    }
+    CreateItemIosComponent.prototype.ngOnInit = function () {
+    };
+    CreateItemIosComponent.prototype.closePU = function () {
+        this.iOS_ele.iVisi = false;
+    };
+    return CreateItemIosComponent;
+}());
+CreateItemIosComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-create-item-ios',
+        template: __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__["a" /* IosListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ios_list_ios_list_component__["a" /* IosListComponent */]) === "function" && _a || Object])
+], CreateItemIosComponent);
+
+var _a;
+//# sourceMappingURL=create-item-ios.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-web/create-item-web.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-web/create-item-web.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\"/></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" /></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\"></li>\n    <li><button>Cancel</button><button type=\"submit\">Submit</button></li>\n  </ul>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/create-item-web/create-item-web.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateItemWebComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CreateItemWebComponent = (function () {
+    function CreateItemWebComponent(web_ele) {
+        this.web_ele = web_ele;
+    }
+    CreateItemWebComponent.prototype.ngOnInit = function () {
+    };
+    CreateItemWebComponent.prototype.closePU = function () {
+        this.web_ele.iVisi = false;
+    };
+    return CreateItemWebComponent;
+}());
+CreateItemWebComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-create-item-web',
+        template: __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__["a" /* WebListComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__web_list_web_list_component__["a" /* WebListComponent */]) === "function" && _a || Object])
+], CreateItemWebComponent);
+
+var _a;
+//# sourceMappingURL=create-item-web.component.js.map
 
 /***/ }),
 
@@ -676,7 +1028,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/hyb-list/hyb-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section> \n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-hyb *ngIf=\"iVisi\"></app-create-item-hyb>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -701,12 +1053,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var HybListComponent = (function () {
     function HybListComponent(_hybData) {
         this._hybData = _hybData;
+        this.iVisi = false;
     }
     HybListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._hybData.getList_hyb().subscribe(function (res) {
             _this.hyb_List = res;
         });
+    };
+    HybListComponent.prototype.addItem = function () {
+        this.iVisi = true;
     };
     return HybListComponent;
 }());
@@ -894,7 +1250,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/ios-list/ios-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\">\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(iList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\">\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(iList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>  \n</section>\n<app-create-item-ios *ngIf=\"iVisi\"></app-create-item-ios>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -919,6 +1275,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var IosListComponent = (function () {
     function IosListComponent(_iosData) {
         this._iosData = _iosData;
+        this.iVisi = false;
     }
     IosListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -926,18 +1283,8 @@ var IosListComponent = (function () {
             _this.iOS_List = res;
         });
     };
-    IosListComponent.prototype.delItem = function (id) {
-        var list = this.iOS_List;
-        console.log(list + ',sdsd,' + id);
-        this._iosData.removeItem_iOS(id).subscribe(function (res) {
-            if (res.n == 1) {
-                for (var i = 0; i < list.length; i++) {
-                    if (list[i]._id == id) {
-                        list.splice(i, 1);
-                    }
-                }
-            }
-        });
+    IosListComponent.prototype.addItem = function () {
+        this.iVisi = true;
     };
     return IosListComponent;
 }());
@@ -1024,7 +1371,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "div{\n    width: 96%;\n    text-align: center;\n    margin: 2% auto 0;\n    padding: 0;\n    background: #1b212f;\n    -webkit-box-shadow: 0px 0px 1px #fdc844;\n            box-shadow: 0px 0px 1px #fdc844;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    position: relative;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\ndiv p.addRecordIcon{\n    position: absolute;\n    top: -8px;\n    right: -5px;\n    background: #1b212f;\n    border: 1px solid rgba(254, 213, 122, 0.83);\n    width: 20px;\n    height: 20px;\n    border-radius: 22px;\n}\ndiv p.addRecordIcon > span{\n    font-size: 9px;\n    position: absolute;\n    width: 19px;\n    height: 10px;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n        background: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n    div p.addRecordIcon{\n        width: 25px;\n        height: 25px;\n    }\n    div p.addRecordIcon > span{\n        font-size: 12px;\n        height: 12px;\n    }\n}\n", ""]);
+exports.push([module.i, "div{\n    width: 96%;\n    text-align: center;\n    margin: 2% auto 0;\n    padding: 0;\n    background: #1b212f;\n    -webkit-box-shadow: 0px 0px 1px #fdc844;\n            box-shadow: 0px 0px 1px #fdc844;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    position: relative;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\n/* div p.addRecordIcon{\n    position: absolute;\n    top: -8px;\n    right: -5px;\n    background: #1b212f;\n    border: 1px solid rgba(254, 213, 122, 0.83);\n    width: 20px;\n    height: 20px;\n    border-radius: 22px;\n}\ndiv p.addRecordIcon > span{\n    font-size: 9px;\n    position: absolute;\n    width: 19px;\n    height: 10px;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n} */\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n        background: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}\n", ""]);
 
 // exports
 
@@ -1037,7 +1384,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/list-view/list-view.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "    <div>\n            <p><label>Icon</label></p>\n            <ul>\n                <li>Title</li>\n                <li>Description</li>\n                <li>Version</li>\n                <li>Developed By</li>\n                <li>Supported By</li>\n                <li>Version History</li>\n                <li>Code Repository</li>               \n            </ul>\n            <p class=\"addRecordIcon\"><span class=\"glyphicon glyphicon-plus\"></span></p>\n            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n    </div>"
+module.exports = "    <div>\n            <p><label>Icon</label></p>\n            <ul>\n                <li>Title</li>\n                <li>Description</li>\n                <li>Version</li>\n                <li>Developed By</li>\n                <li>Supported By</li>\n                <li>Version History</li>\n                <li>Code Repository</li>               \n            </ul>            \n            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n    </div>"
 
 /***/ }),
 
@@ -1147,7 +1494,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<form class=\"form-horizontal\" #loginForm=\"ngForm\" role=\"form\">\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"username\" class=\"loginUI\">Username :</label>\n                <!-- <input type=\"text\" required class=\"form-control\" [(ngModel)]=\"username\" name=\"username\" #username=\"ngModel\" id=\"username\" (change)=\"onClickUser(username)\">                     -->\n                    <input autocomplete=\"off\" type=\"text\" required class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"uname\" required (keyup)=\"keyUserClkd()\" />\n                <span [style.visibility]=\"clearUser ? 'visible' : 'hidden'\" class=\"clearUser\" ng-show=\"flagIL\" (click)=\"clearInput('user')\"></span>\n                    </div>\n        </div >\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"pwd\" class=\"loginPI\">Password :</label>\n                <input autocomplete=\"off\" type=\"password\" class=\"form-control\" id=\"pwd\" [(ngModel)]=\"password\" name=\"pwd\" required (keyup)=\"keyPwdClkd()\"/>\n                    <span [style.visibility]=\"clearPwd ? 'visible' : 'hidden'\" class=\"clearPswd\" ng-show=\"flagIP\" (click)=\"clearInput('pswd')\"></span>\n                    </div>\n        </div>\n        <div class=\"form-group\" *ngIf=\"visible\">\n            <div class=\"col-sm-12\">\n                <label class=\"invalidEntry\">Invalid Username or Password</label>\n            </div>\n        </div>       \n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                <button type=\"button\" (click)=\"SignUpClk()\">Sign Up</button>\n                <button type=\"submit\" [disabled]=\"!loginForm.form.valid\" (click)=\"loginClk($event)\">Login</button>\n            </div>\n        </div>       \n</form>\n\n<!-- <form  (ngSubmit)=\"onSubmit()\">\n        \n                <label>Username:</label>\n                <input type=\"text\" class=\"form-control\"   [(ngModel)]=\"user.username\" name=\"username\" #username=\"ngModel\" required />\n        \n                <label>Contraseña:</label>\n                <input type=\"password\" class=\"form-control\"  [(ngModel)]=\"user.password\" name=\"password\" #password=\"ngModel\" required />\n        \n        \n            <input type=\"submit\" value=\"Entrar\" class=\"btn btn-primary\"/>\n        \n        </form> -->"
+module.exports = "\n<form class=\"form-horizontal\" #loginForm=\"ngForm\" role=\"form\">\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"username\" class=\"loginUI\">Username :</label>\n                <!-- <input type=\"text\" required class=\"form-control\" [(ngModel)]=\"username\" name=\"username\" #username=\"ngModel\" id=\"username\" (change)=\"onClickUser(username)\">                     -->\n                    <input autocomplete=\"off\" type=\"text\" required class=\"form-control\" id=\"username\" [(ngModel)]=\"username\" name=\"uname\" required (keyup)=\"keyUserClkd()\" />\n                <span [style.visibility]=\"clearUser ? 'visible' : 'hidden'\" class=\"clearUser\" ng-show=\"flagIL\" (click)=\"clearInput('user')\"></span>\n                    </div>\n        </div >\n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                    <label for=\"pwd\" class=\"loginPI\">Password :</label>\n                <input autocomplete=\"off\" type=\"password\" class=\"form-control\" id=\"pwd\" [(ngModel)]=\"password\" name=\"pwd\" required (keyup)=\"keyPwdClkd($event)\"/>\n                    <span [style.visibility]=\"clearPwd ? 'visible' : 'hidden'\" class=\"clearPswd\" ng-show=\"flagIP\" (click)=\"clearInput('pswd')\"></span>\n                    </div>\n        </div>\n        <div class=\"form-group\" *ngIf=\"visible\">\n            <div class=\"col-sm-12\">\n                <label class=\"invalidEntry\">Invalid Username or Password</label>\n            </div>\n        </div>       \n        <div class=\"form-group\">\n            <div class=\"col-sm-12\">\n                <button type=\"button\" (click)=\"SignUpClk()\">Sign Up</button>\n                <button type=\"submit\" [disabled]=\"!loginForm.form.valid\" (click)=\"loginClk($event)\">Login</button>\n            </div>\n        </div>       \n</form>\n\n<!-- <form  (ngSubmit)=\"onSubmit()\">\n        \n                <label>Username:</label>\n                <input type=\"text\" class=\"form-control\"   [(ngModel)]=\"user.username\" name=\"username\" #username=\"ngModel\" required />\n        \n                <label>Contraseña:</label>\n                <input type=\"password\" class=\"form-control\"  [(ngModel)]=\"user.password\" name=\"password\" #password=\"ngModel\" required />\n        \n        \n            <input type=\"submit\" value=\"Entrar\" class=\"btn btn-primary\"/>\n        \n        </form> -->"
 
 /***/ }),
 
@@ -1200,8 +1547,13 @@ var LoginComponent = (function () {
             this.clearUser = true;
         }
     };
-    LoginComponent.prototype.keyPwdClkd = function () {
-        this.visible = false;
+    LoginComponent.prototype.keyPwdClkd = function (e) {
+        if (e.keyCode == 13) {
+            this.visible = true;
+        }
+        else {
+            this.visible = false;
+        }
         if (this.password == "") {
             this.clearPwd = false;
         }
@@ -1445,7 +1797,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/web-list/web-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n\n        <!-- <article class=\"addNewData\">\n            <ul>\n                <li>Asad</li>\n                <li>asdasd</li>\n                <li>sd</li>\n                <li>sdsdd</li>\n                <li>asd</li>\n                <li>ddd</li>\n            </ul>\n        </article> -->\n</section>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web *ngIf=\"iVisi\"></app-create-item-web>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -1470,12 +1822,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var WebListComponent = (function () {
     function WebListComponent(_webData) {
         this._webData = _webData;
+        this.iVisi = false;
     }
     WebListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._webData.getList_web().subscribe(function (res) {
             _this.web_List = res;
         });
+    };
+    WebListComponent.prototype.addItem = function () {
+        this.iVisi = true;
     };
     return WebListComponent;
 }());

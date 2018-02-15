@@ -11,7 +11,7 @@
         <div class="form-group">
             <div class="col-sm-12">
                     <label for="pwd" class="loginPI">Password :</label>
-                <input autocomplete="off" type="password" class="form-control" id="pwd" [(ngModel)]="password" name="pwd" required (keyup)="keyPwdClkd()"/>
+                <input autocomplete="off" type="password" class="form-control" id="pwd" [(ngModel)]="password" name="pwd" required (keyup)="keyPwdClkd($event)"/>
                     <span [style.visibility]="clearPwd ? 'visible' : 'hidden'" class="clearPswd" ng-show="flagIP" (click)="clearInput('pswd')"></span>
                     </div>
         </div>

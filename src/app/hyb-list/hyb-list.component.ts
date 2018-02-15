@@ -6,8 +6,9 @@ import { HybdataService} from '../hybdata.service';
   templateUrl: './hyb-list.component.html',
   styleUrls: ['./hyb-list.component.css']
 })
-export class HybListComponent{
+export class HybListComponent implements OnInit {
   list: Array<any>;
+  iVisi = false;
   constructor(private _hybData :HybdataService) { }
   hyb_List: Array<any>;
 
@@ -16,7 +17,9 @@ export class HybListComponent{
       this.hyb_List = res;
     });
   }
-
+  addItem(){
+    this.iVisi = true;
+  }
 
 /*
   hyd_List=[{

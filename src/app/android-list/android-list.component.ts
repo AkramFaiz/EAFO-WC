@@ -8,12 +8,17 @@ import { AndDataService } from '../and-data.service';
 })
 export class AndroidListComponent implements OnInit {
   list: Array<any>;
+  iVisi = false;
   constructor(private _andData :AndDataService) { }
   and_List : Array<any>;
   ngOnInit() {
     this._andData.getList_and().subscribe(res => {
       this.and_List = res;
   });
+}
+
+addItem(){
+  this.iVisi = true;
 }
   // delItem(id: any){
   //   var list= this.iOS_List;

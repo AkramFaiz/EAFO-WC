@@ -1,6 +1,7 @@
 <app-header></app-header>
 <app-nav-bar></app-nav-bar>
 <section>
+        <p class="addRecordIcon" (click)="addItem()"><span class="glyphicon glyphicon-plus"></span></p>       
         <app-list-view></app-list-view>
         <ul>
             <li *ngFor="let wList of web_List">
@@ -20,15 +21,7 @@
                     </div>
              </li>            
         </ul>
-
-        <!-- <article class="addNewData">
-            <ul>
-                <li>Asad</li>
-                <li>asdasd</li>
-                <li>sd</li>
-                <li>sdsdd</li>
-                <li>asd</li>
-                <li>ddd</li>
-            </ul>
-        </article> -->
+       
 </section>
+<app-create-item-web *ngIf="iVisi"></app-create-item-web>
+<app-blurbg *ngIf="iVisi"></app-blurbg>

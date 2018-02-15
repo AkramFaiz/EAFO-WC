@@ -31,8 +31,12 @@ export class LoginComponent implements OnInit {
       this.clearUser = true;
     }
   }
-  keyPwdClkd(){
-    this.visible = false;
+  keyPwdClkd(e){
+    if(e.keyCode == 13){
+      this.visible = true;
+    }else{
+      this.visible = false;
+    }    
     if(this.password == ""){
       this.clearPwd = false;
     }else{

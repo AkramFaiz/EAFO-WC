@@ -362,7 +362,7 @@ app-blurbg{
     z-index: 6;
     top:0
 }
-app-create-item-ios,app-create-item-and,app-create-item-hyb,app-create-item-web{
+app-create-item-ios,app-create-item-and,app-create-item-hyb,app-create-item-web,app-msg-toast{
     width: 85%;
     height: 85%;
     position: absolute;
@@ -375,6 +375,9 @@ app-create-item-ios,app-create-item-and,app-create-item-hyb,app-create-item-web{
     z-index: 11;
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(254, 213, 122, 0.95);
+}
+app-msg-toast{
+    height: 18%;
 }
 app-create-item-ios div,app-create-item-and div,app-create-item-hyb div,app-create-item-web div{
     width: 90%;
@@ -537,6 +540,9 @@ p.clsIcon span{
     }
     app-create-item-ios div ul button, app-create-item-and div ul button, app-create-item-hyb div ul button, app-create-item-web div ul button{
         width: 200px;
+    }
+    app-msg-toast{
+        width: 30%;
     }
     p.clsIcon{
         right: -5px;

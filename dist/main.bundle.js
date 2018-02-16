@@ -293,12 +293,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__create_item_hyb_create_item_hyb_component__ = __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__create_item_and_create_item_and_component__ = __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__blurbg_blurbg_component__ = __webpack_require__("../../../../../src/app/blurbg/blurbg.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__msg_toast_msg_toast_component__ = __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -420,7 +422,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_30__create_item_web_create_item_web_component__["a" /* CreateItemWebComponent */],
             __WEBPACK_IMPORTED_MODULE_31__create_item_hyb_create_item_hyb_component__["a" /* CreateItemHybComponent */],
             __WEBPACK_IMPORTED_MODULE_32__create_item_and_create_item_and_component__["a" /* CreateItemAndComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__blurbg_blurbg_component__["a" /* BlurbgComponent */]
+            __WEBPACK_IMPORTED_MODULE_33__blurbg_blurbg_component__["a" /* BlurbgComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__msg_toast_msg_toast_component__["a" /* MsgToastComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
@@ -1805,6 +1808,78 @@ var _a, _b, _c;
 
 /***/ }),
 
+/***/ "../../../../../src/app/msg-toast/msg-toast.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "header{\n    width: 100%;\n    height: 35px;\n    background: antiquewhite;\n    border-top-left-radius: 10px;\n    border-top-right-radius: 10px;\n    padding: 10px;\n}\narticle{\n    height: 70%;\n}\narticle p{\n    margin: 10px 0;\n    padding: 10px;\n    color: #FFFFFF;\n    text-align: center;\n}\narticle button{\n    float: right;\n    margin: 0 20px;\n    padding: 2px 18px;\n    border-radius: 4px;\n    background: bisque;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/msg-toast/msg-toast.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "  <header>\n    Sign-Up\n  </header>\n  <article>\n  <p>Signing-Up Successful.</p>\n  <button type=\"submit\" (click)=\"closeMsg()\">Ok</button>\n  </article>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/msg-toast/msg-toast.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MsgToastComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__ = __webpack_require__("../../../../../src/app/signup/signup.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MsgToastComponent = (function () {
+    function MsgToastComponent(router, sign_ele) {
+        this.router = router;
+        this.sign_ele = sign_ele;
+    }
+    MsgToastComponent.prototype.ngOnInit = function () {
+    };
+    MsgToastComponent.prototype.closeMsg = function () {
+        this.sign_ele.iVisi = false;
+        this.router.navigateByUrl('/');
+    };
+    return MsgToastComponent;
+}());
+MsgToastComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-msg-toast',
+        template: __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */]) === "function" && _b || Object])
+], MsgToastComponent);
+
+var _a, _b;
+//# sourceMappingURL=msg-toast.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/nav-bar/nav-bar.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1888,7 +1963,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/signup/signup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-container jumbotron\">    \n        <form novalidate class=\"form-horizontal\"\n        (ngSubmit)=\"onFormSubmit(signupForm)\" \n        #signupForm=\"ngForm\">     \n          <fieldset>\n            <legend>EAFO - SignUp</legend>\n              <div class=\"form-group\">\n                <label for=\"inputuser\">Username :</label>\n                <input type=\"text\"\n                  id=\"inputuser\"\n                  placeholder=\"Username\" name=\"username\" [ngModel] = \"user.username\" required>\n              </div>\n              <div class=\"form-group\">\n                  <label for=\"inputEmail\">Email :</label>\n                  <input type=\"text\"\n                [ngModel] = \"user.email\" name=\"email\"\n                #email = \"ngModel\" id=\"inputEmail\"\n                placeholder=\"Email\"\n                pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"\n                required>\n                </div>\n                <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n                  class=\"alert alert-danger\">\n                  <div *ngIf = \"email.errors?.required\">\n                      Email field can't be blank\n                  </div>\n                  <div *ngIf = \"email.errors?.pattern && email.touched\">\n                      The email id doesn't seem right\n                  </div>\n              </div>\n              <div ngModelGroup=\"password\" #userPassword=\"ngModelGroup\" required >\n                <div class=\"form-group\">\n                  <label for=\"inputPassword\">Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"pwd\"\n                    id=\"inputPassword\" placeholder=\"Password\"\n                    minlength =\"8\" required>\n                </div>\n             \n                <div class=\"form-group\">\n                  <label for=\"confirmPassword\" >Confirm Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"confirmPwd\"\n                    id=\"confirmPassword\" placeholder=\"Confirm Password\">\n                </div>\n                 \n                 \n                <div *ngIf=\"(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)\"\n                class=\"alert alert-danger\">\n                 \n                <div *ngIf = \"userPassword.invalid; else nomatch\">\n                    Password needs to be more than 8 characters\n                </div>\n                    <ng-template #nomatch >\n                        Passwords don't match\n                    </ng-template>\n                </div>\n              </div>                                 \n               <div class=\"form-group checkbox\">\n                <label>\n                  <input type=\"checkbox\" name=\"terms\" [(ngModel)] = \"user.terms\" required> \n                  <span>Confirm that you've are authorized ericsson employee.</span>\n                </label>\n              </div>\n              <div class=\"form-group\">\n                  <button type=\"reset\" class=\"btn btn-default\">Cancel</button>\n                  <button type=\"submit\" class=\"btn btn-primary\"  [disabled]=\"!signupForm.form.valid\">Submit</button>\n              </div>\n          </fieldset>\n      </form>\n    </div>\n  </div>\n\n  <footer></footer>"
+module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-container jumbotron\">    \n        <form novalidate class=\"form-horizontal\"\n        (ngSubmit)=\"onFormSubmit(signupForm)\" \n        #signupForm=\"ngForm\">     \n          <fieldset>\n            <legend>EAFO - SignUp</legend>\n              <div class=\"form-group\">\n                <label for=\"inputuser\">Username :</label>\n                <input type=\"text\"\n                  id=\"inputuser\"\n                  placeholder=\"Username\" name=\"username\" [ngModel] = \"user.username\" required>\n              </div>\n              <div class=\"form-group\">\n                  <label for=\"inputEmail\">Email :</label>\n                  <input type=\"text\"\n                [ngModel] = \"user.email\" name=\"email\"\n                #email = \"ngModel\" id=\"inputEmail\"\n                placeholder=\"Email\"\n                pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"\n                required>\n                </div>\n                <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n                  class=\"alert alert-danger\">\n                  <div *ngIf = \"email.errors?.required\">\n                      Email field can't be blank\n                  </div>\n                  <div *ngIf = \"email.errors?.pattern && email.touched\">\n                      The email id doesn't seem right\n                  </div>\n              </div>\n              <div ngModelGroup=\"password\" #userPassword=\"ngModelGroup\" required >\n                <div class=\"form-group\">\n                  <label for=\"inputPassword\">Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"pwd\"\n                    id=\"inputPassword\" placeholder=\"Password\"\n                    minlength =\"8\" required>\n                </div>\n             \n                <div class=\"form-group\">\n                  <label for=\"confirmPassword\" >Confirm Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"confirmPwd\"\n                    id=\"confirmPassword\" placeholder=\"Confirm Password\">\n                </div>\n                 \n                 \n                <div *ngIf=\"(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)\"\n                class=\"alert alert-danger\">\n                 \n                <div *ngIf = \"userPassword.invalid; else nomatch\">\n                    Password needs to be more than 8 characters\n                </div>\n                    <ng-template #nomatch >\n                        Passwords don't match\n                    </ng-template>\n                </div>\n              </div>                                 \n               <div class=\"form-group checkbox\">\n                <label>\n                  <input type=\"checkbox\" name=\"terms\" [(ngModel)] = \"user.terms\" required> \n                  <span>Confirm that you've are authorized ericsson employee.</span>\n                </label>\n              </div>\n              <div class=\"form-group\">\n                  <button type=\"reset\" class=\"btn btn-default\" (click)=\"cancelBtn()\">Cancel</button>\n                  <button type=\"submit\" class=\"btn btn-primary\"  [disabled]=\"!signupForm.form.valid\">Submit</button>\n              </div>\n          </fieldset>\n      </form>\n    </div>\n  </div>\n  <app-msg-toast *ngIf=\"iVisi\"></app-msg-toast>\n  <app-blurbg *ngIf=\"iVisi\"></app-blurbg>\n  <footer></footer>"
 
 /***/ }),
 
@@ -1900,6 +1975,7 @@ module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-conta
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user__ = __webpack_require__("../../../../../src/app/user.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1912,15 +1988,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SignupComponent = (function () {
-    function SignupComponent(logService) {
+    function SignupComponent(logService, router) {
         this.logService = logService;
+        this.router = router;
+        this.iVisi = false;
     }
     SignupComponent.prototype.ngOnInit = function () {
         this.user = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* User */]({ username: "",
             email: "", password: { pwd: "", confirm_pwd: "" }, terms: false });
     };
     SignupComponent.prototype.onFormSubmit = function (_a) {
+        var _this = this;
         var value = _a.value, valid = _a.valid;
         this.user = value;
         console.log(this.user);
@@ -1932,8 +2012,12 @@ var SignupComponent = (function () {
             };
             console.log(this.newUser);
             this.logService.signUp(this.newUser).subscribe(function (res) {
+                _this.iVisi = true;
             });
         }
+    };
+    SignupComponent.prototype.cancelBtn = function () {
+        this.router.navigateByUrl('/');
     };
     return SignupComponent;
 }());
@@ -1943,10 +2027,10 @@ SignupComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/signup/signup.component.html"),
         styles: [__webpack_require__("../../../../../src/app/signup/signup.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], SignupComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=signup.component.js.map
 
 /***/ }),

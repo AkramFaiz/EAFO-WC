@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-signup',
@@ -8,8 +10,8 @@ import { LoginService } from '../login.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  private user:User;
-  constructor(private logService:LoginService) { }
+  private user:User;iVisi = false;
+  constructor(private logService:LoginService,private router: Router) { }
   private newUser: {};
   ngOnInit() {
     this.user = new User({ username:"",
@@ -26,7 +28,12 @@ export class SignupComponent implements OnInit {
       }
       console.log(this.newUser);
       this.logService.signUp(this.newUser).subscribe(res => {   
-      })
+        this.iVisi = true;
+      });
     }
   }
+  cancelBtn(){
+    this.router.navigateByUrl('/');
+  }
+  
 }

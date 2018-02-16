@@ -34,6 +34,7 @@ import { CreateItemWebComponent } from './create-item-web/create-item-web.compon
 import { CreateItemHybComponent } from './create-item-hyb/create-item-hyb.component';
 import { CreateItemAndComponent } from './create-item-and/create-item-and.component';
 import { BlurbgComponent } from './blurbg/blurbg.component';
+import { MsgToastComponent } from './msg-toast/msg-toast.component';
 
 
 const appRoutes:Routes = [
@@ -118,7 +119,8 @@ const appRoutes:Routes = [
     CreateItemWebComponent,
     CreateItemHybComponent,
     CreateItemAndComponent,
-    BlurbgComponent
+    BlurbgComponent,
+    MsgToastComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

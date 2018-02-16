@@ -1,3 +1,73 @@
-<p>
-  signup works!
-</p>
+<div class="row custom-row">
+    <div class= "custom-container jumbotron">         
+      <form class="form-horizontal" #signupForm = "ngForm">
+          <fieldset>
+            <legend>EAFO - SignUp</legend>
+              <div class="form-group">
+                <label for="inputuser">Username :</label>
+                <input type="text"
+                  id="inputuser"
+                  placeholder="Username" name="username" [ngModel] = "user.username" required>
+              </div>
+              <div class="form-group">
+                  <label for="inputEmail">Email :</label>
+                  <input type="text"
+                [ngModel] = "user.email" name="email"
+                #email = "ngModel" id="inputEmail"
+                placeholder="Email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                required>
+                </div>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf = "email.errors?.required">
+                      Email field can't be blank
+                  </div>
+                  <div *ngIf = "email.errors?.pattern && email.touched">
+                      The email id doesn't seem right
+                  </div>
+              </div>
+              <div ngModelGroup="password" #userPassword="ngModelGroup" required >
+                <div class="form-group">
+                  <label for="inputPassword">Password</label>
+                  <input type="password"
+                    ngModel name="pwd"
+                    id="inputPassword" placeholder="Password"
+                    minlength ="8" required>
+                </div>
+             
+                <div class="form-group">
+                  <label for="confirmPassword" >Confirm Password</label>
+                  <input type="password"
+                    ngModel name="confirmPwd"
+                    id="confirmPassword" placeholder="Confirm Password">
+                </div>
+                 
+                 
+                <div *ngIf="(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)"
+                class="alert alert-danger">
+                 
+                <div *ngIf = "userPassword.invalid; else nomatch">
+                    Password needs to be more than 8 characters
+                </div>
+                    <ng-template #nomatch >
+                        Passwords don't match
+                    </ng-template>
+                </div>
+              </div>                                 
+               <div class="form-group checkbox">
+                <label>
+                  <input type="checkbox" name="terms" [(ngModel)] = "user.terms" required> 
+                  <span>Confirm that you've are authorized ericsson employee.</span>
+                </label>
+              </div>
+              <div class="form-group">
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                  <button type="submit" class="btn btn-primary"  [disabled]="!signupForm.form.valid">Submit</button>
+              </div>
+          </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <footer></footer>

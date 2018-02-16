@@ -1,6 +1,8 @@
 <div class="row custom-row">
-    <div class= "custom-container jumbotron">         
-      <form class="form-horizontal" #signupForm = "ngForm">
+    <div class= "custom-container jumbotron">    
+        <form novalidate class="form-horizontal"
+        (ngSubmit)="onFormSubmit(signupForm)" 
+        #signupForm="ngForm">     
           <fieldset>
             <legend>EAFO - SignUp</legend>
               <div class="form-group">

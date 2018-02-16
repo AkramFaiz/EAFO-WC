@@ -1652,7 +1652,9 @@ var LoginService = (function () {
     LoginService.prototype.getUserLoggedIn = function () {
         return this.isUserLoggedIn;
     };
-    LoginService.prototype.signUp = function () {
+    LoginService.prototype.signUp = function (item) {
+        var _this = this;
+        return this._http.post("/user", item).map(function (result) { return _this.result = result.json(); });
     };
     return LoginService;
 }());
@@ -1873,7 +1875,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row.custom-row{\n    width: 90%;\n    height: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    right: 0;\n    left: 0;\n    text-align: center;\n}\nform .form-group{\n    width: 100%;\n    font-size: 12px;\n    height: 100%;\n    margin: 10px auto !important;\n}\n.form-horizontal .form-group{\n    margin: 0;\n}\n.jumbotron,legend{\n    color: #FFFFFF;\n}\n.jumbotron{\n    background: none;\n}\nlabel{\n    text-align: right;\n    padding-right: 10px;\n    width: 40%;\n}\ninput{\n    background: rgba(0, 0, 0, 0.6196078431372549);\n    border: none;\n    width: 50%;\n    padding: 5px;\n    border-radius: 4px;\n}\nbutton{\n    width: 40%;\n    margin-left: 5px;\n}\n.form-group.checkbox label{\n    width: 100%;\n    text-align: center;\n    font-size: 12px;\n}\n.alert-danger{\n    color: #ea7f7d;\n    background-color: rgba(37, 34, 34, 0.6313725490196078);\n    border-color: rgba(235, 204, 209, 0);\n    padding: 5px;\n    width: auto;\n    font-size: 10px;\n    display: inline-block;\n    text-align: center;\n    margin: auto;\n}\nform .form-group:last-child{\n    margin: auto;\n    font-size: 10px;\n}\ninput[type=\"radio\"], input[type=\"checkbox\"]{\n    min-width: auto;\n    width: auto;\n}\nfooter{\n    position: fixed;\n    bottom: 5px;\n    right: 5px;\n    width: 25px;\n    height: 25px;\n    background: url(" + escape(__webpack_require__("../../../../../src/assets/ericsson_white_sml.png")) + ") no-repeat center;\n    background-size: 100%;\n}\n@media only screen and (min-width: 768px) {\n    form .form-group{\n        font-size: 14px;\n    } \n    .alert-danger,form .form-group:last-child{\n        font-size: 12px;\n    }\n    label{\n        min-width: 125px;\n        width: auto;\n    }\n    input{\n        min-width: 180px;\n        width: auto;\n    }\n    button{\n        width: 150px;   \n    }\n}", ""]);
+exports.push([module.i, ".row.custom-row{\n    width: 90%;\n    height: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    right: 0;\n    left: 0;\n    text-align: center;\n}\nform .form-group{\n    width: 100%;\n    font-size: 12px;\n    height: 100%;\n    margin: 10px auto !important;\n}\n.form-horizontal .form-group{\n    margin: 0;\n}\n.jumbotron,legend{\n    color: #FFFFFF;\n}\n.jumbotron{\n    background: none;\n}\nlabel{\n    text-align: right;\n    padding-right: 10px;\n    width: 40%;\n}\ninput{\n    background: rgba(0, 0, 0, 0.6196078431372549);\n    border: none;\n    width: 50%;\n    padding: 5px;\n    border-radius: 4px;\n}\nbutton{\n    width: 40%;\n    margin-left: 5px;\n}\n.form-group.checkbox label{\n    width: 100%;\n    text-align: center;\n    font-size: 12px;\n}\n.alert-danger{\n    color: #ea7f7d;\n    background-color: rgba(37, 34, 34, 0.6313725490196078);\n    border-color: rgba(235, 204, 209, 0);\n    padding: 5px;\n    width: auto;\n    font-size: 10px;\n    display: inline-block;\n    text-align: center;\n    margin: auto;\n}\nform .form-group:last-child{\n    margin: auto;\n    font-size: 10px;\n}\ninput[type=\"radio\"], input[type=\"checkbox\"]{\n    min-width: auto;\n    width: auto;\n}\nfooter{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    width: 45px;\n    height: 45px;\n    background: url(" + escape(__webpack_require__("../../../../../src/assets/ericsson_white_sml.png")) + ") no-repeat center;\n    background-size: 100%;\n}\n@media only screen and (min-width: 768px) {\n    form .form-group{\n        font-size: 14px;\n    } \n    .alert-danger,form .form-group:last-child{\n        font-size: 12px;\n    }\n    label{\n        min-width: 125px;\n        width: auto;\n    }\n    input{\n        min-width: 180px;\n        width: auto;\n    }\n    button{\n        width: 150px;   \n    }\n}", ""]);
 
 // exports
 
@@ -1886,7 +1888,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/signup/signup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-container jumbotron\">         \n      <form class=\"form-horizontal\" #signupForm = \"ngForm\">\n          <fieldset>\n            <legend>EAFO - SignUp</legend>\n              <div class=\"form-group\">\n                <label for=\"inputuser\">Username :</label>\n                <input type=\"text\"\n                  id=\"inputuser\"\n                  placeholder=\"Username\" name=\"username\" [ngModel] = \"user.username\" required>\n              </div>\n              <div class=\"form-group\">\n                  <label for=\"inputEmail\">Email :</label>\n                  <input type=\"text\"\n                [ngModel] = \"user.email\" name=\"email\"\n                #email = \"ngModel\" id=\"inputEmail\"\n                placeholder=\"Email\"\n                pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"\n                required>\n                </div>\n                <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n                  class=\"alert alert-danger\">\n                  <div *ngIf = \"email.errors?.required\">\n                      Email field can't be blank\n                  </div>\n                  <div *ngIf = \"email.errors?.pattern && email.touched\">\n                      The email id doesn't seem right\n                  </div>\n              </div>\n              <div ngModelGroup=\"password\" #userPassword=\"ngModelGroup\" required >\n                <div class=\"form-group\">\n                  <label for=\"inputPassword\">Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"pwd\"\n                    id=\"inputPassword\" placeholder=\"Password\"\n                    minlength =\"8\" required>\n                </div>\n             \n                <div class=\"form-group\">\n                  <label for=\"confirmPassword\" >Confirm Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"confirmPwd\"\n                    id=\"confirmPassword\" placeholder=\"Confirm Password\">\n                </div>\n                 \n                 \n                <div *ngIf=\"(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)\"\n                class=\"alert alert-danger\">\n                 \n                <div *ngIf = \"userPassword.invalid; else nomatch\">\n                    Password needs to be more than 8 characters\n                </div>\n                    <ng-template #nomatch >\n                        Passwords don't match\n                    </ng-template>\n                </div>\n              </div>                                 \n               <div class=\"form-group checkbox\">\n                <label>\n                  <input type=\"checkbox\" name=\"terms\" [(ngModel)] = \"user.terms\" required> \n                  <span>Confirm that you've are authorized ericsson employee.</span>\n                </label>\n              </div>\n              <div class=\"form-group\">\n                  <button type=\"reset\" class=\"btn btn-default\">Cancel</button>\n                  <button type=\"submit\" class=\"btn btn-primary\"  [disabled]=\"!signupForm.form.valid\">Submit</button>\n              </div>\n          </fieldset>\n      </form>\n    </div>\n  </div>\n\n  <footer></footer>"
+module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-container jumbotron\">    \n        <form novalidate class=\"form-horizontal\"\n        (ngSubmit)=\"onFormSubmit(signupForm)\" \n        #signupForm=\"ngForm\">     \n          <fieldset>\n            <legend>EAFO - SignUp</legend>\n              <div class=\"form-group\">\n                <label for=\"inputuser\">Username :</label>\n                <input type=\"text\"\n                  id=\"inputuser\"\n                  placeholder=\"Username\" name=\"username\" [ngModel] = \"user.username\" required>\n              </div>\n              <div class=\"form-group\">\n                  <label for=\"inputEmail\">Email :</label>\n                  <input type=\"text\"\n                [ngModel] = \"user.email\" name=\"email\"\n                #email = \"ngModel\" id=\"inputEmail\"\n                placeholder=\"Email\"\n                pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"\n                required>\n                </div>\n                <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n                  class=\"alert alert-danger\">\n                  <div *ngIf = \"email.errors?.required\">\n                      Email field can't be blank\n                  </div>\n                  <div *ngIf = \"email.errors?.pattern && email.touched\">\n                      The email id doesn't seem right\n                  </div>\n              </div>\n              <div ngModelGroup=\"password\" #userPassword=\"ngModelGroup\" required >\n                <div class=\"form-group\">\n                  <label for=\"inputPassword\">Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"pwd\"\n                    id=\"inputPassword\" placeholder=\"Password\"\n                    minlength =\"8\" required>\n                </div>\n             \n                <div class=\"form-group\">\n                  <label for=\"confirmPassword\" >Confirm Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"confirmPwd\"\n                    id=\"confirmPassword\" placeholder=\"Confirm Password\">\n                </div>\n                 \n                 \n                <div *ngIf=\"(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)\"\n                class=\"alert alert-danger\">\n                 \n                <div *ngIf = \"userPassword.invalid; else nomatch\">\n                    Password needs to be more than 8 characters\n                </div>\n                    <ng-template #nomatch >\n                        Passwords don't match\n                    </ng-template>\n                </div>\n              </div>                                 \n               <div class=\"form-group checkbox\">\n                <label>\n                  <input type=\"checkbox\" name=\"terms\" [(ngModel)] = \"user.terms\" required> \n                  <span>Confirm that you've are authorized ericsson employee.</span>\n                </label>\n              </div>\n              <div class=\"form-group\">\n                  <button type=\"reset\" class=\"btn btn-default\">Cancel</button>\n                  <button type=\"submit\" class=\"btn btn-primary\"  [disabled]=\"!signupForm.form.valid\">Submit</button>\n              </div>\n          </fieldset>\n      </form>\n    </div>\n  </div>\n\n  <footer></footer>"
 
 /***/ }),
 
@@ -1897,6 +1899,7 @@ module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-conta
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user__ = __webpack_require__("../../../../../src/app/user.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1908,12 +1911,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var SignupComponent = (function () {
-    function SignupComponent() {
+    function SignupComponent(logService) {
+        this.logService = logService;
     }
     SignupComponent.prototype.ngOnInit = function () {
         this.user = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* User */]({ username: "",
             email: "", password: { pwd: "", confirm_pwd: "" }, terms: false });
+    };
+    SignupComponent.prototype.onFormSubmit = function (_a) {
+        var value = _a.value, valid = _a.valid;
+        this.user = value;
+        console.log(this.user);
+        console.log("valid: " + valid);
+        if (valid == true) {
+            this.newUser = {
+                user: this.user.username,
+                password: this.user.password.pwd
+            };
+            console.log(this.newUser);
+            this.logService.signUp(this.newUser).subscribe(function (res) {
+            });
+        }
     };
     return SignupComponent;
 }());
@@ -1923,9 +1943,10 @@ SignupComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/signup/signup.component.html"),
         styles: [__webpack_require__("../../../../../src/app/signup/signup.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _a || Object])
 ], SignupComponent);
 
+var _a;
 //# sourceMappingURL=signup.component.js.map
 
 /***/ }),

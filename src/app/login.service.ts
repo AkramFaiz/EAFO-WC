@@ -21,7 +21,7 @@ export class LoginService {
   getUserLoggedIn(){
     return this.isUserLoggedIn;
   }
-  signUp(){
-    
+  signUp(item){
+    return this._http.post("/user",item).map(result => this.result = result.json());
   }
 }

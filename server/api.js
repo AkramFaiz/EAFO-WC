@@ -14,12 +14,22 @@ var sendErr = (err,res)=>{
     response.message = typeof err == "object"  ? err.message : err;
     res.status(501).json(response);
 }
+//  user
 router.get('/user',(req, res, next) => {
          db.user.find(function (err, docs) {
              console.log(docs);
              res.json(docs);
          });
  })
+router.post('/user',(req, res, next) => {
+    var newObj = req.body;
+    db.user.insert(newObj, function(err, doc) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        res.json(doc);
+      });
+});
+// user end
 
  /* iOS */
  router.get('/iOS',(req, res, next) => {

@@ -16,12 +16,12 @@
                                 <li>{{wList.VersionsHistory}}</li>
                                 <li>{{wList.CodeRepository}}</li>               
                             </ul>
-                            <p><span class="glyphicon glyphicon-pencil"></span></p>
+                            <p><span class="glyphicon glyphicon-pencil" (click)="editItem(wList._id)"></span></p>
                             <p><span class="glyphicon glyphicon-remove" (click)="delItem(wList._id)"></span></p>
                     </div>
              </li>            
         </ul>
        
 </section>
-<app-create-item-web *ngIf="iVisi"></app-create-item-web>
+<app-create-item-web [ngClass]="showHide()" *ngIf="iVisi"></app-create-item-web>
 <app-blurbg *ngIf="iVisi"></app-blurbg>

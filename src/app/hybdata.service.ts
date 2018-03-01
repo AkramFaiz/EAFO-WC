@@ -16,4 +16,10 @@ export class HybdataService {
   removeItem_hyb(id){
       return this._http.delete('/hyb/'+ id).map(result => this.result = result.json());
   }
+  editItem_hyd(id){
+    return this._http.get('/hyb/'+ id).map(result => this.result = result.json());
+  }
+  saveEditItem_hyd(id,item){
+    return this._http.put('/hyb/'+ id,item).map(result => this.result = result.json());
+  }
 }

@@ -17,4 +17,10 @@ export class AndDataService {
   addItem_and(item){
      return this._http.post("/and",item).map(result => this.result = result.json());
   }
+  editItem_and(id){
+    return this._http.get('/and/'+ id).map(result => this.result = result.json());
+  }
+  saveEditItem_and(id,item){
+    return this._http.put('/and/'+ id,item).map(result => this.result = result.json());
+  }
 }

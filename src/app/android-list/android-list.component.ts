@@ -8,20 +8,34 @@ import { AndDataService } from '../and-data.service';
 })
 export class AndroidListComponent implements OnInit {
   list: Array<any>;
+  public flagVal;
   iVisi = false;
+  editId = "";
+  editFlag = false;
   constructor(private _andData :AndDataService) { }
   and_List : Array<any>;
-  ngOnInit() {
+  ngOnInit():void{
+    this.getItems();
+  }
+  getItems() {
     this._andData.getList_and().subscribe(res => {
       this.and_List = res;
   });
 }
-
+showHide(){
+  return this.flagVal;
+}
 addItem(){
   this.iVisi = true;
+  this.editFlag = false;
+  this.flagVal = "showPU";    
 }
-
-
+editItem(id: any){
+  this.editFlag = true;
+  this.iVisi = true;
+  this.editId = id;    //this.getItems();
+  this.flagVal = "showPU"; 
+}
 delItem(id: any){
   var list= this.and_List;
   console.log(list+',sdsd,'+id);

@@ -8,38 +8,74 @@ import { HybdataService } from '../hybdata.service';
   styleUrls: ['./create-item-hyb.component.css']
 })
 export class CreateItemHybComponent implements OnInit {
-  imgUpload="assets/iOS2.png";title="";version="";desc="";devBy="";supBy="";verHis="";codeRepo="";
+  imgUpload:string;
+  title:string;version:string;desc:string;devBy:string;supBy:string;verHis:string;codeRepo:string;
   newItem= {};
-  //newWebItem = {};
+  eFlag = false;
   constructor(private hyb_ele: HybListComponent,private hyb_api:HybdataService) { }
 
   ngOnInit() {
+    if(this.hyb_ele.editFlag == true){   
+      this.eFlag=true;   
+      this.hyb_api.editItem_hyd(this.hyb_ele.editId).subscribe(res => {
+        // this.selectedItem = res;
+        this.imgUpload = "assets/iOS1.png";
+        this.title = res.Title;      
+        this.desc = res.Desc;
+        this.version = res.Version;
+        this.devBy = res.DevelopedBy;
+        this.supBy = res.SupportedBy;
+        this.verHis = res.VersionsHistory;
+        this.codeRepo= res.CodeRepository;   
+      });
+          
+    }else{
+      this.eFlag=false; 
+      this.imgUpload="assets/iOS2.png";this.title="";this.version="";this.desc="";this.devBy="";this.supBy="";this.verHis="";this.codeRepo="";
+    }
   }
 
   closePU(){
-    this.hyb_ele.iVisi = false;
+    this.hyb_ele.flagVal = "hidePU";
+    //setInterval (() => {
+      this.hyb_ele.iVisi = false;
+    //}, 1000);
     this.imgUpload="";this.title="";this.version="";this.desc="";this.devBy="";this.supBy="";this.verHis="";this.codeRepo="";
   }
   submitItem(){
-    //console.log(this.imgUpload+this.title+this.version+this.desc+this.devBy+this.supBy+this.verHis+this.codeRepo);
     this.newItem=
-    {
-      'Icon': this.imgUpload,
-      'Title': this.title,
-      'Desc': this.desc,
-      'Version': this.version,
-      'DevelopedBy': this.devBy,
-      'SupportedBy': this.supBy,
-      'VersionsHistory': this.verHis,
-      'CodeRepository': this.codeRepo
-    }
-    console.log(this.newItem);
-    this.hyb_api.addItem_hyb(this.newItem).subscribe(res => {
-      if(typeof(res) != 'object'){
-        this.hyb_ele.iVisi = true;
+        {
+          Icon : this.imgUpload,
+          Title: this.title,
+          Desc: this.desc,
+          Version: this.version,
+          DevelopedBy: this.devBy,
+          SupportedBy: this.supBy,
+          VersionsHistory: this.verHis,
+          CodeRepository: this.codeRepo
+        }
+        console.log(this.newItem);
+      if(this.eFlag == true){
+        this.hyb_api.saveEditItem_hyd(this.hyb_ele.editId,this.newItem).subscribe(res => {   
+          if(typeof(res) != 'object'){
+            this.hyb_ele.iVisi = true;
+            //this.iOS_ele.flagVal = "hideBack";
+          }else{
+            this.hyb_ele.flagVal = "hidePU";
+            this.hyb_ele.iVisi = false;
+            this.hyb_ele.getItems();
+          } 
+        });
       }else{
-        this.hyb_ele.iVisi = false;
-      }           
-    });
+        this.hyb_api.addItem_hyb(this.newItem).subscribe(res => {   
+          if(typeof(res) != 'object'){
+            this.hyb_ele.iVisi = true;
+          }else{
+            this.hyb_ele.flagVal = "hidePU";
+            this.hyb_ele.iVisi = false;
+            this.hyb_ele.getItems();
+          } 
+        });
+      } 
   }
 }

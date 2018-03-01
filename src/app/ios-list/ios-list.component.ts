@@ -39,7 +39,6 @@ export class IosListComponent implements OnInit{
   }
   delItem(id: any){
     var list= this.iOS_List;
-    console.log(list+',sdsd,'+id);
     this._iosData.removeItem_iOS(id).subscribe(res => {
       if(res.n == 1){
         for(var i=0; i< list.length; i++){

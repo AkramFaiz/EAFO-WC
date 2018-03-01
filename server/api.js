@@ -159,6 +159,28 @@ router.delete('/web/:id',(req, res, next) => {
         res.json(doc);
     });
 });
+//edit
+router.get('/web/:id',function(req,res){
+    var curId = req.params.id;
+    console.log('iD====',curId);
+	db.web.findOne({_id: mongojs.ObjectId(curId)},function(err,doc){
+		res.json(doc);
+	});
+});
+router.put('/web/:id',function(req,res){
+    var curId = req.params.id;
+    db.web.findAndModify({query: {_id: mongojs.ObjectId(curId)},update:{$set:
+        {   Icon : req.body.Icon,
+            Title: req.body.Title,
+            Desc: req.body.Desc,
+            Version: req.body.Version,
+            DevelopedBy: req.body.DevelopedBy,
+            SupportedBy: req.body.SupportedBy,
+            VersionsHistory: req.body.VersionsHistory,
+            CodeRepository: req.body.CodeRepository}},new: true}, function(err,doc){
+		res.json(doc);
+	});
+});
 /* web end */
 
 /* and */
@@ -184,6 +206,28 @@ router.delete('/and/:id',(req, res, next) => {
         res.json(doc);
     });
 });
+//edit
+router.get('/and/:id',function(req,res){
+    var curId = req.params.id;
+    console.log('iD====',curId);
+	db.and.findOne({_id: mongojs.ObjectId(curId)},function(err,doc){
+		res.json(doc);
+	});
+});
+router.put('/and/:id',function(req,res){
+    var curId = req.params.id;
+    db.and.findAndModify({query: {_id: mongojs.ObjectId(curId)},update:{$set:
+        {   Icon : req.body.Icon,
+            Title: req.body.Title,
+            Desc: req.body.Desc,
+            Version: req.body.Version,
+            DevelopedBy: req.body.DevelopedBy,
+            SupportedBy: req.body.SupportedBy,
+            VersionsHistory: req.body.VersionsHistory,
+            CodeRepository: req.body.CodeRepository}},new: true}, function(err,doc){
+		res.json(doc);
+	});
+});
 /* and end */
 
 /* hyb */
@@ -208,6 +252,28 @@ router.delete('/hyb/:id',(req, res, next) => {
     db.hyb.remove({_id: mongojs.ObjectId(curId)}, function(err, doc) {
         res.json(doc);
     });
+});
+//edit
+router.get('/hyb/:id',function(req,res){
+    var curId = req.params.id;
+    console.log('iD====',curId);
+	db.hyb.findOne({_id: mongojs.ObjectId(curId)},function(err,doc){
+		res.json(doc);
+	});
+});
+router.put('/hyb/:id',function(req,res){
+    var curId = req.params.id;
+    db.hyb.findAndModify({query: {_id: mongojs.ObjectId(curId)},update:{$set:
+        {   Icon : req.body.Icon,
+            Title: req.body.Title,
+            Desc: req.body.Desc,
+            Version: req.body.Version,
+            DevelopedBy: req.body.DevelopedBy,
+            SupportedBy: req.body.SupportedBy,
+            VersionsHistory: req.body.VersionsHistory,
+            CodeRepository: req.body.CodeRepository}},new: true}, function(err,doc){
+		res.json(doc);
+	});
 });
 /* hyb end */
 module.exports = router;

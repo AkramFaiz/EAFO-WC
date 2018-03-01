@@ -8,17 +8,34 @@ import { HybdataService} from '../hybdata.service';
 })
 export class HybListComponent implements OnInit {
   list: Array<any>;
+  public flagVal;
   iVisi = false;
+  editId = "";
+  editFlag = false;
   constructor(private _hybData :HybdataService) { }
   hyb_List: Array<any>;
 
   ngOnInit():void{
+    this.getItems();
+  }
+  showHide(){
+    return this.flagVal;
+  }
+  getItems(){
     this._hybData.getList_hyb().subscribe(res => {
       this.hyb_List = res;
     });
   }
   addItem(){
     this.iVisi = true;
+    this.editFlag = false;
+    this.flagVal = "showPU"; 
+  }
+  editItem(id: any){
+    this.editFlag = true;
+    this.iVisi = true;
+    this.editId = id;    //this.getItems();
+    this.flagVal = "showPU"; 
   }
   delItem(id: any){
     var list= this.hyb_List;

@@ -16,4 +16,10 @@ export class WebDataService {
   removeItem_web(id){
       return this._http.delete('/web/'+ id).map(result => this.result = result.json());
   }
+  editItem_web(id){
+    return this._http.get('/web/'+ id).map(result => this.result = result.json());
+  }
+  saveEditItem_web(id,item){
+    return this._http.put('/web/'+ id,item).map(result => this.result = result.json());
+  }
 }

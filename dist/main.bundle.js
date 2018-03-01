@@ -53,6 +53,14 @@ var AndDataService = (function () {
         var _this = this;
         return this._http.post("/and", item).map(function (result) { return _this.result = result.json(); });
     };
+    AndDataService.prototype.editItem_and = function (id) {
+        var _this = this;
+        return this._http.get('/and/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    AndDataService.prototype.saveEditItem_and = function (id, item) {
+        var _this = this;
+        return this._http.put('/and/' + id, item).map(function (result) { return _this.result = result.json(); });
+    };
     return AndDataService;
 }());
 AndDataService = __decorate([
@@ -86,7 +94,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/android-list/android-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\">\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(aList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-and *ngIf=\"iVisi\"></app-create-item-and>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\">\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(aList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(aList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-and [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-and>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -112,15 +120,31 @@ var AndroidListComponent = (function () {
     function AndroidListComponent(_andData) {
         this._andData = _andData;
         this.iVisi = false;
+        this.editId = "";
+        this.editFlag = false;
     }
     AndroidListComponent.prototype.ngOnInit = function () {
+        this.getItems();
+    };
+    AndroidListComponent.prototype.getItems = function () {
         var _this = this;
         this._andData.getList_and().subscribe(function (res) {
             _this.and_List = res;
         });
     };
+    AndroidListComponent.prototype.showHide = function () {
+        return this.flagVal;
+    };
     AndroidListComponent.prototype.addItem = function () {
         this.iVisi = true;
+        this.editFlag = false;
+        this.flagVal = "showPU";
+    };
+    AndroidListComponent.prototype.editItem = function (id) {
+        this.editFlag = true;
+        this.iVisi = true;
+        this.editId = id; //this.getItems();
+        this.flagVal = "showPU";
     };
     AndroidListComponent.prototype.delItem = function (id) {
         var list = this.and_List;
@@ -604,24 +628,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CreateItemAndComponent = (function () {
-    //newWebItem = {};
     function CreateItemAndComponent(and_ele, and_api) {
         this.and_ele = and_ele;
         this.and_api = and_api;
-        this.imgUpload = "assets/iOS2.png";
-        this.title = "";
-        this.version = "";
-        this.desc = "";
-        this.devBy = "";
-        this.supBy = "";
-        this.verHis = "";
-        this.codeRepo = "";
         this.newItem = {};
+        this.eFlag = false;
     }
     CreateItemAndComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.and_ele.editFlag == true) {
+            this.eFlag = true;
+            this.and_api.editItem_and(this.and_ele.editId).subscribe(function (res) {
+                // this.selectedItem = res;
+                _this.imgUpload = "assets/iOS1.png";
+                _this.title = res.Title;
+                _this.desc = res.Desc;
+                _this.version = res.Version;
+                _this.devBy = res.DevelopedBy;
+                _this.supBy = res.SupportedBy;
+                _this.verHis = res.VersionsHistory;
+                _this.codeRepo = res.CodeRepository;
+            });
+        }
+        else {
+            this.eFlag = false;
+            this.imgUpload = "assets/iOS2.png";
+            this.title = "";
+            this.version = "";
+            this.desc = "";
+            this.devBy = "";
+            this.supBy = "";
+            this.verHis = "";
+            this.codeRepo = "";
+        }
     };
     CreateItemAndComponent.prototype.closePU = function () {
+        this.and_ele.flagVal = "hidePU";
+        //setInterval (() => {
         this.and_ele.iVisi = false;
+        //}, 1000);
         this.imgUpload = "";
         this.title = "";
         this.version = "";
@@ -633,27 +678,43 @@ var CreateItemAndComponent = (function () {
     };
     CreateItemAndComponent.prototype.submitItem = function () {
         var _this = this;
-        //console.log(this.imgUpload+this.title+this.version+this.desc+this.devBy+this.supBy+this.verHis+this.codeRepo);
         this.newItem =
             {
-                'Icon': this.imgUpload,
-                'Title': this.title,
-                'Desc': this.desc,
-                'Version': this.version,
-                'DevelopedBy': this.devBy,
-                'SupportedBy': this.supBy,
-                'VersionsHistory': this.verHis,
-                'CodeRepository': this.codeRepo
+                Icon: this.imgUpload,
+                Title: this.title,
+                Desc: this.desc,
+                Version: this.version,
+                DevelopedBy: this.devBy,
+                SupportedBy: this.supBy,
+                VersionsHistory: this.verHis,
+                CodeRepository: this.codeRepo
             };
         console.log(this.newItem);
-        this.and_api.addItem_and(this.newItem).subscribe(function (res) {
-            if (typeof (res) != 'object') {
-                _this.and_ele.iVisi = true;
-            }
-            else {
-                _this.and_ele.iVisi = false;
-            }
-        });
+        if (this.eFlag == true) {
+            this.and_api.saveEditItem_and(this.and_ele.editId, this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.and_ele.iVisi = true;
+                    //this.iOS_ele.flagVal = "hideBack";
+                }
+                else {
+                    _this.and_ele.flagVal = "hidePU";
+                    _this.and_ele.iVisi = false;
+                    _this.and_ele.getItems();
+                }
+            });
+        }
+        else {
+            this.and_api.addItem_and(this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.and_ele.iVisi = true;
+                }
+                else {
+                    _this.and_ele.flagVal = "hidePU";
+                    _this.and_ele.iVisi = false;
+                    _this.and_ele.getItems();
+                }
+            });
+        }
     };
     return CreateItemAndComponent;
 }());
@@ -717,24 +778,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CreateItemHybComponent = (function () {
-    //newWebItem = {};
     function CreateItemHybComponent(hyb_ele, hyb_api) {
         this.hyb_ele = hyb_ele;
         this.hyb_api = hyb_api;
-        this.imgUpload = "assets/iOS2.png";
-        this.title = "";
-        this.version = "";
-        this.desc = "";
-        this.devBy = "";
-        this.supBy = "";
-        this.verHis = "";
-        this.codeRepo = "";
         this.newItem = {};
+        this.eFlag = false;
     }
     CreateItemHybComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.hyb_ele.editFlag == true) {
+            this.eFlag = true;
+            this.hyb_api.editItem_hyd(this.hyb_ele.editId).subscribe(function (res) {
+                // this.selectedItem = res;
+                _this.imgUpload = "assets/iOS1.png";
+                _this.title = res.Title;
+                _this.desc = res.Desc;
+                _this.version = res.Version;
+                _this.devBy = res.DevelopedBy;
+                _this.supBy = res.SupportedBy;
+                _this.verHis = res.VersionsHistory;
+                _this.codeRepo = res.CodeRepository;
+            });
+        }
+        else {
+            this.eFlag = false;
+            this.imgUpload = "assets/iOS2.png";
+            this.title = "";
+            this.version = "";
+            this.desc = "";
+            this.devBy = "";
+            this.supBy = "";
+            this.verHis = "";
+            this.codeRepo = "";
+        }
     };
     CreateItemHybComponent.prototype.closePU = function () {
+        this.hyb_ele.flagVal = "hidePU";
+        //setInterval (() => {
         this.hyb_ele.iVisi = false;
+        //}, 1000);
         this.imgUpload = "";
         this.title = "";
         this.version = "";
@@ -746,27 +828,43 @@ var CreateItemHybComponent = (function () {
     };
     CreateItemHybComponent.prototype.submitItem = function () {
         var _this = this;
-        //console.log(this.imgUpload+this.title+this.version+this.desc+this.devBy+this.supBy+this.verHis+this.codeRepo);
         this.newItem =
             {
-                'Icon': this.imgUpload,
-                'Title': this.title,
-                'Desc': this.desc,
-                'Version': this.version,
-                'DevelopedBy': this.devBy,
-                'SupportedBy': this.supBy,
-                'VersionsHistory': this.verHis,
-                'CodeRepository': this.codeRepo
+                Icon: this.imgUpload,
+                Title: this.title,
+                Desc: this.desc,
+                Version: this.version,
+                DevelopedBy: this.devBy,
+                SupportedBy: this.supBy,
+                VersionsHistory: this.verHis,
+                CodeRepository: this.codeRepo
             };
         console.log(this.newItem);
-        this.hyb_api.addItem_hyb(this.newItem).subscribe(function (res) {
-            if (typeof (res) != 'object') {
-                _this.hyb_ele.iVisi = true;
-            }
-            else {
-                _this.hyb_ele.iVisi = false;
-            }
-        });
+        if (this.eFlag == true) {
+            this.hyb_api.saveEditItem_hyd(this.hyb_ele.editId, this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.hyb_ele.iVisi = true;
+                    //this.iOS_ele.flagVal = "hideBack";
+                }
+                else {
+                    _this.hyb_ele.flagVal = "hidePU";
+                    _this.hyb_ele.iVisi = false;
+                    _this.hyb_ele.getItems();
+                }
+            });
+        }
+        else {
+            this.hyb_api.addItem_hyb(this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.hyb_ele.iVisi = true;
+                }
+                else {
+                    _this.hyb_ele.flagVal = "hidePU";
+                    _this.hyb_ele.iVisi = false;
+                    _this.hyb_ele.getItems();
+                }
+            });
+        }
     };
     return CreateItemHybComponent;
 }());
@@ -836,16 +934,6 @@ var CreateItemIosComponent = (function () {
         this.iOS_ele = iOS_ele;
         this.ios_api = ios_api;
         this.newItem = {};
-        // editItem = {
-        //   Icon : "",
-        //   Title: "",
-        //   Desc: "",
-        //   Version: "",
-        //   DevelopedBy: "",
-        //   SupportedBy: "",
-        //   VersionsHistory: "",
-        //   CodeRepository: ""
-        // };
         this.eFlag = false;
         //  this.fileUploader.onCompleteItem = (item:any,response:any, status:any, headers:any)=>{
         //    this.attList.push(JSON.parse(response));
@@ -923,18 +1011,6 @@ var CreateItemIosComponent = (function () {
             });
         }
         else {
-            //   this.newItem=
-            //     {
-            //       Icon : this.imgUpload,
-            //       Title: this.title,
-            //       Desc: this.desc,
-            //       Version: this.version,
-            //       DevelopedBy: this.devBy,
-            //       SupportedBy: this.supBy,
-            //       VersionsHistory: this.verHis,
-            //       CodeRepository: this.codeRepo
-            //     }
-            // console.log(this.newItem);
             this.ios_api.addItem_ios(this.newItem).subscribe(function (res) {
                 if (typeof (res) != 'object') {
                     _this.iOS_ele.iVisi = true;
@@ -1009,23 +1085,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CreateItemWebComponent = (function () {
-    //newWebItem = {};
     function CreateItemWebComponent(web_ele, web_api) {
         this.web_ele = web_ele;
         this.web_api = web_api;
-        this.imgUpload = "assets/iOS2.png";
-        this.title = "";
-        this.version = "";
-        this.desc = "";
-        this.devBy = "";
-        this.supBy = "";
-        this.verHis = "";
-        this.codeRepo = "";
         this.newItem = {};
+        this.eFlag = false;
     }
     CreateItemWebComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.web_ele.editFlag == true) {
+            this.eFlag = true;
+            this.web_api.editItem_web(this.web_ele.editId).subscribe(function (res) {
+                // this.selectedItem = res;
+                _this.imgUpload = "assets/iOS1.png";
+                _this.title = res.Title;
+                _this.desc = res.Desc;
+                _this.version = res.Version;
+                _this.devBy = res.DevelopedBy;
+                _this.supBy = res.SupportedBy;
+                _this.verHis = res.VersionsHistory;
+                _this.codeRepo = res.CodeRepository;
+            });
+        }
+        else {
+            this.eFlag = false;
+            this.imgUpload = "assets/iOS2.png";
+            this.title = "";
+            this.version = "";
+            this.desc = "";
+            this.devBy = "";
+            this.supBy = "";
+            this.verHis = "";
+            this.codeRepo = "";
+        }
     };
     CreateItemWebComponent.prototype.closePU = function () {
+        this.web_ele.flagVal = "hidePU";
         this.web_ele.iVisi = false;
         this.imgUpload = "";
         this.title = "";
@@ -1038,27 +1133,43 @@ var CreateItemWebComponent = (function () {
     };
     CreateItemWebComponent.prototype.submitItem = function () {
         var _this = this;
-        //console.log(this.imgUpload+this.title+this.version+this.desc+this.devBy+this.supBy+this.verHis+this.codeRepo);
         this.newItem =
             {
-                'Icon': this.imgUpload,
-                'Title': this.title,
-                'Desc': this.desc,
-                'Version': this.version,
-                'DevelopedBy': this.devBy,
-                'SupportedBy': this.supBy,
-                'VersionsHistory': this.verHis,
-                'CodeRepository': this.codeRepo
+                Icon: this.imgUpload,
+                Title: this.title,
+                Desc: this.desc,
+                Version: this.version,
+                DevelopedBy: this.devBy,
+                SupportedBy: this.supBy,
+                VersionsHistory: this.verHis,
+                CodeRepository: this.codeRepo
             };
         console.log(this.newItem);
-        this.web_api.addItem_web(this.newItem).subscribe(function (res) {
-            if (typeof (res) != 'object') {
-                _this.web_ele.iVisi = true;
-            }
-            else {
-                _this.web_ele.iVisi = false;
-            }
-        });
+        if (this.eFlag == true) {
+            this.web_api.saveEditItem_web(this.web_ele.editId, this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.web_ele.iVisi = true;
+                    //this.iOS_ele.flagVal = "hideBack";
+                }
+                else {
+                    _this.web_ele.flagVal = "hidePU";
+                    _this.web_ele.iVisi = false;
+                    _this.web_ele.getItems();
+                }
+            });
+        }
+        else {
+            this.web_api.addItem_web(this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.web_ele.iVisi = true;
+                }
+                else {
+                    _this.web_ele.flagVal = "hidePU";
+                    _this.web_ele.iVisi = false;
+                    _this.web_ele.getItems();
+                }
+            });
+        }
     };
     return CreateItemWebComponent;
 }());
@@ -1298,7 +1409,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/hyb-list/hyb-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section> \n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(hList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-hyb *ngIf=\"iVisi\"></app-create-item-hyb>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section> \n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(hList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(hList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-hyb [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-hyb>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -1324,8 +1435,16 @@ var HybListComponent = (function () {
     function HybListComponent(_hybData) {
         this._hybData = _hybData;
         this.iVisi = false;
+        this.editId = "";
+        this.editFlag = false;
     }
     HybListComponent.prototype.ngOnInit = function () {
+        this.getItems();
+    };
+    HybListComponent.prototype.showHide = function () {
+        return this.flagVal;
+    };
+    HybListComponent.prototype.getItems = function () {
         var _this = this;
         this._hybData.getList_hyb().subscribe(function (res) {
             _this.hyb_List = res;
@@ -1333,6 +1452,14 @@ var HybListComponent = (function () {
     };
     HybListComponent.prototype.addItem = function () {
         this.iVisi = true;
+        this.editFlag = false;
+        this.flagVal = "showPU";
+    };
+    HybListComponent.prototype.editItem = function (id) {
+        this.editFlag = true;
+        this.iVisi = true;
+        this.editId = id; //this.getItems();
+        this.flagVal = "showPU";
     };
     HybListComponent.prototype.delItem = function (id) {
         var list = this.hyb_List;
@@ -1398,6 +1525,14 @@ var HybdataService = (function () {
     HybdataService.prototype.removeItem_hyb = function (id) {
         var _this = this;
         return this._http.delete('/hyb/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    HybdataService.prototype.editItem_hyd = function (id) {
+        var _this = this;
+        return this._http.get('/hyb/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    HybdataService.prototype.saveEditItem_hyd = function (id, item) {
+        var _this = this;
+        return this._http.put('/hyb/' + id, item).map(function (result) { return _this.result = result.json(); });
     };
     return HybdataService;
 }());
@@ -1603,7 +1738,6 @@ var IosListComponent = (function () {
     };
     IosListComponent.prototype.delItem = function (id) {
         var list = this.iOS_List;
-        console.log(list + ',sdsd,' + id);
         this._iosData.removeItem_iOS(id).subscribe(function (res) {
             if (res.n == 1) {
                 for (var i = 0; i < list.length; i++) {
@@ -2223,6 +2357,14 @@ var WebDataService = (function () {
         var _this = this;
         return this._http.delete('/web/' + id).map(function (result) { return _this.result = result.json(); });
     };
+    WebDataService.prototype.editItem_web = function (id) {
+        var _this = this;
+        return this._http.get('/web/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    WebDataService.prototype.saveEditItem_web = function (id, item) {
+        var _this = this;
+        return this._http.put('/web/' + id, item).map(function (result) { return _this.result = result.json(); });
+    };
     return WebDataService;
 }());
 WebDataService = __decorate([
@@ -2256,7 +2398,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/web-list/web-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(wList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web *ngIf=\"iVisi\"></app-create-item-web>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(wList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(wList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-web>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -2282,8 +2424,16 @@ var WebListComponent = (function () {
     function WebListComponent(_webData) {
         this._webData = _webData;
         this.iVisi = false;
+        this.editId = "";
+        this.editFlag = false;
     }
     WebListComponent.prototype.ngOnInit = function () {
+        this.getItems();
+    };
+    WebListComponent.prototype.showHide = function () {
+        return this.flagVal;
+    };
+    WebListComponent.prototype.getItems = function () {
         var _this = this;
         this._webData.getList_web().subscribe(function (res) {
             _this.web_List = res;
@@ -2291,6 +2441,14 @@ var WebListComponent = (function () {
     };
     WebListComponent.prototype.addItem = function () {
         this.iVisi = true;
+        this.editFlag = false;
+        this.flagVal = "showPU";
+    };
+    WebListComponent.prototype.editItem = function (id) {
+        this.editFlag = true;
+        this.iVisi = true;
+        this.editId = id; //this.getItems();
+        this.flagVal = "showPU";
     };
     WebListComponent.prototype.delItem = function (id) {
         var list = this.web_List;

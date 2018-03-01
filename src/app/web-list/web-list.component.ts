@@ -11,16 +11,32 @@ export class WebListComponent implements OnInit {
   list: Array<any>;
   constructor(private _webData :WebDataService) { }
   web_List: Array<any>;
+  public flagVal;
   iVisi = false;
+  editId = "";
+  editFlag = false;
   ngOnInit():void{
+    this.getItems();
+  }
+  showHide(){
+    return this.flagVal;
+  }
+  getItems(){
     this._webData.getList_web().subscribe(res => {
       this.web_List = res;
     });
   }
   addItem(){
     this.iVisi = true;
+    this.editFlag = false;
+    this.flagVal = "showPU";    
   }
-
+  editItem(id: any){
+    this.editFlag = true;
+    this.iVisi = true;
+    this.editId = id;    //this.getItems();
+    this.flagVal = "showPU"; 
+  }
   delItem(id: any){
     var list= this.web_List;
     console.log(list+',sdsd,'+id);

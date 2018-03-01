@@ -11,20 +11,11 @@ const _url="htpt://localhost:3000/file/iOS";
   styleUrls: ['./create-item-ios.component.css']
 })
 export class CreateItemIosComponent implements OnInit {
-  //imgUpload="";
+
   imgUpload:string;
   title:string;version:string;desc:string;devBy:string;supBy:string;verHis:string;codeRepo:string;
   newItem= {};
-  // editItem = {
-  //   Icon : "",
-  //   Title: "",
-  //   Desc: "",
-  //   Version: "",
-  //   DevelopedBy: "",
-  //   SupportedBy: "",
-  //   VersionsHistory: "",
-  //   CodeRepository: ""
-  // };
+
   eFlag = false;
   //newWebItem = {};
   constructor(private iOS_ele:IosListComponent,private ios_api:IOsdataService) {
@@ -88,18 +79,6 @@ export class CreateItemIosComponent implements OnInit {
           } 
         });
       }else{
-      //   this.newItem=
-      //     {
-      //       Icon : this.imgUpload,
-      //       Title: this.title,
-      //       Desc: this.desc,
-      //       Version: this.version,
-      //       DevelopedBy: this.devBy,
-      //       SupportedBy: this.supBy,
-      //       VersionsHistory: this.verHis,
-      //       CodeRepository: this.codeRepo
-      //     }
-      // console.log(this.newItem);
         this.ios_api.addItem_ios(this.newItem).subscribe(res => {   
           if(typeof(res) != 'object'){
             this.iOS_ele.iVisi = true;

@@ -362,10 +362,10 @@ app-blurbg{
     z-index: 6;
     top:0
 }
-app-create-item-ios.showPU{
+app-create-item-ios.showPU,app-create-item-and.showPU,app-create-item-hyb.showPU,app-create-item-web.showPU{
     animation: animateright 1s;
 }
-app-create-item-ios.hidePU{
+app-create-item-ios.hidePU,app-create-item-and.hidePU,app-create-item-hyb.hidePU,app-create-item-web.hidePU{
     animation: animaterightBack 1s;
 }
 @keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}

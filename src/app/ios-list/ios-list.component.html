@@ -16,11 +16,11 @@
                                 <li>{{iList.VersionsHistory}}</li>
                                 <li>{{iList.CodeRepository}}</li>               
                             </ul>
-                            <p><span class="glyphicon glyphicon-pencil"></span></p>
+                            <p><span class="glyphicon glyphicon-pencil" (click)="editItem(iList._id)"></span></p>
                             <p><span class="glyphicon glyphicon-remove" (click)="delItem(iList._id)"></span></p>
                     </div>
              </li>            
         </ul>  
 </section>
-<app-create-item-ios *ngIf="iVisi"></app-create-item-ios>
+<app-create-item-ios [ngClass]="showHide()" *ngIf="iVisi"></app-create-item-ios>
 <app-blurbg *ngIf="iVisi"></app-blurbg>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IOsdataService } from '../i-osdata.service';
+import { Item } from '../listItem';
 
 @Component({
   selector: 'app-ios-list',
@@ -8,28 +9,46 @@ import { IOsdataService } from '../i-osdata.service';
 })
 export class IosListComponent implements OnInit{
   list : Array<any>;
+  public flagVal;
   iVisi = false;
+  editId = "";
+  editFlag = false;
   constructor(private _iosData: IOsdataService) { }
   iOS_List : Array<any>;
   ngOnInit():void{
+    this.getItems();
+  }
+  showHide(){
+    return this.flagVal;
+  }
+  getItems(){
     this._iosData.getList_iOS().subscribe(res => {
       this.iOS_List = res;
     });
   }
   addItem(){
     this.iVisi = true;
+    this.editFlag = false;
+    this.flagVal = "showPU";    
   }
-  // delItem(id: any){
-  //   var list= this.iOS_List;
-  //   console.log(list+',sdsd,'+id);
-  //   this._iosData.removeItem_iOS(id).subscribe(res => {
-  //     if(res.n == 1){
-  //       for(var i=0; i< list.length; i++){
-  //         if(list[i]._id == id){list.splice(i,1)}
-  //       }
-  //     }
-  //   });
-  // }
+  editItem(id: any){
+    this.editFlag = true;
+    this.iVisi = true;
+    this.editId = id;    //this.getItems();
+    this.flagVal = "showPU"; 
+  }
+  delItem(id: any){
+    var list= this.iOS_List;
+    console.log(list+',sdsd,'+id);
+    this._iosData.removeItem_iOS(id).subscribe(res => {
+      if(res.n == 1){
+        for(var i=0; i< list.length; i++){
+          if(list[i]._id == id)
+          {list.splice(i,1)}
+        }
+      }
+    });
+  }
 
 
 

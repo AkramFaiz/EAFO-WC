@@ -4,6 +4,19 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var mongojs = require("mongojs");
 var db = mongojs('EAFO',['user','iOS']);
+var multer = require('multer');
+var fs = require('fs');
+
+var storage = multer.diskStorage({
+	destination: function(req,file,cb){
+		cb(null,'/Users/akramfaiz/Documents/work/EAFO-WC/src/assets');
+	},
+	filename: function(req,file,cb){
+		cb(null, file.originalname+ '-' + Date.now()+'.jpg')
+	}
+});
+var upload = multer({ storage: storage }).single('file');
+
 let response = {
     sts : 200,
     msg : null,
@@ -23,6 +36,7 @@ router.get('/user',(req, res, next) => {
  })
 router.post('/user',(req, res, next) => {
     var newObj = req.body;
+    
     db.user.insert(newObj, function(err, doc) {
         if (err) throw err;
         console.log("1 document inserted");
@@ -38,20 +52,87 @@ router.post('/user',(req, res, next) => {
         res.json(docs);
     });
 });
+
+// router.post('/iOS',function(req, res, next){
+//     upload(req,res,function(err){
+//         console.log(res);
+//         console.log('---');
+//         console.log(req.body);
+//         console.log('---');
+//         console.log(req.file);
+//         console.log('---');
+//         console.log(err);
+//         if(err){
+//             return res.status(501).json({error:err});          
+//         }
+//         return res.json({originalname:req.file.originalname, uploadname: req.file.filename});
+//     });
+// });
+
+// router.post('/iOS',upload.single('file'),function(req,res){
+//     var newObj = req.body;
+//     console.log('---');
+//     console.log(req);
+//     console.log('---');
+//     console.log(req.file);
+//     console.log('---');
+// 	console.log(req.file.path);
+// 	var imgPath = req.file.path.split('/public');
+// 	console.log(imgPath);
+// 	var records = {		
+//         Icon: imgPath[1],
+//         Title: newObj.Title,
+//         Desc : newObj.Desc,
+//         Version : newObj.Version,
+//         DevelopedBy : newObj.DevelopedBy,
+//         SupportedBy : newObj.SupportedBy,
+//         VersionsHistory : newObj.VersionsHistory,
+//         CodeRepository : newObj.CodeRepository
+// 	}
+//     db.iOS.insert(records, function(err, doc) {
+//         if (err) throw err;
+//         console.log("1 document inserted");
+//         res.json(doc);
+//       });
+// });
+
 router.post('/iOS',(req, res, next) => {
     var newObj = req.body;
+    console.log(newObj);
     db.iOS.insert(newObj, function(err, doc) {
         if (err) throw err;
         console.log("1 document inserted");
         res.json(doc);
       });
 });
-router.get('/iOS/:id',(req, res, next) => {
+router.delete('/iOS/:id',(req, res, next) => {
     var curId = req.params.id;
-    console.log('iD====',curId);
     db.iOS.remove({_id: mongojs.ObjectId(curId)}, function(err, doc) {
         res.json(doc);
     });
+});
+//edit
+router.get('/iOS/:id',function(req,res){
+    var curId = req.params.id;
+    console.log('iD====',curId);
+	db.iOS.findOne({_id: mongojs.ObjectId(curId)},function(err,doc){
+		res.json(doc);
+	});
+});
+router.put('/iOS/:id',function(req,res){
+    var curId = req.params.id;
+    
+    db.iOS.findAndModify({query: {_id: mongojs.ObjectId(curId)},update:{$set:
+        {   Icon : req.body.Icon,
+            Title: req.body.Title,
+            Desc: req.body.Desc,
+            Version: req.body.Version,
+            DevelopedBy: req.body.DevelopedBy,
+            SupportedBy: req.body.SupportedBy,
+            VersionsHistory: req.body.VersionsHistory,
+            CodeRepository: req.body.CodeRepository}},new: true}, function(err,doc){
+		res.json(doc);
+	});
 });
 /* iOS end */
 
@@ -71,10 +152,10 @@ router.post('/web',(req, res, next) => {
         res.json(doc);
       });
 });
-router.get('/iOS/:id',(req, res, next) => {
+router.delete('/web/:id',(req, res, next) => {
     var curId = req.params.id;
     console.log('iD====',curId);
-    db.iOS.remove({_id: mongojs.ObjectId(curId)}, function(err, doc) {
+    db.web.remove({_id: mongojs.ObjectId(curId)}, function(err, doc) {
         res.json(doc);
     });
 });
@@ -96,6 +177,13 @@ router.post('/and',(req, res, next) => {
         res.json(doc);
       });
 });
+router.delete('/and/:id',(req, res, next) => {
+    var curId = req.params.id;
+    console.log('iD====',curId);
+    db.and.remove({_id: mongojs.ObjectId(curId)}, function(err, doc) {
+        res.json(doc);
+    });
+});
 /* and end */
 
 /* hyb */
@@ -113,6 +201,13 @@ router.post('/hyb',(req, res, next) => {
         console.log("1 document inserted");
         res.json(doc);
       });
+});
+router.delete('/hyb/:id',(req, res, next) => {
+    var curId = req.params.id;
+    console.log('iD====',curId);
+    db.hyb.remove({_id: mongojs.ObjectId(curId)}, function(err, doc) {
+        res.json(doc);
+    });
 });
 /* hyb end */
 module.exports = router;

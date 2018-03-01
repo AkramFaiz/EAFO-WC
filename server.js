@@ -4,9 +4,6 @@ var _path = require('path');
 var _http = require('http');
 var app = express();
 var cors = require('cors');
-//var MongoClient = require('mongodb').MongoClient;
-//var ObjectID = require('mongodb').ObjectID;
-//var dbConn = "mongodb://localhost:27017/";
 
 var api = require('./server/api');
 app.use(_bp.json());
@@ -15,17 +12,13 @@ app.use(_bp.urlencoded({extended: false}));
 app.use(express.static(_path.join(__dirname,'dist')));
 
 app.use('/',api);
-
-/*
-app.use(function(req, res, next) { //allow cross origin requests
-        res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
-        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        res.header("Access-Control-Allow-Credentials", true);
-        next();
-    });
-*/
-
+app.use(function(req,res,next){
+	res.header("Access-Control-Allow-Origin","*");
+	res.header("Access-Control-Allow-Headers","Origin,X-Requested-With, Content-Type, Accept, Authorization, sid");
+	res.header("Access-Control-Allow-Methods"," POST, GET, OPTIONS, DELETE, PUT");
+	next();
+});
+app.use('/file',api);
 app.use(cors());
 
 app.get('*'),(req,res) => {
@@ -39,8 +32,19 @@ var server = _http.createServer(app);
 server.listen(port, () => console.log("Server is running" ));
 
 
+//var MongoClient = require('mongodb').MongoClient;
+//var ObjectID = require('mongodb').ObjectID;
+//var dbConn = "mongodb://localhost:27017/";
 
-
+/*
+app.use(function(req, res, next) { //allow cross origin requests
+        res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
+        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header("Access-Control-Allow-Credentials", true);
+        next();
+    });
+*/
 
 // app.get('/user', (req, res) => checkCredentials(res));
 // app.get('/iOS', (req, res) => getiOSData(res));

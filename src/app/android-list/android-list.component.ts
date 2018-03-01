@@ -20,16 +20,21 @@ export class AndroidListComponent implements OnInit {
 addItem(){
   this.iVisi = true;
 }
-  // delItem(id: any){
-  //   var list= this.iOS_List;
-  //   console.log(list+',sdsd,'+id);
-  //   this._iosData.removeItem_iOS(id).subscribe(res => {
-  //     if(res.n == 1){
-  //       for(var i=0; i< list.length; i++){
-  //         if(list[i]._id == id){list.splice(i,1)}
-  //       }
-  //     }
-  //   });
+
+
+delItem(id: any){
+  var list= this.and_List;
+  console.log(list+',sdsd,'+id);
+  this._andData.removeItem_and(id).subscribe(res => {
+    if(res.n == 1){
+      for(var i=0; i< list.length; i++){
+        if(list[i]._id == id)
+        {list.splice(i,1)}
+      }
+    }
+  });
+}
+
 
   /*and_List=[
   {

@@ -17,6 +17,7 @@ import { IOsdataService } from './i-osdata.service';
 import { AndDataService } from './and-data.service';
 import { HybdataService} from './hybdata.service';
 import { WebDataService } from './web-data.service';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AuthGuard } from './auth.guard';
 import { HeaderComponent } from './header/header.component';
@@ -129,7 +130,8 @@ const appRoutes:Routes = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpModule
+    HttpModule,
+    FileUploadModule
   ],
   providers: [LoginService,AuthGuard,IOsdataService,AndDataService,HybdataService,WebDataService],
   bootstrap: [AppComponent]

@@ -20,6 +20,20 @@ export class WebListComponent implements OnInit {
   addItem(){
     this.iVisi = true;
   }
+
+  delItem(id: any){
+    var list= this.web_List;
+    console.log(list+',sdsd,'+id);
+    this._webData.removeItem_web(id).subscribe(res => {
+      if(res.n == 1){
+        for(var i=0; i< list.length; i++){
+          if(list[i]._id == id)
+          {list.splice(i,1)}
+        }
+      }
+    });
+  }
+
 /*
   web_List=[
   {

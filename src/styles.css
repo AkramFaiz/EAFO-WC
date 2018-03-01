@@ -362,6 +362,14 @@ app-blurbg{
     z-index: 6;
     top:0
 }
+app-create-item-ios.showPU{
+    animation: animateright 1s;
+}
+app-create-item-ios.hidePU{
+    animation: animaterightBack 1s;
+}
+@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+@keyframes animaterightBack{from{left:0;opacity:1} to{left:-300px;opacity:0}}
 app-create-item-ios,app-create-item-and,app-create-item-hyb,app-create-item-web,app-msg-toast{
     width: 85%;
     height: 85%;

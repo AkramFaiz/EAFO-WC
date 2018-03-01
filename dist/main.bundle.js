@@ -56,7 +56,7 @@ var AndDataService = (function () {
     return AndDataService;
 }());
 AndDataService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], AndDataService);
 
@@ -86,7 +86,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/android-list/android-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\">\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-and *ngIf=\"iVisi\"></app-create-item-and>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\">\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(aList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-and *ngIf=\"iVisi\"></app-create-item-and>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -122,10 +122,23 @@ var AndroidListComponent = (function () {
     AndroidListComponent.prototype.addItem = function () {
         this.iVisi = true;
     };
+    AndroidListComponent.prototype.delItem = function (id) {
+        var list = this.and_List;
+        console.log(list + ',sdsd,' + id);
+        this._andData.removeItem_and(id).subscribe(function (res) {
+            if (res.n == 1) {
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i]._id == id) {
+                        list.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
     return AndroidListComponent;
 }());
 AndroidListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-android-list',
         template: __webpack_require__("../../../../../src/app/android-list/android-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/android-list/android-list.component.css")]
@@ -187,7 +200,7 @@ var AndroidComponent = (function () {
     return AndroidComponent;
 }());
 AndroidComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-android',
         template: __webpack_require__("../../../../../src/app/android/android.component.html"),
         styles: [__webpack_require__("../../../../../src/app/android/android.component.css")]
@@ -243,7 +256,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -277,29 +290,32 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__and_data_service__ = __webpack_require__("../../../../../src/app/and-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__hybdata_service__ = __webpack_require__("../../../../../src/app/hybdata.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__web_data_service__ = __webpack_require__("../../../../../src/app/web-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__create_item_ios_create_item_ios_component__ = __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__create_item_web_create_item_web_component__ = __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__create_item_hyb_create_item_hyb_component__ = __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__create_item_and_create_item_and_component__ = __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__blurbg_blurbg_component__ = __webpack_require__("../../../../../src/app/blurbg/blurbg.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__msg_toast_msg_toast_component__ = __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__create_item_ios_create_item_ios_component__ = __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__create_item_web_create_item_web_component__ = __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__create_item_hyb_create_item_hyb_component__ = __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__create_item_and_create_item_and_component__ = __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__blurbg_blurbg_component__ = __webpack_require__("../../../../../src/app/blurbg/blurbg.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__msg_toast_msg_toast_component__ = __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -350,48 +366,48 @@ var appRoutes = [
     },
     {
         path: 'home',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_8__home_home_component__["a" /* HomeComponent */]
     },
     {
         path: 'list',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__["a" /* ListViewComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_27__list_view_list_view_component__["a" /* ListViewComponent */]
     },
     {
         path: 'iOS',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_9__ios_ios_component__["a" /* IosComponent */]
     },
     {
         path: ' android',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */]
     },
     {
         path: 'hydrid',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */]
     },
     {
         path: 'iosList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_21__ios_list_ios_list_component__["a" /* IosListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_22__ios_list_ios_list_component__["a" /* IosListComponent */]
     },
     {
         path: 'andList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_24__android_list_android_list_component__["a" /* AndroidListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_25__android_list_android_list_component__["a" /* AndroidListComponent */]
     },
     {
         path: 'hybList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_22__hyb_list_hyb_list_component__["a" /* HybListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_23__hyb_list_hyb_list_component__["a" /* HybListComponent */]
     },
     {
         path: 'webList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_23__web_list_web_list_component__["a" /* WebListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_24__web_list_web_list_component__["a" /* WebListComponent */]
     }
 ];
 var AppModule = (function () {
@@ -400,7 +416,7 @@ var AppModule = (function () {
     return AppModule;
 }());
 AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["M" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_6__login_login_component__["a" /* LoginComponent */],
@@ -410,31 +426,32 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */],
             __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */],
             __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__["a" /* WelcomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__desktop_desktop_component__["a" /* DesktopComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__ios_list_ios_list_component__["a" /* IosListComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__hyb_list_hyb_list_component__["a" /* HybListComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__web_list_web_list_component__["a" /* WebListComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__android_list_android_list_component__["a" /* AndroidListComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__list_view_list_view_component__["a" /* ListViewComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__create_item_ios_create_item_ios_component__["a" /* CreateItemIosComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__create_item_web_create_item_web_component__["a" /* CreateItemWebComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__create_item_hyb_create_item_hyb_component__["a" /* CreateItemHybComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__create_item_and_create_item_and_component__["a" /* CreateItemAndComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__blurbg_blurbg_component__["a" /* BlurbgComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__msg_toast_msg_toast_component__["a" /* MsgToastComponent */]
+            __WEBPACK_IMPORTED_MODULE_20__header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__desktop_desktop_component__["a" /* DesktopComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__ios_list_ios_list_component__["a" /* IosListComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__hyb_list_hyb_list_component__["a" /* HybListComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__web_list_web_list_component__["a" /* WebListComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__android_list_android_list_component__["a" /* AndroidListComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__list_view_list_view_component__["a" /* ListViewComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__create_item_ios_create_item_ios_component__["a" /* CreateItemIosComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__create_item_web_create_item_web_component__["a" /* CreateItemWebComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__create_item_hyb_create_item_hyb_component__["a" /* CreateItemHybComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__create_item_and_create_item_and_component__["a" /* CreateItemAndComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__blurbg_blurbg_component__["a" /* BlurbgComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__msg_toast_msg_toast_component__["a" /* MsgToastComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_28__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_27__angular_http__["b" /* HttpModule */]
+            __WEBPACK_IMPORTED_MODULE_29__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_28__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_18_ng2_file_upload__["FileUploadModule"]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_18__auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__["a" /* IOsdataService */], __WEBPACK_IMPORTED_MODULE_15__and_data_service__["a" /* AndDataService */], __WEBPACK_IMPORTED_MODULE_16__hybdata_service__["a" /* HybdataService */], __WEBPACK_IMPORTED_MODULE_17__web_data_service__["a" /* WebDataService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__["a" /* IOsdataService */], __WEBPACK_IMPORTED_MODULE_15__and_data_service__["a" /* AndDataService */], __WEBPACK_IMPORTED_MODULE_16__hybdata_service__["a" /* HybdataService */], __WEBPACK_IMPORTED_MODULE_17__web_data_service__["a" /* WebDataService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -471,7 +488,7 @@ var AuthGuard = (function () {
     return AuthGuard;
 }());
 AuthGuard = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__login_service__["a" /* LoginService */]) === "function" && _a || Object])
 ], AuthGuard);
 
@@ -529,7 +546,7 @@ var BlurbgComponent = (function () {
     return BlurbgComponent;
 }());
 BlurbgComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-blurbg',
         template: __webpack_require__("../../../../../src/app/blurbg/blurbg.component.html"),
         styles: [__webpack_require__("../../../../../src/app/blurbg/blurbg.component.css")]
@@ -641,7 +658,7 @@ var CreateItemAndComponent = (function () {
     return CreateItemAndComponent;
 }());
 CreateItemAndComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-create-item-and',
         template: __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.css")]
@@ -754,7 +771,7 @@ var CreateItemHybComponent = (function () {
     return CreateItemHybComponent;
 }());
 CreateItemHybComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-create-item-hyb',
         template: __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.css")]
@@ -788,7 +805,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create-item-ios/create-item-ios.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" /></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" ng2FileSelect [uploader]=\"fileUploader\" /></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
 
 /***/ }),
 
@@ -812,25 +829,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+var _url = "htpt://localhost:3000/file/iOS";
 var CreateItemIosComponent = (function () {
     //newWebItem = {};
     function CreateItemIosComponent(iOS_ele, ios_api) {
         this.iOS_ele = iOS_ele;
         this.ios_api = ios_api;
-        this.imgUpload = "assets/iOS2.png";
-        this.title = "";
-        this.version = "";
-        this.desc = "";
-        this.devBy = "";
-        this.supBy = "";
-        this.verHis = "";
-        this.codeRepo = "";
         this.newItem = {};
+        // editItem = {
+        //   Icon : "",
+        //   Title: "",
+        //   Desc: "",
+        //   Version: "",
+        //   DevelopedBy: "",
+        //   SupportedBy: "",
+        //   VersionsHistory: "",
+        //   CodeRepository: ""
+        // };
+        this.eFlag = false;
+        //  this.fileUploader.onCompleteItem = (item:any,response:any, status:any, headers:any)=>{
+        //    this.attList.push(JSON.parse(response));
+        //  }
     }
+    // fileUploader:FileUploader  = new FileUploader({url:_url});
+    // attList:any = [];
     CreateItemIosComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.iOS_ele.editFlag == true) {
+            this.eFlag = true;
+            this.ios_api.editItem_iOS(this.iOS_ele.editId).subscribe(function (res) {
+                // this.selectedItem = res;
+                _this.imgUpload = "assets/iOS1.png";
+                _this.title = res.Title;
+                _this.desc = res.Desc;
+                _this.version = res.Version;
+                _this.devBy = res.DevelopedBy;
+                _this.supBy = res.SupportedBy;
+                _this.verHis = res.VersionsHistory;
+                _this.codeRepo = res.CodeRepository;
+            });
+        }
+        else {
+            this.eFlag = false;
+            this.imgUpload = "assets/iOS2.png";
+            this.title = "";
+            this.version = "";
+            this.desc = "";
+            this.devBy = "";
+            this.supBy = "";
+            this.verHis = "";
+            this.codeRepo = "";
+        }
     };
     CreateItemIosComponent.prototype.closePU = function () {
+        this.iOS_ele.flagVal = "hidePU";
+        //setInterval (() => {
         this.iOS_ele.iVisi = false;
+        //}, 1000);
         this.imgUpload = "";
         this.title = "";
         this.version = "";
@@ -844,29 +899,58 @@ var CreateItemIosComponent = (function () {
         var _this = this;
         this.newItem =
             {
-                'Icon': this.imgUpload,
-                'Title': this.title,
-                'Desc': this.desc,
-                'Version': this.version,
-                'DevelopedBy': this.devBy,
-                'SupportedBy': this.supBy,
-                'VersionsHistory': this.verHis,
-                'CodeRepository': this.codeRepo
+                Icon: this.imgUpload,
+                Title: this.title,
+                Desc: this.desc,
+                Version: this.version,
+                DevelopedBy: this.devBy,
+                SupportedBy: this.supBy,
+                VersionsHistory: this.verHis,
+                CodeRepository: this.codeRepo
             };
         console.log(this.newItem);
-        this.ios_api.addItem_ios(this.newItem).subscribe(function (res) {
-            if (typeof (res) != 'object') {
-                _this.iOS_ele.iVisi = true;
-            }
-            else {
-                _this.iOS_ele.iVisi = false;
-            }
-        });
+        if (this.eFlag == true) {
+            this.ios_api.saveEditItem_iOS(this.iOS_ele.editId, this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.iOS_ele.iVisi = true;
+                    //this.iOS_ele.flagVal = "hideBack";
+                }
+                else {
+                    _this.iOS_ele.flagVal = "hidePU";
+                    _this.iOS_ele.iVisi = false;
+                    _this.iOS_ele.getItems();
+                }
+            });
+        }
+        else {
+            //   this.newItem=
+            //     {
+            //       Icon : this.imgUpload,
+            //       Title: this.title,
+            //       Desc: this.desc,
+            //       Version: this.version,
+            //       DevelopedBy: this.devBy,
+            //       SupportedBy: this.supBy,
+            //       VersionsHistory: this.verHis,
+            //       CodeRepository: this.codeRepo
+            //     }
+            // console.log(this.newItem);
+            this.ios_api.addItem_ios(this.newItem).subscribe(function (res) {
+                if (typeof (res) != 'object') {
+                    _this.iOS_ele.iVisi = true;
+                }
+                else {
+                    _this.iOS_ele.flagVal = "hidePU";
+                    _this.iOS_ele.iVisi = false;
+                    _this.iOS_ele.getItems();
+                }
+            });
+        }
     };
     return CreateItemIosComponent;
 }());
 CreateItemIosComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-create-item-ios',
         template: __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.css")]
@@ -979,7 +1063,7 @@ var CreateItemWebComponent = (function () {
     return CreateItemWebComponent;
 }());
 CreateItemWebComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-create-item-web',
         template: __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.html"),
         styles: [__webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.css")]
@@ -1041,7 +1125,7 @@ var DesktopComponent = (function () {
     return DesktopComponent;
 }());
 DesktopComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-desktop',
         template: __webpack_require__("../../../../../src/app/desktop/desktop.component.html"),
         styles: [__webpack_require__("../../../../../src/app/desktop/desktop.component.css")]
@@ -1108,7 +1192,7 @@ var HeaderComponent = (function () {
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-header',
         template: __webpack_require__("../../../../../src/app/header/header.component.html"),
         styles: [__webpack_require__("../../../../../src/app/header/header.component.css")]
@@ -1180,7 +1264,7 @@ var HomeComponent = (function () {
     return HomeComponent;
 }());
 HomeComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
         template: __webpack_require__("../../../../../src/app/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home.component.css")]
@@ -1214,7 +1298,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/hyb-list/hyb-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section> \n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-hyb *ngIf=\"iVisi\"></app-create-item-hyb>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section> \n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(hList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-hyb *ngIf=\"iVisi\"></app-create-item-hyb>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -1250,10 +1334,23 @@ var HybListComponent = (function () {
     HybListComponent.prototype.addItem = function () {
         this.iVisi = true;
     };
+    HybListComponent.prototype.delItem = function (id) {
+        var list = this.hyb_List;
+        console.log(list + ',sdsd,' + id);
+        this._hybData.removeItem_hyb(id).subscribe(function (res) {
+            if (res.n == 1) {
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i]._id == id) {
+                        list.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
     return HybListComponent;
 }());
 HybListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-hyb-list',
         template: __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.css")]
@@ -1305,7 +1402,7 @@ var HybdataService = (function () {
     return HybdataService;
 }());
 HybdataService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], HybdataService);
 
@@ -1363,7 +1460,7 @@ var HybridComponent = (function () {
     return HybridComponent;
 }());
 HybridComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-hybrid',
         template: __webpack_require__("../../../../../src/app/hybrid/hybrid.component.html"),
         styles: [__webpack_require__("../../../../../src/app/hybrid/hybrid.component.css")]
@@ -1411,10 +1508,18 @@ var IOsdataService = (function () {
         var _this = this;
         return this._http.delete('/iOS/' + id).map(function (result) { return _this.result = result.json(); });
     };
+    IOsdataService.prototype.editItem_iOS = function (id) {
+        var _this = this;
+        return this._http.get('/iOS/' + id).map(function (result) { return _this.result = result.json(); });
+    };
+    IOsdataService.prototype.saveEditItem_iOS = function (id, item) {
+        var _this = this;
+        return this._http.put('/iOS/' + id, item).map(function (result) { return _this.result = result.json(); });
+    };
     return IOsdataService;
 }());
 IOsdataService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], IOsdataService);
 
@@ -1444,7 +1549,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/ios-list/ios-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\">\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(iList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>  \n</section>\n<app-create-item-ios *ngIf=\"iVisi\"></app-create-item-ios>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\">\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(iList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(iList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>  \n</section>\n<app-create-item-ios [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-ios>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -1470,8 +1575,16 @@ var IosListComponent = (function () {
     function IosListComponent(_iosData) {
         this._iosData = _iosData;
         this.iVisi = false;
+        this.editId = "";
+        this.editFlag = false;
     }
     IosListComponent.prototype.ngOnInit = function () {
+        this.getItems();
+    };
+    IosListComponent.prototype.showHide = function () {
+        return this.flagVal;
+    };
+    IosListComponent.prototype.getItems = function () {
         var _this = this;
         this._iosData.getList_iOS().subscribe(function (res) {
             _this.iOS_List = res;
@@ -1479,11 +1592,32 @@ var IosListComponent = (function () {
     };
     IosListComponent.prototype.addItem = function () {
         this.iVisi = true;
+        this.editFlag = false;
+        this.flagVal = "showPU";
+    };
+    IosListComponent.prototype.editItem = function (id) {
+        this.editFlag = true;
+        this.iVisi = true;
+        this.editId = id; //this.getItems();
+        this.flagVal = "showPU";
+    };
+    IosListComponent.prototype.delItem = function (id) {
+        var list = this.iOS_List;
+        console.log(list + ',sdsd,' + id);
+        this._iosData.removeItem_iOS(id).subscribe(function (res) {
+            if (res.n == 1) {
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i]._id == id) {
+                        list.splice(i, 1);
+                    }
+                }
+            }
+        });
     };
     return IosListComponent;
 }());
 IosListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-ios-list',
         template: __webpack_require__("../../../../../src/app/ios-list/ios-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/ios-list/ios-list.component.css")]
@@ -1545,7 +1679,7 @@ var IosComponent = (function () {
     return IosComponent;
 }());
 IosComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-ios',
         template: __webpack_require__("../../../../../src/app/ios/ios.component.html"),
         styles: [__webpack_require__("../../../../../src/app/ios/ios.component.css")]
@@ -1606,7 +1740,7 @@ var ListViewComponent = (function () {
     return ListViewComponent;
 }());
 ListViewComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-list-view',
         template: __webpack_require__("../../../../../src/app/list-view/list-view.component.html"),
         styles: [__webpack_require__("../../../../../src/app/list-view/list-view.component.css")]
@@ -1662,7 +1796,7 @@ var LoginService = (function () {
     return LoginService;
 }());
 LoginService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], LoginService);
 
@@ -1795,7 +1929,7 @@ var LoginComponent = (function () {
     return LoginComponent;
 }());
 LoginComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-login',
         template: __webpack_require__("../../../../../src/app/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
@@ -1867,7 +2001,7 @@ var MsgToastComponent = (function () {
     return MsgToastComponent;
 }());
 MsgToastComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-msg-toast',
         template: __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.html"),
         styles: [__webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.css")]
@@ -1929,7 +2063,7 @@ var NavBarComponent = (function () {
     return NavBarComponent;
 }());
 NavBarComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-nav-bar',
         template: __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.html"),
         styles: [__webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.css")]
@@ -2022,7 +2156,7 @@ var SignupComponent = (function () {
     return SignupComponent;
 }());
 SignupComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-signup',
         template: __webpack_require__("../../../../../src/app/signup/signup.component.html"),
         styles: [__webpack_require__("../../../../../src/app/signup/signup.component.css")]
@@ -2092,7 +2226,7 @@ var WebDataService = (function () {
     return WebDataService;
 }());
 WebDataService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], WebDataService);
 
@@ -2122,7 +2256,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/web-list/web-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web *ngIf=\"iVisi\"></app-create-item-web>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(wList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web *ngIf=\"iVisi\"></app-create-item-web>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -2158,10 +2292,23 @@ var WebListComponent = (function () {
     WebListComponent.prototype.addItem = function () {
         this.iVisi = true;
     };
+    WebListComponent.prototype.delItem = function (id) {
+        var list = this.web_List;
+        console.log(list + ',sdsd,' + id);
+        this._webData.removeItem_web(id).subscribe(function (res) {
+            if (res.n == 1) {
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i]._id == id) {
+                        list.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
     return WebListComponent;
 }());
 WebListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-web-list',
         template: __webpack_require__("../../../../../src/app/web-list/web-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/web-list/web-list.component.css")]
@@ -2227,7 +2374,7 @@ var WelcomeComponent = (function () {
     return WelcomeComponent;
 }());
 WelcomeComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-welcome',
         template: __webpack_require__("../../../../../src/app/welcome/welcome.component.html"),
         styles: [__webpack_require__("../../../../../src/app/welcome/welcome.component.css")]
@@ -2278,7 +2425,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });

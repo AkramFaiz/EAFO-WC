@@ -292,7 +292,7 @@ app-web-list section,app-ios-list section,app-android-list section,app-hyb-list 
 }
 app-web-list section ul,app-ios-list section ul,app-android-list section ul,app-hyb-list section ul{
     width: 96%;
-    height: 82%;
+    height: 80%;
     overflow: scroll;
     margin: auto;
     background: rgba(0, 0, 0, 0.45);

@@ -11,5 +11,7 @@ export class ListViewComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // addItem(e){
+  //   console.log(e);
+  // }
 }

@@ -4,7 +4,7 @@
     position: relative;
     margin: 0;
     padding: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: #1b212f; /*rgba(0, 0, 0, 0.5); */
     box-shadow: 1px 1px 15px #fdc844;
 }
 #comHeader li{

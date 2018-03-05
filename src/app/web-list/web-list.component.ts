@@ -40,6 +40,8 @@ export class WebListComponent implements OnInit {
   delItem(id: any){
     var list= this.web_List;
     console.log(list+',sdsd,'+id);
+    if(!confirm('Do you want to delete?'))
+    {return false;}else{
     this._webData.removeItem_web(id).subscribe(res => {
       if(res.n == 1){
         for(var i=0; i< list.length; i++){
@@ -48,6 +50,7 @@ export class WebListComponent implements OnInit {
         }
       }
     });
+   }
   }
 
 /*

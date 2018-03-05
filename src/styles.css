@@ -56,6 +56,41 @@ select:-webkit-autofill:focus {
     font-family: EricFontMedium;
     src: url(fonts/EricsSans-Medium.otf);
 }
+/* latest changes */
+app-header{
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    z-index: 5;
+}
+app-nav-bar{
+    position: fixed;
+    width: 100%;
+    z-index: 6;
+    top: 60px;
+    height: 55px;
+}
+app-nav-bar + section{
+    position: fixed;
+    overflow: hidden;
+    top: 120px;
+    width: 100%;
+    height: 80%;
+}
+app-list-view{
+    position: fixed;
+    height: 115px;
+    width: 100%;
+    z-index: 3;
+    background: #1b212f;
+}
+app-nav-bar + section > app-list-view + ul{
+    padding: 115px 0 5px 0px;
+}
+/* #comHeader{
+    height: 100%;
+} */
+/* lc end */
 h1{
     margin: 0;
 }
@@ -284,15 +319,15 @@ app-ios > div li:last-child,app-hybrid > div li:last-child,app-android > div li:
     margin: 5px 5%;
     font-size: small;
 }
-app-web-list section,app-ios-list section,app-android-list section,app-hyb-list section{
+/* app-web-list section,app-ios-list section,app-android-list section,app-hyb-list section{
     width: 100%;
     height: 80%;
     overflow: hidden;
     position: relative;
-}
+} */
 app-web-list section ul,app-ios-list section ul,app-android-list section ul,app-hyb-list section ul{
     width: 96%;
-    height: 80%;
+    height: 100%;
     overflow: scroll;
     margin: auto;
     background: rgba(0, 0, 0, 0.45);

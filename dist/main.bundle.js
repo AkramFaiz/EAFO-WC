@@ -81,7 +81,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
+exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n    word-break: break-word;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
 
 // exports
 
@@ -277,6 +277,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var AppComponent = (function () {
     function AppComponent() {
     }
+    AppComponent.prototype.ngOnInit = function () {
+        //document.getElementsByTagName('body')[0].clientHeight == document.getElementsByTagName('html')[0].clientHeight;
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -309,30 +312,32 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__android_android_component__ = __webpack_require__("../../../../../src/app/android/android.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__ = __webpack_require__("../../../../../src/app/hybrid/hybrid.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__ = __webpack_require__("../../../../../src/app/welcome/welcome.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__and_data_service__ = __webpack_require__("../../../../../src/app/and-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__hybdata_service__ = __webpack_require__("../../../../../src/app/hybdata.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__web_data_service__ = __webpack_require__("../../../../../src/app/web-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_ng2_file_upload__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__create_item_ios_create_item_ios_component__ = __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__create_item_web_create_item_web_component__ = __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__create_item_hyb_create_item_hyb_component__ = __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__create_item_and_create_item_and_component__ = __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__blurbg_blurbg_component__ = __webpack_require__("../../../../../src/app/blurbg/blurbg.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__msg_toast_msg_toast_component__ = __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_upperCase_pipe__ = __webpack_require__("../../../../../src/app/upperCase.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__login_service__ = __webpack_require__("../../../../../src/app/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__and_data_service__ = __webpack_require__("../../../../../src/app/and-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__hybdata_service__ = __webpack_require__("../../../../../src/app/hybdata.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__web_data_service__ = __webpack_require__("../../../../../src/app/web-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__auth_guard__ = __webpack_require__("../../../../../src/app/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__header_header_component__ = __webpack_require__("../../../../../src/app/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__desktop_desktop_component__ = __webpack_require__("../../../../../src/app/desktop/desktop.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ios_list_ios_list_component__ = __webpack_require__("../../../../../src/app/ios-list/ios-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__hyb_list_hyb_list_component__ = __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__web_list_web_list_component__ = __webpack_require__("../../../../../src/app/web-list/web-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__android_list_android_list_component__ = __webpack_require__("../../../../../src/app/android-list/android-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__nav_bar_nav_bar_component__ = __webpack_require__("../../../../../src/app/nav-bar/nav-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__list_view_list_view_component__ = __webpack_require__("../../../../../src/app/list-view/list-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__create_item_ios_create_item_ios_component__ = __webpack_require__("../../../../../src/app/create-item-ios/create-item-ios.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__create_item_web_create_item_web_component__ = __webpack_require__("../../../../../src/app/create-item-web/create-item-web.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__create_item_hyb_create_item_hyb_component__ = __webpack_require__("../../../../../src/app/create-item-hyb/create-item-hyb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__create_item_and_create_item_and_component__ = __webpack_require__("../../../../../src/app/create-item-and/create-item-and.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__blurbg_blurbg_component__ = __webpack_require__("../../../../../src/app/blurbg/blurbg.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__msg_toast_msg_toast_component__ = __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__filter_filter_component__ = __webpack_require__("../../../../../src/app/filter/filter.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -375,10 +380,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var appRoutes = [
     {
-        path: '',
-        component: __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__["a" /* WelcomeComponent */]
+        path: 'login',
+        component: __WEBPACK_IMPORTED_MODULE_6__login_login_component__["a" /* LoginComponent */]
     },
     {
         path: 'login/:name',
@@ -390,48 +397,56 @@ var appRoutes = [
     },
     {
         path: 'home',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_8__home_home_component__["a" /* HomeComponent */]
     },
     {
         path: 'list',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_27__list_view_list_view_component__["a" /* ListViewComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_28__list_view_list_view_component__["a" /* ListViewComponent */]
     },
     {
         path: 'iOS',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_9__ios_ios_component__["a" /* IosComponent */]
     },
     {
         path: ' android',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */]
     },
     {
         path: 'hydrid',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */]
     },
     {
         path: 'iosList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_22__ios_list_ios_list_component__["a" /* IosListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_23__ios_list_ios_list_component__["a" /* IosListComponent */]
     },
     {
         path: 'andList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_25__android_list_android_list_component__["a" /* AndroidListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_26__android_list_android_list_component__["a" /* AndroidListComponent */]
     },
     {
         path: 'hybList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_23__hyb_list_hyb_list_component__["a" /* HybListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_24__hyb_list_hyb_list_component__["a" /* HybListComponent */]
     },
     {
         path: 'webList',
-        canActivate: [__WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */]],
-        component: __WEBPACK_IMPORTED_MODULE_24__web_list_web_list_component__["a" /* WebListComponent */]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */]],
+        component: __WEBPACK_IMPORTED_MODULE_25__web_list_web_list_component__["a" /* WebListComponent */]
+    },
+    {
+        path: '',
+        component: __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__["a" /* WelcomeComponent */]
+    },
+    {
+        path: '**',
+        component: __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__["a" /* WelcomeComponent */]
     }
 ];
 var AppModule = (function () {
@@ -450,32 +465,34 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__android_android_component__["a" /* AndroidComponent */],
             __WEBPACK_IMPORTED_MODULE_11__hybrid_hybrid_component__["a" /* HybridComponent */],
             __WEBPACK_IMPORTED_MODULE_12__welcome_welcome_component__["a" /* WelcomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__desktop_desktop_component__["a" /* DesktopComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__ios_list_ios_list_component__["a" /* IosListComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__hyb_list_hyb_list_component__["a" /* HybListComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__web_list_web_list_component__["a" /* WebListComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__android_list_android_list_component__["a" /* AndroidListComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__list_view_list_view_component__["a" /* ListViewComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__create_item_ios_create_item_ios_component__["a" /* CreateItemIosComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__create_item_web_create_item_web_component__["a" /* CreateItemWebComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__create_item_hyb_create_item_hyb_component__["a" /* CreateItemHybComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__create_item_and_create_item_and_component__["a" /* CreateItemAndComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__blurbg_blurbg_component__["a" /* BlurbgComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__msg_toast_msg_toast_component__["a" /* MsgToastComponent */]
+            __WEBPACK_IMPORTED_MODULE_21__header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__desktop_desktop_component__["a" /* DesktopComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__ios_list_ios_list_component__["a" /* IosListComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__hyb_list_hyb_list_component__["a" /* HybListComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__web_list_web_list_component__["a" /* WebListComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__android_list_android_list_component__["a" /* AndroidListComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__nav_bar_nav_bar_component__["a" /* NavBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__list_view_list_view_component__["a" /* ListViewComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__create_item_ios_create_item_ios_component__["a" /* CreateItemIosComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__create_item_web_create_item_web_component__["a" /* CreateItemWebComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__create_item_hyb_create_item_hyb_component__["a" /* CreateItemHybComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__create_item_and_create_item_and_component__["a" /* CreateItemAndComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__blurbg_blurbg_component__["a" /* BlurbgComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__msg_toast_msg_toast_component__["a" /* MsgToastComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__filter_filter_component__["a" /* FilterComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__app_upperCase_pipe__["a" /* CapitalizeFirstPipe */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { useHash: true }),
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_29__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_28__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_18_ng2_file_upload__["FileUploadModule"]
+            __WEBPACK_IMPORTED_MODULE_30__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_29__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_19_ng2_file_upload__["FileUploadModule"]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_13__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_19__auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_14__i_osdata_service__["a" /* IOsdataService */], __WEBPACK_IMPORTED_MODULE_15__and_data_service__["a" /* AndDataService */], __WEBPACK_IMPORTED_MODULE_16__hybdata_service__["a" /* HybdataService */], __WEBPACK_IMPORTED_MODULE_17__web_data_service__["a" /* WebDataService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_14__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_20__auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_15__i_osdata_service__["a" /* IOsdataService */], __WEBPACK_IMPORTED_MODULE_16__and_data_service__["a" /* AndDataService */], __WEBPACK_IMPORTED_MODULE_17__hybdata_service__["a" /* HybdataService */], __WEBPACK_IMPORTED_MODULE_18__web_data_service__["a" /* WebDataService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -1248,6 +1265,67 @@ DesktopComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/filter/filter.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/filter/filter.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<ul>\n  <li>\n    <label for=\"devBy\"></label>\n    <select name=\"devBy\" id=\"devBy\">\n      <option></option>\n      <option></option>\n      <option></option>\n    </select>\n  </li>\n  <li>\n      <label for=\"supBy\"></label>\n      <select name=\"supBy\" id=\"supBy\">\n          <option></option>\n          <option></option>\n          <option></option>\n        </select>\n  </li>\n</ul>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/filter/filter.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var FilterComponent = (function () {
+    function FilterComponent() {
+    }
+    FilterComponent.prototype.ngOnInit = function () {
+    };
+    return FilterComponent;
+}());
+FilterComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-filter',
+        template: __webpack_require__("../../../../../src/app/filter/filter.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/filter/filter.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], FilterComponent);
+
+//# sourceMappingURL=filter.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/header/header.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1337,7 +1415,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section>\n    <app-header></app-header>\n    <article>\n      <h3>Welcome </h3>\n      <app-ios routerLink=\"/iosList\"></app-ios>\n      <app-android routerLink=\"/andList\"></app-android>\n      <app-hybrid routerLink=\"/hybList\"></app-hybrid>\n      <app-desktop routerLink=\"/webList\"></app-desktop>\n    </article>\n</section>\n\n"
+module.exports = "<section>\n    <app-header></app-header>\n    <article>\n      <h3>Welcome, {{logUser | capitalizeFirst}}</h3>\n      <app-ios routerLink=\"/iosList\"></app-ios>\n      <app-android routerLink=\"/andList\"></app-android>\n      <app-hybrid routerLink=\"/hybList\"></app-hybrid>\n      <app-desktop routerLink=\"/webList\"></app-desktop>\n    </article>\n</section>\n\n"
 
 /***/ }),
 
@@ -1361,16 +1439,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import { TitleCasePipe } from '@angular/common';
 var HomeComponent = (function () {
     function HomeComponent(_loginService, _actRoute) {
         this._loginService = _loginService;
         this._actRoute = _actRoute;
-        this.name = '';
+        this.logUser = '';
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.x = this._loginService.getUserLoggedIn();
-        console.log(this._loginService);
-        console.log('Name:' + this.x);
+        this.logUser = this._loginService.getLoggedInUser();
+        console.log('Name:' + this.logUser);
     };
     return HomeComponent;
 }());
@@ -1396,7 +1474,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
+exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n    word-break: break-word;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
 
 // exports
 
@@ -1671,7 +1749,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
+exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n    word-break: break-word;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
 
 // exports
 
@@ -1919,6 +1997,9 @@ var LoginService = (function () {
         this.username = uname;
         console.log(this.username);
         this.isUserLoggedIn = true;
+    };
+    LoginService.prototype.getLoggedInUser = function () {
+        return this.username;
     };
     LoginService.prototype.getUserLoggedIn = function () {
         return this.isUserLoggedIn;
@@ -2303,6 +2384,39 @@ var _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/upperCase.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CapitalizeFirstPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var CapitalizeFirstPipe = (function () {
+    function CapitalizeFirstPipe() {
+    }
+    CapitalizeFirstPipe.prototype.transform = function (value, args) {
+        if (value === null)
+            return 'Not assigned';
+        return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+    };
+    return CapitalizeFirstPipe;
+}());
+CapitalizeFirstPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+        name: 'capitalizeFirst'
+    })
+], CapitalizeFirstPipe);
+
+//# sourceMappingURL=upperCase.pipe.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/user.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2385,7 +2499,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
+exports.push([module.i, "section ul li{\n    padding: 0;\n}\ndiv{\n    width: 100%;\n    text-align: center;\n    margin: 0;\n    padding: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n}\ndiv p{\n    width: 5%;\n    height: auto;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    margin: 0;\n}\ndiv p:first-child{\n    width: 15%;\n}\ndiv p label{\n    width: 100%;\n    margin: 0;\n    color: rgba(254, 213, 122, 0.83);\n}\ndiv p span{\n    color: rgba(254, 213, 122, 0.83);\n    margin: 0 5px 0 0;\n}\ndiv ul{\n    width: 70%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\ndiv ul li{\n    background: none;\n    padding: 0;\n    -ms-flex-preferred-size: 45%;\n        flex-basis: 45%;\n    text-align: left;\n    border: none;\n    word-break: break-word;\n}\ndiv ul li:first-child,div ul li:nth-child(3){\n    -webkit-box-ordinal-group: 1;\n        -ms-flex-order: 0;\n            order: 0;\n}\ndiv ul li:nth-child(2){\n    -ms-flex-preferred-size: 96%;\n        flex-basis: 96%;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1;\n}\ndiv ul li:nth-child(7),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6){\n    -webkit-box-ordinal-group: 4;\n        -ms-flex-order: 3;\n            order: 3;\n}\nlabel img{\n    width: 45px;\n    height: 45px;\n    border-radius: 8px;\n}\n@media only screen and (min-width: 768px) {\n    div p{\n        width: 1%;\n    }\n    div p:first-child{\n        width: 10%;\n    }\n    div ul li{\n        width: auto;\n        font-size: unset;\n        border: none;\n    }  \n    div ul li:first-child,div ul li:nth-child(1),div ul li:nth-child(2),div ul li:nth-child(3),div ul li:nth-child(4),div ul li:nth-child(5),div ul li:nth-child(6),div ul li:nth-child(7){\n        -ms-flex-preferred-size: 10%;\n            flex-basis: 10%;\n        -webkit-box-ordinal-group: 1;\n            -ms-flex-order: 0;\n                order: 0;\n    }\n}", ""]);
 
 // exports
 
@@ -2505,7 +2619,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/welcome/welcome.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center\" id=\"welcomePage\">\n    <div>\n      <header>\n      <h2></h2>\n      <h1>{{title}}</h1>\n      </header>  \n    <article>\n        <app-login></app-login>       \n    </article>\n   </div>\n  </div>"
+module.exports = "<div style=\"text-align:center\" id=\"welcomePage\" [style.height.px]=\"ht\">\n    <div>\n      <header>\n      <h2></h2>\n      <h1>{{title}}</h1>\n      </header>  \n    <article>\n        <app-login></app-login>       \n    </article>\n   </div>\n  </div>"
 
 /***/ }),
 
@@ -2533,6 +2647,7 @@ var WelcomeComponent = (function () {
         this.title = 'Ericsson App Factory Outlet';
     }
     WelcomeComponent.prototype.ngOnInit = function () {
+        this.ht = document.getElementsByTagName('html')[0].clientHeight;
     };
     return WelcomeComponent;
 }());

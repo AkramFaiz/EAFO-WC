@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { ActivatedRoute } from '@angular/router';
+//import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    name='';x;
+    logUser:string = '';
   constructor(private _loginService: LoginService, private _actRoute:ActivatedRoute) { }
 
   ngOnInit() {
-    this.x = this._loginService.getUserLoggedIn();
-    console.log(this._loginService);
-    console.log('Name:'+ this.x);
+    this.logUser = this._loginService.getLoggedInUser();
+    console.log('Name:'+ this.logUser);
   }
 
 }

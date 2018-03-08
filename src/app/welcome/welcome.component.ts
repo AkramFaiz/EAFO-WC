@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 export class WelcomeComponent implements OnInit {
   title = 'Ericsson App Factory Outlet';
   constructor(private _router: Router) { }
-
+  ht:number;
   ngOnInit() {
+    this.ht = document.getElementsByTagName('html')[0].clientHeight;
   }
 }

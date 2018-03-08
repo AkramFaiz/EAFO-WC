@@ -11,6 +11,7 @@ import { IosComponent } from './ios/ios.component';
 import { AndroidComponent } from './android/android.component';
 import { HybridComponent } from './hybrid/hybrid.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import {CapitalizeFirstPipe} from '../app/upperCase.pipe';
 
 import { LoginService } from './login.service';
 import { IOsdataService } from './i-osdata.service';
@@ -36,12 +37,13 @@ import { CreateItemHybComponent } from './create-item-hyb/create-item-hyb.compon
 import { CreateItemAndComponent } from './create-item-and/create-item-and.component';
 import { BlurbgComponent } from './blurbg/blurbg.component';
 import { MsgToastComponent } from './msg-toast/msg-toast.component';
+import { FilterComponent } from './filter/filter.component';
 
 
 const appRoutes:Routes = [
   {
-    path: '',
-    component: WelcomeComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'login/:name',
@@ -95,6 +97,14 @@ const appRoutes:Routes = [
     path: 'webList',
     canActivate: [AuthGuard],
     component: WebListComponent
+  },
+  {
+    path: '',
+    component: WelcomeComponent
+  },
+  {
+    path: '**',
+    component: WelcomeComponent
   }
 ]
 
@@ -121,10 +131,12 @@ const appRoutes:Routes = [
     CreateItemHybComponent,
     CreateItemAndComponent,
     BlurbgComponent,
-    MsgToastComponent
+    MsgToastComponent,
+    FilterComponent,
+    CapitalizeFirstPipe
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes,{useHash:true}),
     BrowserModule,
     CommonModule,
     FormsModule,

@@ -18,6 +18,9 @@ export class LoginService {
     console.log(this.username);
     this.isUserLoggedIn = true;
   }
+  getLoggedInUser(){
+    return this.username;
+  }
   getUserLoggedIn(){
     return this.isUserLoggedIn;
   }

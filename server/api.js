@@ -3,7 +3,8 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var mongojs = require("mongojs");
-var db = mongojs('EAFO',['user','iOS']);
+//var db = mongojs('EAFO',['user','iOS','and','web','hyb']);
+var db = mongojs('mongodb://eafo-admin:5tgb^YHN@ds129394.mlab.com:29394/eafo',['user','iOS','and','web','hyb']);
 var multer = require('multer');
 var fs = require('fs');
 

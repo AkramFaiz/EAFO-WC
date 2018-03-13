@@ -1,7 +1,7 @@
-  <header>
-    Sign-Up
-  </header>
   <article>
-  <p>Signing-Up Successful.</p>
-  <button type="submit" (click)="closeMsg()">Ok</button>
+  <p>{{msg}}</p>
+  <div>
+    <!-- <button type="cancel" value="no" [(ngModel)]="userResp" *ngIf="btnVis" (click)="cancelBtn();userRes();">Ok</button> -->
+    <button type="submit" (click)="okBtn();">Ok</button>
+  </div>
   </article>

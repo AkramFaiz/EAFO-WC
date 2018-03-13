@@ -920,7 +920,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/create-item-ios/create-item-ios.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" ng2FileSelect [uploader]=\"fileUploader\" /></li>\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
+module.exports = "<div>\n    <h4>Add New Item</h4><p class=\"clsIcon\" (click)=\"closePU()\"><span class=\"glyphicon glyphicon-remove-sign\"></span></p>        \n  <ul>\n    <li><label>Icon</label><input type=\"file\" name=\"imgUpload\" id=\"imgUpload\" /></li> \n    <!-- ng2FileSelect [uploader]=\"fileUploader\" -->\n    <li><label>Title</label><input type=\"text\" name=\"title\" id=\"title\" [(ngModel)]=\"title\"/></li>\n    <li><label>Version</label><input type=\"text\" name=\"version\" id=\"version\" [(ngModel)]=\"version\"></li>\n    <li><label>Description</label><textarea name=\"desc\" id=\"desc\" cols=\"30\" rows=\"10\" [(ngModel)]=\"desc\"></textarea></li>\n    <li><label>Developed By</label><input type=\"text\" name=\"devBy\" id=\"devBy\" [(ngModel)]=\"devBy\"></li>\n    <li><label>Supported By</label><input type=\"text\" name=\"supBy\" id=\"supBy\" [(ngModel)]=\"supBy\"></li>\n    <li><label>Version History</label><input type=\"text\" name=\"verHis\" id=\"verHis\" [(ngModel)]=\"verHis\"></li>\n    <li><label>Code Repository</label><input type=\"text\" name=\"codeRepo\" id=\"codeRepo\" [(ngModel)]=\"codeRepo\"></li>\n    <li><button (click)=\"closePU()\">Cancel</button><button type=\"submit\" (click)=\"submitItem()\">Submit</button></li>\n  </ul>\n</div>"
 
 /***/ }),
 
@@ -1166,11 +1166,13 @@ var CreateItemWebComponent = (function () {
             this.web_api.saveEditItem_web(this.web_ele.editId, this.newItem).subscribe(function (res) {
                 if (typeof (res) != 'object') {
                     _this.web_ele.iVisi = true;
+                    _this.web_ele.bgVisi = true;
                     //this.iOS_ele.flagVal = "hideBack";
                 }
                 else {
                     _this.web_ele.flagVal = "hidePU";
                     _this.web_ele.iVisi = false;
+                    _this.web_ele.bgVisi = false;
                     _this.web_ele.getItems();
                 }
             });
@@ -2165,7 +2167,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "header{\n    width: 100%;\n    height: 35px;\n    background: antiquewhite;\n    border-top-left-radius: 10px;\n    border-top-right-radius: 10px;\n    padding: 10px;\n}\narticle{\n    height: 70%;\n}\narticle p{\n    margin: 10px 0;\n    padding: 10px;\n    color: #FFFFFF;\n    width: 78%;\n    text-align: center;\n    display: inline-block;\n}\narticle button{\n    margin: auto;\n    padding: 0 8px;\n    border-radius: 4px;\n    background: bisque;\n    display: inline-block;\n}", ""]);
+exports.push([module.i, "article p{\n    margin: 10px 0;\n    padding: 0 10px;\n    color: #FFFFFF;\n    width: 75%;\n    text-align: center;\n    display: inline-block;\n    vertical-align: middle;\n}\narticle div{\n    width: 20%;\n    display: inline-block;\n}\narticle div button{\n    background: #544937;\n    border: none;\n    color: #ffffff;\n    font-size: 12px;\n}", ""]);
 
 // exports
 
@@ -2178,7 +2180,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/msg-toast/msg-toast.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <header>\n    Sign-Up\n  </header>\n  <article>\n  <p>Signing-Up Successful.</p>\n  <button type=\"submit\" (click)=\"closeMsg()\">Ok</button>\n  </article>\n"
+module.exports = "  <article>\n  <p>Sign In Success. {{msg}}</p>\n  <div>\n    <!-- <button type=\"cancel\" value=\"no\" [(ngModel)]=\"userResp\" *ngIf=\"btnVis\" (click)=\"cancelBtn();userRes();\">Ok</button> -->\n    <button type=\"submit\" (click)=\"okBtn();userRes();\">Ok</button>\n  </div>\n  </article>\n"
 
 /***/ }),
 
@@ -2206,25 +2208,44 @@ var MsgToastComponent = (function () {
     function MsgToastComponent(router, sign_ele) {
         this.router = router;
         this.sign_ele = sign_ele;
+        this.okBtnClked = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     MsgToastComponent.prototype.ngOnInit = function () {
     };
-    MsgToastComponent.prototype.closeMsg = function () {
-        this.sign_ele.iVisi = false;
-        this.router.navigateByUrl('/');
+    // cancelBtn(){
+    //   this.sign_ele.popVisi = false;
+    // }
+    MsgToastComponent.prototype.okBtn = function () {
+        console.log('cn:' + this.comName);
+        this.sign_ele.popVisi = false;
+        if (this.comName == "signIn") {
+            this.router.navigateByUrl('/');
+        }
     };
     return MsgToastComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], MsgToastComponent.prototype, "msg", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], MsgToastComponent.prototype, "comName", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
+], MsgToastComponent.prototype, "okBtnClked", void 0);
 MsgToastComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-msg-toast',
         template: __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.html"),
         styles: [__webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */]) === "function" && _c || Object])
 ], MsgToastComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=msg-toast.component.js.map
 
 /***/ }),
@@ -2299,7 +2320,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row.custom-row{\n    width: 90%;\n    height: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    right: 0;\n    left: 0;\n    text-align: center;\n}\nform .form-group{\n    width: 100%;\n    font-size: 12px;\n    height: 100%;\n    margin: 10px auto !important;\n}\n.form-horizontal .form-group{\n    margin: 0;\n}\n.jumbotron,legend{\n    color: #FFFFFF;\n}\n.jumbotron{\n    background: none;\n}\nlabel{\n    text-align: right;\n    padding-right: 10px;\n    width: 40%;\n}\ninput{\n    background: rgba(0, 0, 0, 0.6196078431372549);\n    border: none;\n    width: 50%;\n    padding: 5px;\n    border-radius: 4px;\n}\nbutton{\n    width: 40%;\n    margin-left: 5px;\n}\n.form-group.checkbox label{\n    width: 100%;\n    text-align: center;\n    font-size: 12px;\n}\n.alert-danger{\n    color: #ea7f7d;\n    background-color: rgba(37, 34, 34, 0.6313725490196078);\n    border-color: rgba(235, 204, 209, 0);\n    padding: 5px;\n    width: auto;\n    font-size: 10px;\n    display: inline-block;\n    text-align: center;\n    margin: auto;\n}\nform .form-group:last-child{\n    margin: auto;\n    font-size: 10px;\n}\ninput[type=\"radio\"], input[type=\"checkbox\"]{\n    min-width: auto;\n    width: auto;\n}\nfooter{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    width: 45px;\n    height: 45px;\n    background: url(" + escape(__webpack_require__("../../../../../src/assets/ericsson_white_sml.png")) + ") no-repeat center;\n    background-size: 100%;\n}\n@media only screen and (min-width: 768px) {\n    form .form-group{\n        font-size: 14px;\n    } \n    .alert-danger,form .form-group:last-child{\n        font-size: 12px;\n    }\n    label{\n        min-width: 125px;\n        width: auto;\n    }\n    input{\n        min-width: 180px;\n        width: auto;\n    }\n    button{\n        width: 150px;   \n    }\n}", ""]);
+exports.push([module.i, ".row.custom-row{\n    width: 90%;\n    height: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    right: 0;\n    left: 0;\n    text-align: center;\n    overflow: auto;\n}\nform .form-group{\n    width: 100%;\n    font-size: 12px;\n    height: 100%;\n    margin: 10px auto !important;\n}\n.form-horizontal .form-group{\n    margin: 0;\n}\n.jumbotron,legend{\n    color: #FFFFFF;\n}\n.jumbotron{\n    background: none;\n}\nlabel{\n    text-align: right;\n    padding-right: 10px;\n    width: 40%;\n}\ninput{\n    background: rgba(0, 0, 0, 0.6196078431372549);\n    border: none;\n    width: 50%;\n    padding: 5px;\n    border-radius: 4px;\n}\nbutton{\n    width: 40%;\n    margin-left: 5px;\n}\n.form-group.checkbox label{\n    width: 100%;\n    text-align: center;\n    font-size: 12px;\n}\n.form-group.checkbox label input{\n    width: 15px;\n    height: 15px;\n}\n.form-group.checkbox label span{\n    line-height: 28px;\n}\n.alert-danger{\n    color: #ea7f7d;\n    background-color: rgba(37, 34, 34, 0.6313725490196078);\n    border-color: rgba(235, 204, 209, 0);\n    padding: 5px;\n    width: auto;\n    font-size: 10px;\n    display: inline-block;\n    text-align: center;\n    margin: auto;\n}\nform .form-group:last-child{\n    margin: auto;\n    font-size: 10px;\n}\ninput[type=\"radio\"], input[type=\"checkbox\"]{\n    min-width: auto;\n    width: auto;\n}\nfooter{\n    position: absolute;\n    top: 10px;\n    left: 10px;\n    width: 45px;\n    height: 45px;\n    background: url(" + escape(__webpack_require__("../../../../../src/assets/ericsson_white_sml.png")) + ") no-repeat center;\n    background-size: 100%;\n}\n@media only screen and (min-width: 768px) {\n    form .form-group{\n        font-size: 14px;\n    } \n    .alert-danger,form .form-group:last-child{\n        font-size: 12px;\n    }\n    label{\n        min-width: 125px;\n        width: auto;\n    }\n    input{\n        min-width: 180px;\n        width: auto;\n    }\n    button{\n        width: 150px;   \n    }\n}", ""]);
 
 // exports
 
@@ -2312,7 +2333,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/signup/signup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row custom-row\">\n    <div class= \"custom-container jumbotron\">    \n        <form novalidate class=\"form-horizontal\"\n        (ngSubmit)=\"onFormSubmit(signupForm)\" \n        #signupForm=\"ngForm\">     \n          <fieldset>\n            <legend>EAFO - SignUp</legend>\n              <div class=\"form-group\">\n                <label for=\"inputuser\">Username :</label>\n                <input type=\"text\"\n                  id=\"inputuser\"\n                  placeholder=\"Username\" name=\"username\" [ngModel] = \"user.username\" required>\n              </div>\n              <div class=\"form-group\">\n                  <label for=\"inputEmail\">Email :</label>\n                  <input type=\"text\"\n                [ngModel] = \"user.email\" name=\"email\"\n                #email = \"ngModel\" id=\"inputEmail\"\n                placeholder=\"Email\"\n                pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"\n                required>\n                </div>\n                <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n                  class=\"alert alert-danger\">\n                  <div *ngIf = \"email.errors?.required\">\n                      Email field can't be blank\n                  </div>\n                  <div *ngIf = \"email.errors?.pattern && email.touched\">\n                      The email id doesn't seem right\n                  </div>\n              </div>\n              <div ngModelGroup=\"password\" #userPassword=\"ngModelGroup\" required >\n                <div class=\"form-group\">\n                  <label for=\"inputPassword\">Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"pwd\"\n                    id=\"inputPassword\" placeholder=\"Password\"\n                    minlength =\"8\" required>\n                </div>\n             \n                <div class=\"form-group\">\n                  <label for=\"confirmPassword\" >Confirm Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"confirmPwd\"\n                    id=\"confirmPassword\" placeholder=\"Confirm Password\">\n                </div>\n                 \n                 \n                <div *ngIf=\"(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)\"\n                class=\"alert alert-danger\">\n                 \n                <div *ngIf = \"userPassword.invalid; else nomatch\">\n                    Password needs to be more than 8 characters\n                </div>\n                    <ng-template #nomatch >\n                        Passwords don't match\n                    </ng-template>\n                </div>\n              </div>                                 \n               <div class=\"form-group checkbox\">\n                <label>\n                  <input type=\"checkbox\" name=\"terms\" [(ngModel)] = \"user.terms\" required> \n                  <span>Confirm that you've are authorized ericsson employee.</span>\n                </label>\n              </div>\n              <div class=\"form-group\">\n                  <button type=\"reset\" class=\"btn btn-default\" (click)=\"cancelBtn()\">Cancel</button>\n                  <button type=\"submit\" class=\"btn btn-primary\"  [disabled]=\"!signupForm.form.valid\">Submit</button>\n              </div>\n          </fieldset>\n      </form>\n    </div>\n  </div>\n  <app-msg-toast *ngIf=\"iVisi\"></app-msg-toast>\n  <app-blurbg *ngIf=\"iVisi\"></app-blurbg>\n  <footer></footer>"
+module.exports = "<div class=\"row custom-row\" >\n    <div class= \"custom-container jumbotron\">    \n        <form novalidate class=\"form-horizontal\"\n        (ngSubmit)=\"onFormSubmit(signupForm)\" \n        #signupForm=\"ngForm\">     \n          <fieldset>\n            <legend>EAFO - SignUp</legend>\n              <div class=\"form-group\">\n                <label for=\"inputuser\">Username :</label>\n                <input type=\"text\"\n                  id=\"inputuser\"\n                  placeholder=\"Username\" name=\"username\" [ngModel] = \"user.username\" required>\n              </div>\n              <div class=\"form-group\">\n                  <label for=\"inputEmail\">Email :</label>\n                  <input type=\"text\"\n                [ngModel] = \"user.email\" name=\"email\"\n                #email = \"ngModel\" id=\"inputEmail\"\n                placeholder=\"Email\"\n                pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"\n                required>\n                </div>\n                <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n                  class=\"alert alert-danger\">\n                  <div *ngIf = \"email.errors?.required\">\n                      Email field can't be blank\n                  </div>\n                  <div *ngIf = \"email.errors?.pattern && email.touched\">\n                      The email id doesn't seem right\n                  </div>\n              </div>\n              <div ngModelGroup=\"password\" #userPassword=\"ngModelGroup\" required >\n                <div class=\"form-group\">\n                  <label for=\"inputPassword\">Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"pwd\"\n                    id=\"inputPassword\" placeholder=\"Password\"\n                    minlength =\"8\" required>\n                </div>\n             \n                <div class=\"form-group\">\n                  <label for=\"confirmPassword\" >Confirm Password</label>\n                  <input type=\"password\"\n                    ngModel name=\"confirmPwd\"\n                    id=\"confirmPassword\" placeholder=\"Confirm Password\">\n                </div>\n                 \n                 \n                <div *ngIf=\"(userPassword.invalid|| userPassword.value?.pwd != userPassword.value?.confirmPwd) && (userPassword.touched)\"\n                class=\"alert alert-danger\">\n                 \n                <div *ngIf = \"userPassword.invalid; else nomatch\">\n                    Password needs to be more than 8 characters\n                </div>\n                    <ng-template #nomatch >\n                        Passwords don't match\n                    </ng-template>\n                </div>\n              </div>                                 \n               <div class=\"form-group checkbox\">\n                <label>\n                  <input type=\"checkbox\" name=\"terms\" [(ngModel)] = \"user.terms\" required> \n                  <span>Confirm that you've are authorized ericsson employee.</span>\n                </label>\n              </div>\n              <div class=\"form-group\">\n                  <button type=\"reset\" class=\"btn btn-default\" (click)=\"cancelBtn($event)\">Cancel</button>\n                  <button type=\"submit\" class=\"btn btn-primary\"  [disabled]=\"!signupForm.form.valid\">Submit</button>\n              </div>\n          </fieldset>\n      </form>\n    </div>\n  </div>\n  <app-msg-toast [msg]=\"sMsg\" [comName]=\"compName\" *ngIf=\"popVisi\"></app-msg-toast>\n  <app-blurbg *ngIf=\"iVisi\"></app-blurbg>\n  <footer></footer>"
 
 /***/ }),
 
@@ -2339,12 +2360,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var SignupComponent = (function () {
-    function SignupComponent(logService, router) {
+    function SignupComponent(logService, router, renD) {
         this.logService = logService;
         this.router = router;
-        this.iVisi = false;
+        this.renD = renD;
+        this.popVisi = false; //ht:number;
+        this.compName = "signIn";
     }
     SignupComponent.prototype.ngOnInit = function () {
+        //this.ht = document.getElementsByTagName('html')[0].clientHeight;
         this.user = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* User */]({ username: "",
             email: "", password: { pwd: "", confirm_pwd: "" }, terms: false });
     };
@@ -2352,6 +2376,7 @@ var SignupComponent = (function () {
         var _this = this;
         var value = _a.value, valid = _a.valid;
         this.user = value;
+        this.iVisi = true;
         console.log(this.user);
         console.log("valid: " + valid);
         if (valid == true) {
@@ -2361,12 +2386,20 @@ var SignupComponent = (function () {
             };
             console.log(this.newUser);
             this.logService.signUp(this.newUser).subscribe(function (res) {
-                _this.iVisi = true;
+                _this.popVisi = true;
+                _this.sMsg = "Signing-Up Successful.";
+                //this.isVis=false;
             });
         }
     };
-    SignupComponent.prototype.cancelBtn = function () {
+    SignupComponent.prototype.cancelBtn = function (e) {
+        //this.renD.invokeElementMethod(event.target, 'blur');
+        var activeElement = document.activeElement;
+        activeElement && activeElement.blur && activeElement.blur();
+        // this.user = new User({ username:"",
+        //   email:"", password: { pwd: "" , confirm_pwd: ""}, terms: false});
         this.router.navigateByUrl('/');
+        this.iVisi = false;
     };
     return SignupComponent;
 }());
@@ -2376,10 +2409,10 @@ SignupComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/signup/signup.component.html"),
         styles: [__webpack_require__("../../../../../src/app/signup/signup.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__login_service__["a" /* LoginService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"]) === "function" && _c || Object])
 ], SignupComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=signup.component.js.map
 
 /***/ }),
@@ -2512,7 +2545,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/web-list/web-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(wList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(wList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-web>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(wList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(wList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-web>\n<!-- <app-msg-toast [msg]=\"sMsg\" [btnVis]=\"isVis\" *ngIf=\"popVisi\" (okBtnClked)=\"userAction($event)\"></app-msg-toast> -->\n<app-blurbg *ngIf=\"bgVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -2538,6 +2571,8 @@ var WebListComponent = (function () {
     function WebListComponent(_webData) {
         this._webData = _webData;
         this.iVisi = false;
+        this.bgVisi = false;
+        this.popVisi = false;
         this.editId = "";
         this.editFlag = false;
     }
@@ -2555,22 +2590,27 @@ var WebListComponent = (function () {
     };
     WebListComponent.prototype.addItem = function () {
         this.iVisi = true;
+        this.bgVisi = true;
         this.editFlag = false;
         this.flagVal = "showPU";
     };
     WebListComponent.prototype.editItem = function (id) {
         this.editFlag = true;
+        this.bgVisi = true;
         this.iVisi = true;
         this.editId = id; //this.getItems();
         this.flagVal = "showPU";
     };
+    WebListComponent.prototype.userAction = function (userResp) {
+        this.userRespValue = userResp;
+    };
     WebListComponent.prototype.delItem = function (id) {
         var list = this.web_List;
-        console.log(list + ',sdsd,' + id);
-        if (!confirm('Do you want to delete?')) {
-            return false;
-        }
-        else {
+        this.popVisi = true;
+        this.bgVisi = true;
+        this.sMsg = 'Do you want to delete?';
+        this.isVis = true;
+        if (this.userRespValue == "yes") {
             this._webData.removeItem_web(id).subscribe(function (res) {
                 if (res.n == 1) {
                     for (var i = 0; i < list.length; i++) {
@@ -2580,6 +2620,9 @@ var WebListComponent = (function () {
                     }
                 }
             });
+        }
+        else {
+            return false;
         }
     };
     return WebListComponent;
@@ -2646,8 +2689,18 @@ var WelcomeComponent = (function () {
         this._router = _router;
         this.title = 'Ericsson App Factory Outlet';
     }
+    //ht1:number; i:number =0;initialHt:number;
     WelcomeComponent.prototype.ngOnInit = function () {
         this.ht = document.getElementsByTagName('html')[0].clientHeight;
+        // if(this.i==0){
+        // this.ht1 = document.getElementsByTagName('html')[0].clientHeight;
+        // this.initialHt = this.ht1;
+        // this.ht = this.ht1;
+        // this.i++;
+        // }
+        // else{
+        //   this.ht = this.initialHt;
+        // }
     };
     return WelcomeComponent;
 }());

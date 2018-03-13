@@ -1,7 +1,8 @@
 <div>
     <h4>Add New Item</h4><p class="clsIcon" (click)="closePU()"><span class="glyphicon glyphicon-remove-sign"></span></p>        
   <ul>
-    <li><label>Icon</label><input type="file" name="imgUpload" id="imgUpload" ng2FileSelect [uploader]="fileUploader" /></li>
+    <li><label>Icon</label><input type="file" name="imgUpload" id="imgUpload" /></li> 
+    <!-- ng2FileSelect [uploader]="fileUploader" -->
     <li><label>Title</label><input type="text" name="title" id="title" [(ngModel)]="title"/></li>
     <li><label>Version</label><input type="text" name="version" id="version" [(ngModel)]="version"></li>
     <li><label>Description</label><textarea name="desc" id="desc" cols="30" rows="10" [(ngModel)]="desc"></textarea></li>

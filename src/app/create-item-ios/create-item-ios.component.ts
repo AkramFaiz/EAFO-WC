@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IosListComponent } from '../ios-list/ios-list.component';
 import { IOsdataService } from '../i-osdata.service';
-import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+//import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
 import { Item } from '../listItem';
 
 const _url="htpt://localhost:3000/file/iOS";

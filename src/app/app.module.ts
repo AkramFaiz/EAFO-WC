@@ -38,6 +38,7 @@ import { CreateItemAndComponent } from './create-item-and/create-item-and.compon
 import { BlurbgComponent } from './blurbg/blurbg.component';
 import { MsgToastComponent } from './msg-toast/msg-toast.component';
 import { FilterComponent } from './filter/filter.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 const appRoutes:Routes = [
@@ -133,7 +134,8 @@ const appRoutes:Routes = [
     BlurbgComponent,
     MsgToastComponent,
     FilterComponent,
-    CapitalizeFirstPipe
+    CapitalizeFirstPipe,
+    AlertComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes,{useHash:true}),

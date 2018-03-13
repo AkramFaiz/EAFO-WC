@@ -12,9 +12,14 @@ export class WebListComponent implements OnInit {
   constructor(private _webData :WebDataService) { }
   web_List: Array<any>;
   public flagVal;
-  iVisi = false;
+  iVisi : boolean = false;
+  bgVisi : boolean = false;
+  popVisi : boolean = false;
+  sMsg : string;
+  isVis : boolean;
   editId = "";
   editFlag = false;
+  userRespValue:string;
   ngOnInit():void{
     this.getItems();
   }
@@ -28,20 +33,28 @@ export class WebListComponent implements OnInit {
   }
   addItem(){
     this.iVisi = true;
+    this.bgVisi = true;
     this.editFlag = false;
     this.flagVal = "showPU";    
   }
   editItem(id: any){
     this.editFlag = true;
+    this.bgVisi = true;
     this.iVisi = true;
     this.editId = id;    //this.getItems();
     this.flagVal = "showPU"; 
   }
+  userAction(userResp:string):void{
+    this.userRespValue = userResp;
+  }
   delItem(id: any){
     var list= this.web_List;
-    console.log(list+',sdsd,'+id);
-    if(!confirm('Do you want to delete?'))
-    {return false;}else{
+    this.popVisi = true;
+    this.bgVisi = true;
+    this.sMsg = 'Do you want to delete?';
+    this.isVis = true;
+    
+    if(this.userRespValue=="yes"){
     this._webData.removeItem_web(id).subscribe(res => {
       if(res.n == 1){
         for(var i=0; i< list.length; i++){
@@ -50,7 +63,7 @@ export class WebListComponent implements OnInit {
         }
       }
     });
-   }
+   }else{return false;}
   }
 
 /*

@@ -11,5 +11,6 @@ export class BlurbgComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 
 }

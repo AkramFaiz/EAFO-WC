@@ -55,10 +55,12 @@ export class CreateItemWebComponent implements OnInit {
         this.web_api.saveEditItem_web(this.web_ele.editId,this.newItem).subscribe(res => {   
           if(typeof(res) != 'object'){
             this.web_ele.iVisi = true;
+            this.web_ele.bgVisi = true;
             //this.iOS_ele.flagVal = "hideBack";
           }else{
             this.web_ele.flagVal = "hidePU";
             this.web_ele.iVisi = false;
+            this.web_ele.bgVisi = false;
             this.web_ele.getItems();
           } 
         });

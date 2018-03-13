@@ -8,6 +8,7 @@
     right: 0;
     left: 0;
     text-align: center;
+    overflow: auto;
 }
 form .form-group{
     width: 100%;
@@ -45,6 +46,13 @@ button{
     text-align: center;
     font-size: 12px;
 }
+.form-group.checkbox label input{
+    width: 15px;
+    height: 15px;
+}
+.form-group.checkbox label span{
+    line-height: 28px;
+}
 .alert-danger{
     color: #ea7f7d;
     background-color: rgba(37, 34, 34, 0.6313725490196078);
@@ -65,9 +73,9 @@ input[type="radio"], input[type="checkbox"]{
     width: auto;
 }
 footer{
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
     width: 45px;
     height: 45px;
     background: url(../../assets/ericsson_white_sml.png) no-repeat center;

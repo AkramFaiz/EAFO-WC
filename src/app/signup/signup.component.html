@@ -1,4 +1,4 @@
-<div class="row custom-row">
+<div class="row custom-row" >
     <div class= "custom-container jumbotron">    
         <form novalidate class="form-horizontal"
         (ngSubmit)="onFormSubmit(signupForm)" 
@@ -64,13 +64,13 @@
                 </label>
               </div>
               <div class="form-group">
-                  <button type="reset" class="btn btn-default" (click)="cancelBtn()">Cancel</button>
+                  <button type="reset" class="btn btn-default" (click)="cancelBtn($event)">Cancel</button>
                   <button type="submit" class="btn btn-primary"  [disabled]="!signupForm.form.valid">Submit</button>
               </div>
           </fieldset>
       </form>
     </div>
   </div>
-  <app-msg-toast *ngIf="iVisi"></app-msg-toast>
+  <app-msg-toast [msg]="sMsg" [comName]="compName" *ngIf="popVisi"></app-msg-toast>
   <app-blurbg *ngIf="iVisi"></app-blurbg>
   <footer></footer>

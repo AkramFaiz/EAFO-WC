@@ -4,7 +4,7 @@
         <p class="addRecordIcon" (click)="addItem()"><span class="glyphicon glyphicon-plus"></span></p>
         <app-list-view></app-list-view>
         <ul>
-            <li *ngFor="let iList of iOS_List">
+            <li *ngFor="let iList of iOS_List" @bounceEffect>
                     <div>
                             <p><label><img src="{{iList.Icon}}"/></label></p>
                             <ul>
@@ -24,3 +24,4 @@
 </section>
 <app-create-item-ios [ngClass]="showHide()" *ngIf="iVisi"></app-create-item-ios>
 <app-blurbg *ngIf="iVisi"></app-blurbg>
+<app-alert [msg]="sMsg" *ngIf="alertVisi" (okBtnClked)="userAction($event)"></app-alert>

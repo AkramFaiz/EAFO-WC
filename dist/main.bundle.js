@@ -17,6 +17,93 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
+/***/ "../../../../../src/app/alert/alert.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "article{\n    min-width: 269px;\n    max-width: 300px;\n    height: auto;\n    margin: auto;\n    position: absolute;\n    background: rgba(0, 0, 0, 0.8);\n    top: 45%;\n    left: 0;\n    right: 0;\n    -webkit-box-shadow: 0px 0px 5px rgba(80, 67, 33, 0.95);\n            box-shadow: 0px 0px 5px rgba(80, 67, 33, 0.95);\n}\nh5{\n    height: 25px;\n    padding: 5px;\n    color: #ffffff;\n    border-bottom: 1px solid #e3e1e1;\n    width: 90%;\n    margin: 5px auto;\n}\np{\n    margin: 10px 20px;\n    color: #ffffff;\n}\ndiv{\n    padding: 0 20px 10px;\n}\ndiv button{\n    font-size: 12px;\n    border: none;\n    padding: 3px 5px;\n    background: #373231;\n    color: #ffffff;\n}\ndiv button[type=\"submit\"]{\n    float: right;\n}\n@media only screen and (min-width: 768px) {\n    article{\n        max-width: 300px;\n    }\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/alert/alert.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<article>\n  <h5>Alert</h5>\n  <p>{{msg}}</p>\n  <div>\n    <button type=\"cancel\" value=\"no\" (click)=\"cancelBtn($event);\">Cancel</button>\n    <button type=\"submit\" value=\"yes\" (click)=\"okBtn($event);\">Ok</button>\n  </div>\n  </article>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/alert/alert.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AlertComponent = (function () {
+    function AlertComponent() {
+        this.okBtnClked = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    AlertComponent.prototype.ngOnInit = function () {
+    };
+    AlertComponent.prototype.okBtn = function (e) {
+        this.userResp = e.currentTarget.value;
+        this.userRes();
+    };
+    AlertComponent.prototype.cancelBtn = function (e) {
+        this.userResp = e.currentTarget.value;
+        this.userRes();
+    };
+    AlertComponent.prototype.userRes = function () {
+        this.okBtnClked.emit(this.userResp);
+        console.log("UR:" + this.userResp);
+    };
+    return AlertComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AlertComponent.prototype, "msg", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], AlertComponent.prototype, "comName", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
+], AlertComponent.prototype, "okBtnClked", void 0);
+AlertComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-alert',
+        template: __webpack_require__("../../../../../src/app/alert/alert.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/alert/alert.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AlertComponent);
+
+var _a;
+//# sourceMappingURL=alert.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/and-data.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -94,7 +181,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/android-list/android-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\">\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(aList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(aList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-and [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-and>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let aList of and_List\" @bounceEffect>\n                    <div>\n                            <p><label><img src=\"{{aList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{aList.Title}}</li>\n                                <li>{{aList.Desc}}</li>\n                                <li>{{aList.Version}}</li>\n                                <li>{{aList.DevelopedBy}}</li>\n                                <li>{{aList.SupportedBy}}</li>\n                                <li>{{aList.VersionsHistory}}</li>\n                                <li>{{aList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(aList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(aList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-and [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-and>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>\n<app-alert [msg]=\"sMsg\" *ngIf=\"alertVisi\" (okBtnClked)=\"userAction($event)\"></app-alert>\n"
 
 /***/ }),
 
@@ -105,6 +192,7 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AndroidListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__and_data_service__ = __webpack_require__("../../../../../src/app/and-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__animate__ = __webpack_require__("../../../../../src/app/animate.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -116,10 +204,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AndroidListComponent = (function () {
     function AndroidListComponent(_andData) {
         this._andData = _andData;
         this.iVisi = false;
+        this.alertVisi = false;
         this.editId = "";
         this.editFlag = false;
     }
@@ -146,18 +236,32 @@ var AndroidListComponent = (function () {
         this.editId = id; //this.getItems();
         this.flagVal = "showPU";
     };
+    AndroidListComponent.prototype.userAction = function (userResp) {
+        this.delSelItem(userResp);
+    };
     AndroidListComponent.prototype.delItem = function (id) {
+        this.curId = id;
+        this.alertVisi = true;
+        this.sMsg = 'Do you want to delete?';
+    };
+    AndroidListComponent.prototype.delSelItem = function (userResp) {
+        var _this = this;
+        this.alertVisi = false;
         var list = this.and_List;
-        console.log(list + ',sdsd,' + id);
-        this._andData.removeItem_and(id).subscribe(function (res) {
-            if (res.n == 1) {
-                for (var i = 0; i < list.length; i++) {
-                    if (list[i]._id == id) {
-                        list.splice(i, 1);
+        if (userResp == "yes") {
+            this._andData.removeItem_and(this.curId).subscribe(function (res) {
+                if (res.n == 1) {
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i]._id == _this.curId) {
+                            list.splice(i, 1);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+        else {
+            return false;
+        }
     };
     return AndroidListComponent;
 }());
@@ -165,7 +269,8 @@ AndroidListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-android-list',
         template: __webpack_require__("../../../../../src/app/android-list/android-list.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/android-list/android-list.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/android-list/android-list.component.css")],
+        animations: [__WEBPACK_IMPORTED_MODULE_2__animate__["a" /* bounceEffect */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__and_data_service__["a" /* AndDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__and_data_service__["a" /* AndDataService */]) === "function" && _a || Object])
 ], AndroidListComponent);
@@ -233,6 +338,26 @@ AndroidComponent = __decorate([
 ], AndroidComponent);
 
 //# sourceMappingURL=android.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/animate.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return bounceEffect; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+
+var bounceEffect = Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["trigger"])('bounceEffect', [
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["transition"])('void => *', [
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["animate"])(600, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["keyframes"])([
+            Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["style"])({ opacity: 0, transform: 'translateY(-200px)', offset: 0 }),
+            Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["style"])({ opacity: 1, transform: 'translateY(25px)', offset: 0.5 }),
+            Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["style"])({ opacity: 1, transform: 'translateY(0)', offset: 1 }),
+        ]))
+    ])
+]);
+//# sourceMappingURL=animate.js.map
 
 /***/ }),
 
@@ -338,12 +463,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__blurbg_blurbg_component__ = __webpack_require__("../../../../../src/app/blurbg/blurbg.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__msg_toast_msg_toast_component__ = __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__filter_filter_component__ = __webpack_require__("../../../../../src/app/filter/filter.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__alert_alert_component__ = __webpack_require__("../../../../../src/app/alert/alert.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -480,7 +607,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_35__blurbg_blurbg_component__["a" /* BlurbgComponent */],
             __WEBPACK_IMPORTED_MODULE_36__msg_toast_msg_toast_component__["a" /* MsgToastComponent */],
             __WEBPACK_IMPORTED_MODULE_37__filter_filter_component__["a" /* FilterComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__app_upperCase_pipe__["a" /* CapitalizeFirstPipe */]
+            __WEBPACK_IMPORTED_MODULE_13__app_upperCase_pipe__["a" /* CapitalizeFirstPipe */],
+            __WEBPACK_IMPORTED_MODULE_38__alert_alert_component__["a" /* AlertComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { useHash: true }),
@@ -1166,13 +1294,13 @@ var CreateItemWebComponent = (function () {
             this.web_api.saveEditItem_web(this.web_ele.editId, this.newItem).subscribe(function (res) {
                 if (typeof (res) != 'object') {
                     _this.web_ele.iVisi = true;
-                    _this.web_ele.bgVisi = true;
+                    // this.web_ele.bgVisi = true;
                     //this.iOS_ele.flagVal = "hideBack";
                 }
                 else {
                     _this.web_ele.flagVal = "hidePU";
                     _this.web_ele.iVisi = false;
-                    _this.web_ele.bgVisi = false;
+                    // this.web_ele.bgVisi = false;
                     _this.web_ele.getItems();
                 }
             });
@@ -1489,7 +1617,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/hyb-list/hyb-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section> \n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\">\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(hList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(hList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-hyb [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-hyb>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section> \n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let hList of hyb_List\" @bounceEffect>\n                    <div>\n                            <p><label><img src=\"{{hList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{hList.Title}}</li>\n                                <li>{{hList.Desc}}</li>\n                                <li>{{hList.Version}}</li>\n                                <li>{{hList.DevelopedBy}}</li>\n                                <li>{{hList.SupportedBy}}</li>\n                                <li>{{hList.VersionsHistory}}</li>\n                                <li>{{hList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(hList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(hList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n</section>\n<app-create-item-hyb [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-hyb>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>\n<app-alert [msg]=\"sMsg\" *ngIf=\"alertVisi\" (okBtnClked)=\"userAction($event)\"></app-alert>\n"
 
 /***/ }),
 
@@ -1500,6 +1628,7 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HybListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hybdata_service__ = __webpack_require__("../../../../../src/app/hybdata.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__animate__ = __webpack_require__("../../../../../src/app/animate.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1511,10 +1640,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var HybListComponent = (function () {
     function HybListComponent(_hybData) {
         this._hybData = _hybData;
         this.iVisi = false;
+        this.alertVisi = false;
         this.editId = "";
         this.editFlag = false;
     }
@@ -1541,18 +1672,32 @@ var HybListComponent = (function () {
         this.editId = id; //this.getItems();
         this.flagVal = "showPU";
     };
+    HybListComponent.prototype.userAction = function (userResp) {
+        this.delSelItem(userResp);
+    };
     HybListComponent.prototype.delItem = function (id) {
+        this.curId = id;
+        this.alertVisi = true;
+        this.sMsg = 'Do you want to delete?';
+    };
+    HybListComponent.prototype.delSelItem = function (userResp) {
+        var _this = this;
+        this.alertVisi = false;
         var list = this.hyb_List;
-        console.log(list + ',sdsd,' + id);
-        this._hybData.removeItem_hyb(id).subscribe(function (res) {
-            if (res.n == 1) {
-                for (var i = 0; i < list.length; i++) {
-                    if (list[i]._id == id) {
-                        list.splice(i, 1);
+        if (userResp == "yes") {
+            this._hybData.removeItem_hyb(this.curId).subscribe(function (res) {
+                if (res.n == 1) {
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i]._id == _this.curId) {
+                            list.splice(i, 1);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+        else {
+            return false;
+        }
     };
     return HybListComponent;
 }());
@@ -1560,7 +1705,8 @@ HybListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-hyb-list',
         template: __webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/hyb-list/hyb-list.component.css")],
+        animations: [__WEBPACK_IMPORTED_MODULE_2__animate__["a" /* bounceEffect */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hybdata_service__["a" /* HybdataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hybdata_service__["a" /* HybdataService */]) === "function" && _a || Object])
 ], HybListComponent);
@@ -1764,7 +1910,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/ios-list/ios-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\">\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(iList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(iList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>  \n</section>\n<app-create-item-ios [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-ios>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>\n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let iList of iOS_List\" @bounceEffect>\n                    <div>\n                            <p><label><img src=\"{{iList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{iList.Title}}</li>\n                                <li>{{iList.Desc}}</li>\n                                <li>{{iList.Version}}</li>\n                                <li>{{iList.DevelopedBy}}</li>\n                                <li>{{iList.SupportedBy}}</li>\n                                <li>{{iList.VersionsHistory}}</li>\n                                <li>{{iList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(iList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(iList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>  \n</section>\n<app-create-item-ios [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-ios>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>\n<app-alert [msg]=\"sMsg\" *ngIf=\"alertVisi\" (okBtnClked)=\"userAction($event)\"></app-alert>\n"
 
 /***/ }),
 
@@ -1774,7 +1920,8 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IosListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animate__ = __webpack_require__("../../../../../src/app/animate.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__i_osdata_service__ = __webpack_require__("../../../../../src/app/i-osdata.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1786,10 +1933,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var IosListComponent = (function () {
     function IosListComponent(_iosData) {
         this._iosData = _iosData;
         this.iVisi = false;
+        this.alertVisi = false;
         this.editId = "";
         this.editFlag = false;
     }
@@ -1816,17 +1965,32 @@ var IosListComponent = (function () {
         this.editId = id; //this.getItems();
         this.flagVal = "showPU";
     };
+    IosListComponent.prototype.userAction = function (userResp) {
+        this.delSelItem(userResp);
+    };
     IosListComponent.prototype.delItem = function (id) {
+        this.curId = id;
+        this.alertVisi = true;
+        this.sMsg = 'Do you want to delete?';
+    };
+    IosListComponent.prototype.delSelItem = function (userResp) {
+        var _this = this;
+        this.alertVisi = false;
         var list = this.iOS_List;
-        this._iosData.removeItem_iOS(id).subscribe(function (res) {
-            if (res.n == 1) {
-                for (var i = 0; i < list.length; i++) {
-                    if (list[i]._id == id) {
-                        list.splice(i, 1);
+        if (userResp == "yes") {
+            this._iosData.removeItem_iOS(this.curId).subscribe(function (res) {
+                if (res.n == 1) {
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i]._id == _this.curId) {
+                            list.splice(i, 1);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+        else {
+            return false;
+        }
     };
     return IosListComponent;
 }());
@@ -1834,9 +1998,10 @@ IosListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-ios-list',
         template: __webpack_require__("../../../../../src/app/ios-list/ios-list.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/ios-list/ios-list.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/ios-list/ios-list.component.css")],
+        animations: [__WEBPACK_IMPORTED_MODULE_1__animate__["a" /* bounceEffect */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__i_osdata_service__["a" /* IOsdataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__i_osdata_service__["a" /* IOsdataService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__i_osdata_service__["a" /* IOsdataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__i_osdata_service__["a" /* IOsdataService */]) === "function" && _a || Object])
 ], IosListComponent);
 
 var _a;
@@ -2180,7 +2345,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/msg-toast/msg-toast.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <article>\n  <p>Sign In Success. {{msg}}</p>\n  <div>\n    <!-- <button type=\"cancel\" value=\"no\" [(ngModel)]=\"userResp\" *ngIf=\"btnVis\" (click)=\"cancelBtn();userRes();\">Ok</button> -->\n    <button type=\"submit\" (click)=\"okBtn();userRes();\">Ok</button>\n  </div>\n  </article>\n"
+module.exports = "  <article>\n  <p>{{msg}}</p>\n  <div>\n    <!-- <button type=\"cancel\" value=\"no\" [(ngModel)]=\"userResp\" *ngIf=\"btnVis\" (click)=\"cancelBtn();userRes();\">Ok</button> -->\n    <button type=\"submit\" (click)=\"okBtn();\">Ok</button>\n  </div>\n  </article>\n"
 
 /***/ }),
 
@@ -2208,15 +2373,10 @@ var MsgToastComponent = (function () {
     function MsgToastComponent(router, sign_ele) {
         this.router = router;
         this.sign_ele = sign_ele;
-        this.okBtnClked = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     MsgToastComponent.prototype.ngOnInit = function () {
     };
-    // cancelBtn(){
-    //   this.sign_ele.popVisi = false;
-    // }
     MsgToastComponent.prototype.okBtn = function () {
-        console.log('cn:' + this.comName);
         this.sign_ele.popVisi = false;
         if (this.comName == "signIn") {
             this.router.navigateByUrl('/');
@@ -2232,20 +2392,16 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], MsgToastComponent.prototype, "comName", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
-], MsgToastComponent.prototype, "okBtnClked", void 0);
 MsgToastComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-msg-toast',
         template: __webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.html"),
         styles: [__webpack_require__("../../../../../src/app/msg-toast/msg-toast.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__signup_signup_component__["a" /* SignupComponent */]) === "function" && _b || Object])
 ], MsgToastComponent);
 
-var _a, _b, _c;
+var _a, _b;
 //# sourceMappingURL=msg-toast.component.js.map
 
 /***/ }),
@@ -2545,7 +2701,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/web-list/web-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\">\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(wList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(wList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-web>\n<!-- <app-msg-toast [msg]=\"sMsg\" [btnVis]=\"isVis\" *ngIf=\"popVisi\" (okBtnClked)=\"userAction($event)\"></app-msg-toast> -->\n<app-blurbg *ngIf=\"bgVisi\"></app-blurbg>"
+module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<section>\n        <p class=\"addRecordIcon\" (click)=\"addItem()\"><span class=\"glyphicon glyphicon-plus\"></span></p>       \n        <app-list-view></app-list-view>\n        <ul>\n            <li *ngFor=\"let wList of web_List\" @bounceEffect>\n                    <div>\n                            <p><label><img src=\"{{wList.Icon}}\"/></label></p>\n                            <ul>\n                                <li>{{wList.Title}}</li>\n                                <li>{{wList.Desc}}</li>\n                                <li>{{wList.Version}}</li>\n                                <li>{{wList.DevelopedBy}}</li>\n                                <li>{{wList.SupportedBy}}</li>\n                                <li>{{wList.VersionsHistory}}</li>\n                                <li>{{wList.CodeRepository}}</li>               \n                            </ul>\n                            <p><span class=\"glyphicon glyphicon-pencil\" (click)=\"editItem(wList._id)\"></span></p>\n                            <p><span class=\"glyphicon glyphicon-remove\" (click)=\"delItem(wList._id)\"></span></p>\n                    </div>\n             </li>            \n        </ul>\n       \n</section>\n<app-create-item-web [ngClass]=\"showHide()\" *ngIf=\"iVisi\"></app-create-item-web>\n<!-- <app-msg-toast [msg]=\"sMsg\" *ngIf=\"popVisi\" ></app-msg-toast> -->\n<app-alert [msg]=\"sMsg\" *ngIf=\"alertVisi\" (okBtnClked)=\"userAction($event)\"></app-alert>\n<app-blurbg *ngIf=\"iVisi\"></app-blurbg>"
 
 /***/ }),
 
@@ -2556,6 +2712,7 @@ module.exports = "<app-header></app-header>\n<app-nav-bar></app-nav-bar>\n<secti
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WebListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__web_data_service__ = __webpack_require__("../../../../../src/app/web-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__animate__ = __webpack_require__("../../../../../src/app/animate.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2567,12 +2724,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var WebListComponent = (function () {
     function WebListComponent(_webData) {
         this._webData = _webData;
         this.iVisi = false;
-        this.bgVisi = false;
-        this.popVisi = false;
+        this.alertVisi = false;
         this.editId = "";
         this.editFlag = false;
     }
@@ -2590,31 +2747,32 @@ var WebListComponent = (function () {
     };
     WebListComponent.prototype.addItem = function () {
         this.iVisi = true;
-        this.bgVisi = true;
         this.editFlag = false;
         this.flagVal = "showPU";
     };
     WebListComponent.prototype.editItem = function (id) {
         this.editFlag = true;
-        this.bgVisi = true;
         this.iVisi = true;
         this.editId = id; //this.getItems();
         this.flagVal = "showPU";
     };
     WebListComponent.prototype.userAction = function (userResp) {
-        this.userRespValue = userResp;
+        this.delSelItem(userResp);
     };
     WebListComponent.prototype.delItem = function (id) {
-        var list = this.web_List;
-        this.popVisi = true;
-        this.bgVisi = true;
+        this.curId = id;
+        this.alertVisi = true;
         this.sMsg = 'Do you want to delete?';
-        this.isVis = true;
-        if (this.userRespValue == "yes") {
-            this._webData.removeItem_web(id).subscribe(function (res) {
+    };
+    WebListComponent.prototype.delSelItem = function (userResp) {
+        var _this = this;
+        this.alertVisi = false;
+        var list = this.web_List;
+        if (userResp == "yes") {
+            this._webData.removeItem_web(this.curId).subscribe(function (res) {
                 if (res.n == 1) {
                     for (var i = 0; i < list.length; i++) {
-                        if (list[i]._id == id) {
+                        if (list[i]._id == _this.curId) {
                             list.splice(i, 1);
                         }
                     }
@@ -2631,7 +2789,8 @@ WebListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-web-list',
         template: __webpack_require__("../../../../../src/app/web-list/web-list.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/web-list/web-list.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/web-list/web-list.component.css")],
+        animations: [__WEBPACK_IMPORTED_MODULE_2__animate__["a" /* bounceEffect */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__web_data_service__["a" /* WebDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__web_data_service__["a" /* WebDataService */]) === "function" && _a || Object])
 ], WebListComponent);

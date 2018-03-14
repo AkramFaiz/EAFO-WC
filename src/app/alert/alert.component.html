@@ -1,3 +1,8 @@
-<p>
-  alert works!
-</p>
+<article>
+  <h5>Alert</h5>
+  <p>{{msg}}</p>
+  <div>
+    <button type="cancel" value="no" (click)="cancelBtn($event);">Cancel</button>
+    <button type="submit" value="yes" (click)="okBtn($event);">Ok</button>
+  </div>
+  </article>

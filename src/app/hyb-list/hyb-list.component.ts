@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, transition, style, animate, keyframes} from '@angular/core';
 import { HybdataService} from '../hybdata.service';
-
+import { bounceEffect } from '../animate';
 @Component({
   selector: 'app-hyb-list',
   templateUrl: './hyb-list.component.html',
-  styleUrls: ['./hyb-list.component.css']
+  styleUrls: ['./hyb-list.component.css'],
+  animations:[bounceEffect]
 })
 export class HybListComponent implements OnInit {
   list: Array<any>;
   public flagVal;
-  iVisi = false;
+  curId: string;
+  iVisi : boolean = false;
+  alertVisi: boolean = false;
+  sMsg : string;
   editId = "";
   editFlag = false;
   constructor(private _hybData :HybdataService) { }
@@ -37,40 +41,26 @@ export class HybListComponent implements OnInit {
     this.editId = id;    //this.getItems();
     this.flagVal = "showPU"; 
   }
+  userAction(userResp:string):void{
+    this.delSelItem(userResp);
+  }
   delItem(id: any){
+    this.curId= id;
+    this.alertVisi = true;
+    this.sMsg = 'Do you want to delete?';
+  }
+  delSelItem(userResp){  
+    this.alertVisi = false;
     var list= this.hyb_List;
-    console.log(list+',sdsd,'+id);
-    this._hybData.removeItem_hyb(id).subscribe(res => {
-      if(res.n == 1){
-        for(var i=0; i< list.length; i++){
-          if(list[i]._id == id)
-          {list.splice(i,1)}
+    if(userResp=="yes"){
+      this._hybData.removeItem_hyb(this.curId).subscribe(res => {
+        if(res.n == 1){
+          for(var i=0; i< list.length; i++){
+            if(list[i]._id == this.curId)
+            {list.splice(i,1)}
+          }
         }
-      }
-    });
+      });
+   }else{return false;}
   }
-
-/*
-  hyd_List=[{
-    'Icon':'assets/iOS2.png',
-    'Title':'Info Security',
-    'Desc':'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-    'Version':'1.0.2',
-    'DevelopedBy':'Pavan B',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS1.png',
-    'Title':'Gordon',
-    'Desc':'iOS Mobile Application',
-    'Version':'2.0.0',
-    'DevelopedBy':'Anjan V',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2, 2.0.0',
-    'CodeRepository':'Open ALM'
-  }
-];*/
-
 }

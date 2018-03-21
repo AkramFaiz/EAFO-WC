@@ -8,3 +8,13 @@ article{
     overflow: auto;
     padding: 60px 0 10px 0;/* lc end */
 }
+img{
+    position: fixed;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    top: 67px;
+    /* background: url(assets/chart.png) no-repeat;
+    background-size: 100%; */
+    margin: 0;
+}

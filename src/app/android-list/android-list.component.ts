@@ -1,6 +1,7 @@
-import { Component, OnInit, trigger, transition, style, animate, keyframes} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AndDataService } from '../and-data.service';
 import { bounceEffect } from '../animate';
+
 @Component({
   selector: 'app-android-list',
   templateUrl: './android-list.component.html',
@@ -48,7 +49,7 @@ delItem(id: any){
   this.alertVisi = true;
   this.sMsg = 'Do you want to delete?';
 }
-delSelItem(userResp){  
+delSelItem(userResp){ 
   this.alertVisi = false;
   var list= this.and_List;
   if(userResp=="yes"){
@@ -56,95 +57,14 @@ delSelItem(userResp){
       if(res.n == 1){
         for(var i=0; i< list.length; i++){
           if(list[i]._id == this.curId)
-          {list.splice(i,1)}
+          {
+            list.splice(i,1);
+          }
         }
       }
     });
  }else{return false;}
-}
-
-
-  /*and_List=[
-  {
-    'Icon':'assets/iOS2.png',
-    'Title':'Info Security',
-    'Desc':'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-    'Version':'1.0.2',
-    'DevelopedBy':'Pavan B',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS1.png',
-    'Title':'Gordon',
-    'Desc':'iOS Mobile Application',
-    'Version':'1.0.0',
-    'DevelopedBy':'Anjan V',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2, 2.0.0',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS1.png',
-    'Title':'Gordon',
-    'Desc':'iOS Mobile Application',
-    'Version':'2.0.0',
-    'DevelopedBy':'Anjan V',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2, 2.0.0',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS2.png',
-    'Title':'Info Security',
-    'Desc':'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-    'Version':'1.0.2',
-    'DevelopedBy':'Pavan B',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS1.png',
-    'Title':'Gordon',
-    'Desc':'iOS Mobile Application',
-    'Version':'2.0.0',
-    'DevelopedBy':'Anjan V',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2, 2.0.0',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS2.png',
-    'Title':'Info Security',
-    'Desc':'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-    'Version':'1.0.2',
-    'DevelopedBy':'Pavan B',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS1.png',
-    'Title':'Gordon',
-    'Desc':'iOS Mobile Application',
-    'Version':'2.0.0',
-    'DevelopedBy':'Anjan V',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2, 2.0.0',
-    'CodeRepository':'Open ALM'
-  },
-  {
-    'Icon':'assets/iOS2.png',
-    'Title':'Info Security',
-    'Desc':'iOS Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application, Mobile Application',
-    'Version':'1.0.2',
-    'DevelopedBy':'Pavan B',
-    'SupportedBy':'Pavan B',
-    'VersionsHistory':'1.0.0, 1.0.1, 1.0.2',
-    'CodeRepository':'Open ALM'
+    // setTimeout(() => {
+    // }, 2000); 
   }
-];
-*/
 }

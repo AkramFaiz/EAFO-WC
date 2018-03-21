@@ -1,0 +1,20 @@
+h5{
+    color:#91bde3;
+    background: #FFFFFF;
+    position: absolute;
+    width: 105px;
+    height: 22px;
+    z-index: 33;
+    padding: 0 10px;
+    top: 365px;
+}
+section{
+    width: 96%;
+    height: 86%;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+/* .raphael-group-3-creditgroup{
+    display: none !important;
+} */

@@ -1,0 +1,14 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<section>
+  <h5>
+    {{title}}
+  </h5>
+  <fusioncharts
+    [width]="width"
+    [height]="height"
+    [type]="type"
+    [dataFormat]="dataFormat"
+    [dataSource]="dataSource"
+  ></fusioncharts>
+</section>

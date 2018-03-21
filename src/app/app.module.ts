@@ -39,7 +39,12 @@ import { BlurbgComponent } from './blurbg/blurbg.component';
 import { MsgToastComponent } from './msg-toast/msg-toast.component';
 import { FilterComponent } from './filter/filter.component';
 import { AlertComponent } from './alert/alert.component';
+import { StatsComponent } from './stats/stats.component';
 
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import { FusionChartsModule } from 'angular4-fusioncharts';
 
 const appRoutes:Routes = [
   {
@@ -100,6 +105,11 @@ const appRoutes:Routes = [
     component: WebListComponent
   },
   {
+    path: 'stats',
+    canActivate: [AuthGuard],
+    component: StatsComponent
+  },
+  {
     path: '',
     component: WelcomeComponent
   },
@@ -108,6 +118,8 @@ const appRoutes:Routes = [
     component: WelcomeComponent
   }
 ]
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
 @NgModule({
   declarations: [
@@ -135,7 +147,8 @@ const appRoutes:Routes = [
     MsgToastComponent,
     FilterComponent,
     CapitalizeFirstPipe,
-    AlertComponent
+    AlertComponent,
+    StatsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes,{useHash:true}),
@@ -145,7 +158,8 @@ const appRoutes:Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpModule,
-    FileUploadModule
+    FileUploadModule,
+    FusionChartsModule
   ],
   providers: [LoginService,AuthGuard,IOsdataService,AndDataService,HybdataService,WebDataService],
   bootstrap: [AppComponent]

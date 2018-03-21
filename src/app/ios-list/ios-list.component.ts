@@ -7,7 +7,7 @@ import { Item } from '../listItem';
   selector: 'app-ios-list',
   templateUrl: './ios-list.component.html',
   styleUrls: ['./ios-list.component.css'],
-  animations:[ bounceEffect ]
+  animations:[ bounceEffect]
 })
 export class IosListComponent implements OnInit{
 

@@ -1,6 +1,7 @@
-import { Component, OnInit, trigger, transition, style, animate, keyframes} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { WebDataService } from '../web-data.service';
 import { bounceEffect } from '../animate';
+
 @Component({
   selector: 'app-web-list',
   templateUrl: './web-list.component.html',
@@ -40,6 +41,27 @@ export class WebListComponent implements OnInit {
     this.iVisi = true;
     this.editId = id;    //this.getItems();
     this.flagVal = "showPU"; 
+  }
+  canBtn(resp:string):void{
+    if(resp=='hide'){
+      this.flagVal="hidePU";
+      this.iVisi=false;
+    }
+  }
+  okBtn(resp:string):void{
+        // console.log('asd00'+resp);
+        // let curVall = resp.split('|');
+        // console.log('asd'+curVall[0],"+",curVall[1]);
+        // let yy=JSON.parse(curVall[0]);
+        // this.web_List.push(yy);
+        if(resp == 'true'){
+          this.flagVal = "hidePU";
+          this.iVisi = false;
+          this.getItems();
+        }
+        else{
+          this.iVisi = true;
+        }
   }
   userAction(userResp:string):void{
     this.delSelItem(userResp);

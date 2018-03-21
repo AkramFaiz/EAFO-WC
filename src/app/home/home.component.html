@@ -2,6 +2,7 @@
     <app-header></app-header>
     <article>
       <h3>Welcome, {{logUser | capitalizeFirst}}</h3>
+      <img src="assets/chart.png" alt="stats" routerLink="/stats">
       <app-ios routerLink="/iosList"></app-ios>
       <app-android routerLink="/andList"></app-android>
       <app-hybrid routerLink="/hybList"></app-hybrid>

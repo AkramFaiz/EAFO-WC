@@ -1,11 +1,12 @@
-import { Component, OnInit, trigger, transition, style, animate, keyframes} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HybdataService} from '../hybdata.service';
 import { bounceEffect } from '../animate';
+
 @Component({
   selector: 'app-hyb-list',
   templateUrl: './hyb-list.component.html',
   styleUrls: ['./hyb-list.component.css'],
-  animations:[bounceEffect]
+  animations:[ bounceEffect]
 })
 export class HybListComponent implements OnInit {
   list: Array<any>;

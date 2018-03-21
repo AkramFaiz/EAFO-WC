@@ -4,7 +4,7 @@
         <p class="addRecordIcon" (click)="addItem()"><span class="glyphicon glyphicon-plus"></span></p>       
         <app-list-view></app-list-view>
         <ul>
-            <li *ngFor="let wList of web_List" @bounceEffect>
+            <li class="parentLi" *ngFor="let wList of web_List" @bounceEffect>
                     <div>
                             <p><label><img src="{{wList.Icon}}"/></label></p>
                             <ul>
@@ -23,7 +23,7 @@
         </ul>
        
 </section>
-<app-create-item-web [ngClass]="showHide()" *ngIf="iVisi"></app-create-item-web>
+<app-create-item-web [editFlagVal]="editFlag" [editWebId]="editId" (canClked)="canBtn($event)" (submitClked)="okBtn($event)" [ngClass]="showHide()" *ngIf="iVisi"></app-create-item-web>
 <!-- <app-msg-toast [msg]="sMsg" *ngIf="popVisi" ></app-msg-toast> -->
 <app-alert [msg]="sMsg" *ngIf="alertVisi" (okBtnClked)="userAction($event)"></app-alert>
 <app-blurbg *ngIf="iVisi"></app-blurbg>

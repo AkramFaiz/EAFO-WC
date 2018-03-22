@@ -10,26 +10,44 @@ import { HybdataService } from '../hybdata.service';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-  //id = 'chart1';
-  type = 'pie2d';
   dataFormat = 'json';
   dataSource: any;
-  width: number = 400;
+  // width: string = '100%';
   height: number = 400;
   webData: number = 0;
   iosData: number = 0;
   hybData: number = 0;
   andData: number = 0;
   title = 'EAFO - Stats';
+  type = 'column2d';
+  id = 'chart1';
+  curState1: string = "active";
+  curState2: string;
 
   constructor(private webS: WebDataService, private iosS: IOsdataService, private andS: AndDataService, private hybS: HybdataService) {
 
   }
   ngOnInit() {
+    this.refresh();
+  }
+  refresh(){
     this.getData();
     setTimeout(()=>{
       this.drawGraph();
     },500);
+  }
+  selChart(chart){
+    if(chart == 'bar'){
+      this.type = 'column2d';
+      this.curState1="active";
+      this.curState2="inactive";
+      this.refresh();
+    }else{
+      this.type = 'pie2d';
+      this.curState1="inactive";
+      this.curState2="active";
+      this.refresh();
+    }
   }
   getData() {
     this.webS.getList_web().subscribe(res1 => {
@@ -53,7 +71,7 @@ export class StatsComponent implements OnInit {
         "yAxisMaxValue": "100",
         "numberPrefix": "",
         "paletteColors": "#0075c2",
-        "bgColor": "#ffffff",
+        "bgColor": "rgba(255,255,255,0.7)",
         "showBorder": "0",
         "showCanvasBorder": "0",
         "plotBorderAlpha": "10",
@@ -62,32 +80,34 @@ export class StatsComponent implements OnInit {
         "showXAxisLine": "1",
         "axisLineAlpha": "25",
         "divLineAlpha": "10",
+        "showLegend": "1",
         "showValues": "1",
         "showAlternateHGridColor": "0",
         "plotSpacePercent": "10",
         "chartBottomMargin": "50",
         "baseFont": "Source Sans Pro",
-        "baseFontSize": "16",
+        "baseFontSize": "13",
         "toolTipColor": "#ffffff",
         "toolTipBorderThickness": "0",
         "toolTipBgColor": "#000000",
         "toolTipBgAlpha": "80",
         "toolTipBorderRadius": "2",
-        "toolTipPadding": "10"
+        "toolTipPadding": "10",
+       
       },
       "data": [
         {
-          "label": "iOS",
-          "value": this.iosData
-        }, {
+          "label": "Web App/ Desktop",
+          "value": this.webData
+        },{
           "label": "Android",
           "value": this.andData
         }, {
-          "label": "Hydrib",
+          "label": "Hybrid",
           "value": this.hybData
-        }, {
-          "label": "Web App/ Desktop",
-          "value": this.webData
+        },{
+          "label": "iOS",
+          "value": this.iosData
         }
       ]
 

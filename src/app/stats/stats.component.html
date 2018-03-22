@@ -1,11 +1,15 @@
 <app-header></app-header>
 <app-nav-bar></app-nav-bar>
 <section>
+  <ul>
+    <li [ngClass]=curState1 (click)="selChart('bar')">Bar</li>
+    <li [ngClass]=curState2 (click)="selChart('pie')">Pie</li>
+  </ul>
   <h5>
     {{title}}
   </h5>
   <fusioncharts
-    [width]="width"
+    width="100%"
     [height]="height"
     [type]="type"
     [dataFormat]="dataFormat"

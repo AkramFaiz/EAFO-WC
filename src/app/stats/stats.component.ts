@@ -23,6 +23,8 @@ export class StatsComponent implements OnInit {
   id = 'chart1';
   curState1: string = "active";
   curState2: string;
+  visi: boolean;
+  loader: boolean;
 
   constructor(private webS: WebDataService, private iosS: IOsdataService, private andS: AndDataService, private hybS: HybdataService) {
 
@@ -30,22 +32,26 @@ export class StatsComponent implements OnInit {
   ngOnInit() {
     this.refresh();
   }
-  refresh(){
+  refresh() {
+    this.visi = true;
+    this.loader = true;
     this.getData();
-    setTimeout(()=>{
+    setTimeout(() => {
       this.drawGraph();
-    },500);
+      this.visi = false;
+      this.loader = false;
+    }, 500);
   }
-  selChart(chart){
-    if(chart == 'bar'){
+  selChart(chart) {
+    if (chart == 'bar') {
       this.type = 'column2d';
-      this.curState1="active";
-      this.curState2="inactive";
+      this.curState1 = "active";
+      this.curState2 = "inactive";
       this.refresh();
-    }else{
+    } else {
       this.type = 'pie2d';
-      this.curState1="inactive";
-      this.curState2="active";
+      this.curState1 = "inactive";
+      this.curState2 = "active";
       this.refresh();
     }
   }
@@ -64,10 +70,10 @@ export class StatsComponent implements OnInit {
     });
   }
   drawGraph() {
-    console.log("1111",this.iosData,this.andData,this.webData,this.hybData);
+    console.log("1111", this.iosData, this.andData, this.webData, this.hybData);
     this.dataSource = {
       "chart": {
-        "yAxisName": "Year",
+        "yAxisName": "",
         "yAxisMaxValue": "100",
         "numberPrefix": "",
         "paletteColors": "#0075c2",
@@ -93,19 +99,19 @@ export class StatsComponent implements OnInit {
         "toolTipBgAlpha": "80",
         "toolTipBorderRadius": "2",
         "toolTipPadding": "10",
-       
+
       },
       "data": [
         {
           "label": "Web App/ Desktop",
           "value": this.webData
-        },{
+        }, {
           "label": "Android",
           "value": this.andData
         }, {
           "label": "Hybrid",
           "value": this.hybData
-        },{
+        }, {
           "label": "iOS",
           "value": this.iosData
         }

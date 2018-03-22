@@ -45,6 +45,7 @@ import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
+import { LoaderComponent } from './loader/loader.component';
 
 const appRoutes:Routes = [
   {
@@ -148,7 +149,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     FilterComponent,
     CapitalizeFirstPipe,
     AlertComponent,
-    StatsComponent
+    StatsComponent,
+    LoaderComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes,{useHash:true}),

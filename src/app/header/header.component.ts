@@ -9,10 +9,14 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private _route: Router) { }
-
+  notifCount: number = 5;
   ngOnInit() {
   }
   logout(){
     this._route.navigate(['']);
+  }
+  notifClk(){
+    console.log('notification');
+    this._route.navigate(['/notify']);
   }
 }

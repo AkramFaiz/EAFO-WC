@@ -46,6 +46,7 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
 import { LoaderComponent } from './loader/loader.component';
+import { NotifyComponent } from './notify/notify.component';
 
 const appRoutes:Routes = [
   {
@@ -111,6 +112,11 @@ const appRoutes:Routes = [
     component: StatsComponent
   },
   {
+    path: 'notify',
+    canActivate: [AuthGuard],
+    component: NotifyComponent
+  },
+  {
     path: '',
     component: WelcomeComponent
   },
@@ -150,7 +156,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     CapitalizeFirstPipe,
     AlertComponent,
     StatsComponent,
-    LoaderComponent
+    LoaderComponent,
+    NotifyComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes,{useHash:true}),

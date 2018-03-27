@@ -12,8 +12,8 @@ import { HybdataService } from '../hybdata.service';
 export class StatsComponent implements OnInit {
   dataFormat = 'json';
   dataSource: any;
-  // width: string = '100%';
-  height: number = 400;
+  width: any;
+  height: any;
   webData: number = 0;
   iosData: number = 0;
   hybData: number = 0;
@@ -25,12 +25,35 @@ export class StatsComponent implements OnInit {
   curState2: string;
   visi: boolean;
   loader: boolean;
-
+  isMobile: boolean;
   constructor(private webS: WebDataService, private iosS: IOsdataService, private andS: AndDataService, private hybS: HybdataService) {
 
   }
   ngOnInit() {
+    this.width = '100%';
+    this.isMobile = window.outerWidth <= 768;
+    console.log('det:',this.isMobile);
+    if(this.isMobile == true){
+      this.height = 400;
+    }else{
+      this.height = 450;
+    }
+
     this.refresh();
+    var allClasses = [];
+
+    var allElements = document.querySelectorAll('*');
+    
+    for (var i = 0; i < allElements.length; i++) {
+      var classes = allElements[i].className.toString().split(/\s+/);
+      for (var j = 0; j < classes.length; j++) {
+        var cls = classes[j];
+        if (cls && allClasses.indexOf(cls) === -1)
+          allClasses.push(cls);
+      }
+    }
+    console.log(allClasses);
+    // console.log(allClasses.includes('-'));
   }
   refresh() {
     this.visi = true;
@@ -103,17 +126,19 @@ export class StatsComponent implements OnInit {
       },
       "data": [
         {
-          "label": "Web App/ Desktop",
-          "value": this.webData
-        }, {
+          "label": "iOS",
+          "value": this.iosData
+        },
+        {
           "label": "Android",
           "value": this.andData
         }, {
           "label": "Hybrid",
           "value": this.hybData
-        }, {
-          "label": "iOS",
-          "value": this.iosData
+        },
+        {
+          "label": "Web App/ Desktop",
+          "value": this.webData
         }
       ]
 
